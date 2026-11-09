@@ -77,7 +77,7 @@ def test_metrics_governed(tmp_path):
     assert m["gate"] == {"allow": 2, "deny": 1, "escalate": 1, "would_deny_let_through": 0,
                          "would_escalate_let_through": 0, "out_of_vocabulary": 0}
     assert m["human"] == {"approved": 0, "rejected": 1}
-    assert m["unsupported_passed_as_fact"] == 1           # c3 behind allowed a4
+    assert m["unsupported_passed_as_fact"] == 0           # c3 is NO_CITATION (non-legal): not counted
     assert m["llm"] == {"calls": 2, "errors": 1, "prompt_tokens": 100, "completion_tokens": 20,
                         "latency_ms_total": 12}
     assert m["gaps"] == {"by_pattern": {"G1_POLICY_VOID": 1, "G5_STANDARDS": 1}, "total": 2,
@@ -90,9 +90,9 @@ def test_metrics_ungoverned_counts_let_through(tmp_path):
     m = compute(entries)
     assert m["gate"]["would_deny_let_through"] == 1 and m["gate"]["would_escalate_let_through"] == 1
     # c2 (FAILED) behind a2 and a3, c9 (never checked) behind a3, c3 behind a4.
-    assert m["unsupported_passed_as_fact"] == 3
+    assert m["unsupported_passed_as_fact"] == 2
     assert {(u["claim_id"], u["status"]) for u in unsupported_bases(entries)} == {
-        ("c2", "FAILED"), ("c9", "NOT_CHECKED"), ("c3", "NO_CITATION")}
+        ("c2", "FAILED"), ("c9", "NOT_CHECKED")}
 
 
 def test_human_approval_executes_action(tmp_path):

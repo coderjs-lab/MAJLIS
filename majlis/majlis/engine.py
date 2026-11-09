@@ -111,6 +111,9 @@ class _Run:
         self.rules_path = rules_path
         rules, high_impact = load_policy_file(rules_path)
         self.gate = PolicyGate(rules, self.kb, high_impact, {a: c.action_vocabulary for a, c in self.cfgs.items()})
+        # (stage, agent, action_type) already submitted to the gate: a round-2 turn that re-proposes the
+        # same action at the same stage (same state) is not re-gated; the first decision stands.
+        self._gated: set[tuple[str, str, str]] = set()
         self.agents: dict[str, Agent] = {a: make_agent(c, self.kb, self.duties, lang) for a, c in self.cfgs.items()}
         self.adviser: Optional[LegalAdviser] = next(
             (ag for ag in self.agents.values() if isinstance(ag, LegalAdviser)), None)
@@ -252,6 +255,10 @@ class _Run:
         cfg = self.cfgs[agent]
         for action in turn.proposed_actions:
             if cfg.kind == "application":
+                key = (stage.id, agent, action.action_type)
+                if key in self._gated:
+                    continue
+                self._gated.add(key)
                 self._gate(stage, idx, agent, action, summary)
             elif action.action_type not in cfg.action_vocabulary:
                 d = self.gate.decide(action, agent, dict(self.state), self.mode)

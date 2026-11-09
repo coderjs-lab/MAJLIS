@@ -51,7 +51,7 @@ def executed_actions(entries: list[dict]) -> list[dict]:
 
 
 def unsupported_bases(entries: list[dict]) -> list[dict]:
-    """Claims used as legal basis of an executed action whose citation status
+    """Legal claims used as the basis of an executed action whose citation status
     is not VERIFIED (including claims with no citation result at all)."""
     status = citation_index(entries)
     seen, out = set(), []
@@ -59,7 +59,8 @@ def unsupported_bases(entries: list[dict]) -> list[dict]:
         for cid in x["action"].get("legal_basis_claim_ids") or []:
             key = (x["agent_id"], x["round"], cid)
             st = status.get(key)
-            if st != "VERIFIED" and key not in seen:
+            # NO_CITATION = a non-legal claim (fact from inject / recommendation) that needs no clause.
+            if st not in ("VERIFIED", "NO_CITATION") and key not in seen:
                 seen.add(key)
                 out.append({"agent_id": x["agent_id"], "round": x["round"], "claim_id": cid,
                             "action_id": x["action"].get("action_id"), "status": st or "NOT_CHECKED"})
