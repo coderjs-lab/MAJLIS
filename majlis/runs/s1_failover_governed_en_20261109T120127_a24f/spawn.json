@@ -1,0 +1,19 @@
+{
+  "cmd": [
+    "/home/harmanjot.singh/Documents/itu/ITUAIReadiness/majlis/scripts/run_scenario.py",
+    "--scenario",
+    "s1_failover",
+    "--mode",
+    "governed",
+    "--approver",
+    "approve_all",
+    "--lang",
+    "en",
+    "--run-id",
+    "s1_failover_governed_en_20261109T120127_a24f",
+    "--runs-dir",
+    "/home/harmanjot.singh/Documents/itu/ITUAIReadiness/majlis/runs",
+    "--quiet"
+  ],
+  "at": "20261109T120127"
+}
