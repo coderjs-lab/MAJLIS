@@ -1,8 +1,16 @@
-"""Hybrid (BM25 + bge-m3 dense) retrieval over the clause-level KB. See CONTRACTS.md."""
+"""Retrieval over the clause-level KB. See CONTRACTS.md.
+
+Pipeline (default mode "rerank"): BM25 and bge-m3 dense rankings are fused with RRF into a candidate
+pool of RERANK_POOL clauses, which the bge-reranker-v2-m3 cross-encoder re-orders. BM25 alone is weak on
+our eval (lay paraphrases, and Arabic questions against an English-only corpus) but widens the pool;
+the cross-encoder does the precise ordering. Without the dense index or the reranker (tests, CPU-only
+machines, MAJLIS_RERANK=0) the same call falls back to hybrid, then BM25.
+"""
 from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 import unicodedata
 import warnings
@@ -16,8 +24,20 @@ from rank_bm25 import BM25Okapi
 from majlis.schemas import Clause, EvidenceItem, RetrievalFilters
 
 MODEL_NAME = "BAAI/bge-m3"
+RERANK_MODEL = "BAAI/bge-reranker-v2-m3"
 RRF_K = 60
 TOP_N = 50
+RERANK_POOL = 30
+
+# English stopwords (closed-class words plus modal verbs that every legal clause uses)
+_STOP = frozenset("""a about above after again against all am an and any are as at be because been before being
+below between both but by can could did do does doing down during each few for from further had has have
+having he her here hers herself him himself his how i if in into is it its itself just me more most my
+myself no nor not now of off on once only or other our ours ourselves out over own same she should so some
+such than that the their theirs them themselves then there these they this those through to too under
+until up very was we were what when where which while who whom why will with would you your yours
+yourself yourselves must shall may might also""".split())
+_STEMMER = None
 
 _HARAKAT = re.compile(r"[ً-ْٰ]")
 _ALEF = str.maketrans({"أ": "ا", "إ": "ا", "آ": "ا", "ٱ": "ا", "ى": "ي", "ة": "ه", "ـ": None})
@@ -30,8 +50,26 @@ def normalise_for_search(text: str) -> str:
     return _WS.sub(" ", s).strip()
 
 
+def _stem(t: str) -> str:
+    global _STEMMER
+    if _STEMMER is None:
+        try:
+            import snowballstemmer
+            _STEMMER = snowballstemmer.stemmer("english").stemWord
+        except ImportError:  # pragma: no cover
+            _STEMMER = lambda w: w
+    return _STEMMER(t)
+
+
 def tokenise(text: str) -> list[str]:
-    return [t for t in re.findall(r"\w+", normalise_for_search(text)) if len(t) > 1 or t.isdigit()]
+    """BM25 tokens: normalised words, English stopwords dropped, English words Snowball-stemmed
+    ("records"/"recorded" -> "record"); Arabic tokens are kept as normalised surface forms."""
+    out = []
+    for t in re.findall(r"\w+", normalise_for_search(text)):
+        if t in _STOP or (len(t) < 2 and not t.isdigit()):
+            continue
+        out.append(_stem(t) if t.isascii() else t)
+    return out
 
 
 def search_field(c: Clause) -> str:
@@ -53,6 +91,31 @@ def get_encoder():
             m.half()
         _ENCODER = m
     return _ENCODER
+
+
+_RERANKER = None
+_RERANK_FAILED = False
+
+
+def get_reranker():
+    """Lazy bge-reranker-v2-m3 cross-encoder; None if disabled (MAJLIS_RERANK=0) or unavailable."""
+    global _RERANKER, _RERANK_FAILED
+    if _RERANKER is None and not _RERANK_FAILED:
+        if os.environ.get("MAJLIS_RERANK", "1") == "0":
+            _RERANK_FAILED = True
+            return None
+        try:
+            import torch
+            from sentence_transformers import CrossEncoder
+            dev = "cuda" if torch.cuda.is_available() else "cpu"
+            m = CrossEncoder(RERANK_MODEL, device=dev, max_length=512)
+            if dev == "cuda":
+                m.model.half()
+            _RERANKER = m
+        except Exception as e:  # pragma: no cover
+            warnings.warn(f"reranker unavailable ({e}); falling back to hybrid")
+            _RERANK_FAILED = True
+    return _RERANKER
 
 
 def embed(texts: list[str], batch_size: int = 32) -> np.ndarray:
@@ -140,6 +203,10 @@ class KB:
             "version": self.version,
         }
 
+    @staticmethod
+    def _rerank_text(c: Clause) -> str:
+        return f"{c.doc_title}\n{c.heading or ''}\n{c.text}"
+
     # -- ranking ---------------------------------------------------------
     def _bm25_rank(self, query: str, cand: np.ndarray) -> list[int]:
         q = tokenise(query)
@@ -157,20 +224,38 @@ class KB:
         order = np.argsort(-sc, kind="stable")[:TOP_N]
         return [int(cand[i]) for i in order]
 
+    def default_mode(self) -> str:
+        if self.dense_available and get_reranker() is not None:
+            return "rerank"
+        return "hybrid"
+
     def search(self, query: str, filters: Optional[RetrievalFilters] = None, k: int = 8,
-               mode: str = "hybrid") -> list[EvidenceItem]:
-        if mode not in ("hybrid", "dense", "bm25"):
+               mode: str = "auto") -> list[EvidenceItem]:
+        if mode == "auto":
+            mode = self.default_mode()
+        if mode not in ("rerank", "hybrid", "dense", "bm25"):
             raise ValueError(f"unknown mode {mode}")
+        if mode == "rerank" and (not self.dense_available or get_reranker() is None):
+            mode = "hybrid"
         cand = np.array([i for i, cid in enumerate(self.ids) if _passes(self.clauses[cid], filters)], dtype=int)
-        bm = self._bm25_rank(query, cand) if mode in ("hybrid", "bm25") else []
-        de = self._dense_rank(query, cand) if mode in ("hybrid", "dense") else []
+        bm = self._bm25_rank(query, cand) if mode in ("rerank", "hybrid", "bm25") else []
+        de = self._dense_rank(query, cand) if mode in ("rerank", "hybrid", "dense") else []
         rb = {i: r for r, i in enumerate(bm, 1)}
         rd = {i: r for r, i in enumerate(de, 1)}
         scores: dict[int, float] = {}
         for ranks in (rb, rd):
             for i, r in ranks.items():
                 scores[i] = scores.get(i, 0.0) + 1.0 / (RRF_K + r)
-        top = sorted(scores, key=lambda i: (-scores[i], min(rb.get(i, 10**9), rd.get(i, 10**9))))[:k]
+        fused = sorted(scores, key=lambda i: (-scores[i], min(rb.get(i, 10**9), rd.get(i, 10**9))))
+        if mode == "rerank":
+            pool = fused[:max(RERANK_POOL, k)]
+            pairs = [(query, self._rerank_text(self.clauses[self.ids[i]])) for i in pool]
+            ce = np.asarray(get_reranker().predict(pairs, batch_size=32, show_progress_bar=False), dtype=float)
+            order = np.argsort(-ce, kind="stable")
+            scores = {pool[j]: float(ce[j]) for j in range(len(pool))}
+            top = [pool[j] for j in order[:k]]
+        else:
+            top = fused[:k]
         out = []
         for i in top:
             c = self.clauses[self.ids[i]]

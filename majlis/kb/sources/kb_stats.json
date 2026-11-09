@@ -1,6 +1,6 @@
 {
   "built_at": "2026-11-09",
-  "kb_version_sha256": "88c8aa24dc9535c04550bcbc3ac2a28e69d7eea7b57ad0b80e536b6c513eb1e9",
+  "kb_version_sha256": "133bd9f01e9017df0202367298010df6c6826f0b46a57d7aa1af704055d7253f",
   "manifest_rows": 37,
   "documents_total": 31,
   "documents_with_clauses": 29,
@@ -9,22 +9,22 @@
     "manual_pending": 4,
     "ok": 21
   },
-  "clauses_total": 2873,
+  "clauses_total": 3095,
   "clauses_per_doc": {
     "AE-AI-CHARTER-2024[en]": 4,
     "AE-CR-32-2020[en]": 41,
     "AE-CR-40-2019[en]": 27,
     "AE-CSC-NCS-2025[en]": 67,
-    "AE-DHA-AI-POLICY[en]": 13,
+    "AE-DHA-AI-POLICY[en]": 83,
     "AE-DOH-ADHICS[en]": 154,
-    "AE-DOH-DGS-2025[en]": 21,
-    "AE-DOH-RAI-2025[en]": 21,
+    "AE-DOH-DGS-2025[en]": 49,
+    "AE-DOH-RAI-2025[en]": 139,
     "AE-FDL-3-2003[en]": 124,
     "AE-FDL-4-2016[en]": 66,
     "AE-FDL-44-2021[en]": 29,
     "AE-FDL-45-2021[en]": 85,
     "AE-FL-2-2019[en]": 32,
-    "AE-MR-51-2021[en]": 12,
+    "AE-MR-51-2021[en]": 18,
     "AE-NSAI-2031[en]": 51,
     "EU-DIR-2022-2555[en]": 252,
     "EU-REG-2016-679[en]": 419,
@@ -42,12 +42,12 @@
     "WHO-AI-LMM-2024[en]": 117
   },
   "languages": {
-    "en": 2873
+    "en": 3095
   },
   "jurisdictions": {
-    "AE": 538,
-    "AE-AZ": 196,
-    "AE-DU": 13,
+    "AE": 544,
+    "AE-AZ": 342,
+    "AE-DU": 83,
     "EU": 1309,
     "US": 145,
     "SG": 99,
@@ -55,20 +55,20 @@
     "SA": 27
   },
   "tiers": {
-    "A": 416,
+    "A": 422,
     "B": 122,
-    "C": 209,
+    "C": 425,
     "D": 1906,
     "E": 193,
     "F": 27
   },
   "binding": {
-    "binding": 1934,
+    "binding": 2156,
     "non_binding": 939
   },
-  "avg_words": 142.3,
+  "avg_words": 132.0,
   "clauses_over_400_words": 18,
-  "clauses_under_50_words": 822,
+  "clauses_under_50_words": 1056,
   "extraction_failures_total": 146,
   "extraction_failures_by_doc": {
     "AE-FDL-45-2021[ar]": {
@@ -199,12 +199,12 @@
     "AE-MR-51-2021[en]": {
       "status": "manual_ok",
       "mode": "law_pdf",
-      "clauses": 12,
+      "clauses": 18,
       "extraction_failed": 0,
       "failure_reasons": {},
-      "avg_words": 102.9,
-      "min_words": 15,
-      "max_words": 362,
+      "avg_words": 67.7,
+      "min_words": 14,
+      "max_words": 161,
       "glyph_repairs": {},
       "notes": []
     },
@@ -321,24 +321,24 @@
     "AE-DOH-RAI-2025[en]": {
       "status": "ok",
       "mode": "pdf_sections",
-      "clauses": 21,
+      "clauses": 139,
       "extraction_failed": 0,
       "failure_reasons": {},
-      "avg_words": 211.2,
-      "min_words": 54,
-      "max_words": 398,
+      "avg_words": 30.7,
+      "min_words": 2,
+      "max_words": 365,
       "glyph_repairs": {},
       "notes": []
     },
     "AE-DOH-DGS-2025[en]": {
       "status": "ok",
       "mode": "pdf_sections",
-      "clauses": 21,
+      "clauses": 49,
       "extraction_failed": 0,
       "failure_reasons": {},
-      "avg_words": 180.8,
-      "min_words": 30,
-      "max_words": 398,
+      "avg_words": 77.1,
+      "min_words": 7,
+      "max_words": 394,
       "glyph_repairs": {},
       "notes": []
     },
@@ -357,13 +357,13 @@
     "AE-DHA-AI-POLICY[en]": {
       "status": "manual_ok",
       "mode": "pdf_sections",
-      "clauses": 13,
+      "clauses": 83,
       "extraction_failed": 1,
       "failure_reasons": {
         "unmapped_glyphs": 1
       },
-      "avg_words": 220.3,
-      "min_words": 62,
+      "avg_words": 33.7,
+      "min_words": 2,
       "max_words": 398,
       "glyph_repairs": {},
       "notes": []

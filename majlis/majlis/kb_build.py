@@ -515,7 +515,37 @@ def split_sections(lines: list[Line], *, numbered=True, font_headings=True,
     return [s for s in secs if s.paras]
 
 
-def sections_to_units(secs: list[_Sec]) -> list[Unit]:
+def _atomic_units(secs: list[_Sec]) -> list[Unit]:
+    """One unit per numbered provision (no size-based merging), for standards whose numbered
+    provisions are short and cited individually (e.g. DoH RAI 3.1.4.5.1). Heading-only sections
+    ("3.1.4.5 Infrastructure Security and Sovereignty") become the heading of their descendants."""
+    heads: dict[tuple, str] = {}
+    units: list[Unit] = []
+    numbered = [tuple(x.label.split(".")) for x in secs if re.fullmatch(r"\d+(?:\.\d+)*", x.label)]
+    parents = {p[:k] for p in numbered for k in range(1, len(p))}
+    for s in secs:
+        txt = "\n".join(s.paras).strip()
+        parts = tuple(s.label.split(".")) if re.fullmatch(r"\d+(?:\.\d+)*", s.label) else None
+        if parts in parents and words(txt) <= 15 and not HEAD_END.search(txt):
+            heads[parts] = s.heading or re.sub(r"^\d+(?:\.\d+)*\.?\s*", "", txt)
+            continue
+        heading = s.heading
+        if parts:
+            anc = [heads[parts[:k]] for k in range(len(parts) - 1, 0, -1) if parts[:k] in heads]
+            if anc:
+                heading = anc[0]
+        chunks = chunk_paragraphs(s.paras)
+        for k, ch in enumerate(chunks, 1):
+            u = Unit("sec", s.label, None, heading, ch, s.page)
+            if len(chunks) > 1:
+                u.id_suffix = f"-part{k}"
+            units.append(u)
+    return units
+
+
+def sections_to_units(secs: list[_Sec], atomic: bool = False) -> list[Unit]:
+    if atomic:
+        return _atomic_units(secs)
     # 1) merge tiny sections: heading-like -> forward, otherwise -> backward
     merged: list[_Sec] = []
     carry: _Sec | None = None
@@ -751,10 +781,38 @@ def flipbook_paragraphs(path: Path) -> list[tuple[str, int | None]]:
     return merged
 
 
-def pdf_law_paragraphs(path: Path, counter) -> list[tuple[str, int | None]]:
+@dataclass
+class _PlainLine:
+    text: str
+    page: int
+    block: int = 0
+
+
+def sorted_pdf_lines(path: Path) -> list[_PlainLine]:
+    """Lines in visual reading order (pymupdf sort=True), for PDFs whose text layer is stored out of
+    order (MR 51/2021 English: case 4 sits inside case 3). Bidi-misplaced punctuation at the start of a
+    line (".country", ",conditions") is moved to the line end: an ordering repair, not a content change."""
+    import pymupdf
+    out: list[_PlainLine] = []
+    for pno, page in enumerate(pymupdf.open(path), 1):
+        for raw in page.get_text(sort=True).splitlines():
+            t = norm_ws(raw)
+            if not t or re.fullmatch(r"\d{1,3}", t):
+                continue
+            m = re.match(r"^([.,;])\s*(\S.*)$", t)
+            if m:
+                t = m.group(2) + m.group(1)
+            m = re.match(r"^(\S.*?)\s+\.\s?(\d{1,2})$", t)   # item number pushed to the line end: "... . 10"
+            if m:
+                t = f"{m.group(2)}. {m.group(1)}"
+            out.append(_PlainLine(t, pno))
+    return out
+
+
+def pdf_law_paragraphs(path: Path, counter, sort: bool = False) -> list[tuple[str, int | None]]:
     # law mode: "Article (n)" / "المادة (n)" lines repeat on many pages but are structure, not running headers
     keep = re.compile(r"^\s*(?::\s*)?(?:Article\s*\(?\s*\d+\s*\)?\s*$|(?:ال)?مادة\s*[\(（]?\s*[0-9٠-٩]+\s*[\)）]?\s*$)", re.I)
-    lines, _ = pdf_lines(path, None, counter, keep_rx=keep)
+    lines = sorted_pdf_lines(path) if sort else pdf_lines(path, None, counter, keep_rx=keep)[0]
     out: list[tuple[str, int | None]] = []
     cur: list[str] = []
     cur_block = None
@@ -794,6 +852,12 @@ PARSE_CONFIG: dict[str, dict] = {
     "SG-IMDA-AGENTIC-2026": {"mode": "pdf"},
     "WHO-AI-HEALTH-2021": {"mode": "pdf"},
     "WHO-AI-LMM-2024": {"mode": "pdf"},
+    # DoH RAI: numbered provisions are one or two sentences and are cited individually (3.1.4.5.1)
+    "AE-DOH-RAI-2025": {"mode": "pdf", "atomic": True},
+    "AE-DOH-DGS-2025": {"mode": "pdf", "atomic": True},
+    "AE-DHA-AI-POLICY": {"mode": "pdf", "atomic": True},
+    # MR 51/2021 English: text layer out of reading order; read in visual order
+    "AE-MR-51-2021": {"mode": "pdf", "sorted_text": True},
     # ADHICS: control / sub-control codes printed alone on a line ("HR 2", "HR 2.1")
     "AE-DOH-ADHICS": {"mode": "pdf", "font_headings": False, "extra_markers": [r"^((?:HR|AM|PE|AC|OM|CM|HI|TP|SA|IM|SC|IG)\s?\d{1,2}(?:\.\d{1,2})?)$"]},
     # bilingual file (EN pages 1-34, AR pages 36-69); keys "<doc_id>:<lang>" override "<doc_id>"
@@ -828,7 +892,7 @@ def parse_document(row: dict, path: Path, lang: str) -> tuple[list[Unit], dict]:
             return [], info
         if is_law:
             info["mode"] = "law_pdf"
-            paras = pdf_law_paragraphs(path, counter)
+            paras = pdf_law_paragraphs(path, counter, sort=cfg.get("sorted_text", False))
             units, notes = split_law(paras, lang)
             info["notes"] += notes
         else:
@@ -837,7 +901,7 @@ def parse_document(row: dict, path: Path, lang: str) -> tuple[list[Unit], dict]:
             secs = split_sections(lines, numbered=cfg.get("numbered", True),
                                   font_headings=cfg.get("font_headings", True),
                                   extra_markers=cfg.get("extra_markers"))
-            units = sections_to_units(secs)
+            units = sections_to_units(secs, atomic=cfg.get("atomic", False))
     else:
         info["mode"] = "unsupported"
         info["notes"].append(f"unsupported file type {suffix}")

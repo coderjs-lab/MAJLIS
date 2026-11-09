@@ -1,8 +1,8 @@
-// Knowledge base: hybrid search, filters, parallel-language clauses, stats, retrieval evaluation.
+// Knowledge base: reranked hybrid search, filters, parallel-language clauses, stats, retrieval evaluation.
 import { html, useContext, useState, useEffect, Ctx, cx, api, useApi, human, pct } from "../lib.js";
 import { Empty, Loading, Label, ApiState, BindingBadge, ClauseBody } from "../ui.js";
 
-const MODES = [["hybrid", "Hybrid"], ["dense", "Dense"], ["bm25", "BM25"]];
+const MODES = [["rerank", "Reranked"], ["hybrid", "Hybrid"], ["dense", "Dense"], ["bm25", "BM25"]];
 const EXAMPLES = ["breach notification", "data stored outside the territory", "suspend AI system patient safety", "network outage reporting", "إخطار"];
 
 function Stats({ s }) {
@@ -25,7 +25,7 @@ function EvalTable() {
   if (ev.error) return html`<${Empty} title="Retrieval evaluation not run yet">Results appear here once <code>kb/retrieval_eval_results.json</code> exists.<//>`;
   const d = ev.data || {};
   const src = d.by_mode || d.modes;
-  const rows = Array.isArray(d) ? d : src ? ["hybrid", "dense", "bm25"].filter((k) => src[k]).map((mode) => ({ mode, ...src[mode] })) : d.results || [];
+  const rows = Array.isArray(d) ? d : src ? ["rerank", "hybrid", "dense", "bm25"].filter((k) => src[k]).map((mode) => ({ mode, ...src[mode] })) : d.results || [];
   const art = rows.some((r) => r["recall@5_article"] !== undefined);
   const f3 = (x) => (x === undefined || x === null ? "—" : Number(x).toFixed(3));
   const flagged = d.needs_team_review || rows.some((r) => r.needs_team_review);
@@ -45,7 +45,7 @@ export function KBView() {
   const { route } = useContext(Ctx);
   const stats = useApi("/api/kb/stats", [], { cache: true });
   const [q, setQ] = useState(route.params.q || "");
-  const [mode, setMode] = useState("hybrid");
+  const [mode, setMode] = useState("rerank");
   const [jur, setJur] = useState("");
   const [bind, setBind] = useState("");
   const [lang, setLang] = useState("");

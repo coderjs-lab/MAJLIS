@@ -446,11 +446,11 @@ def _split(v: Optional[str]) -> Optional[list[str]]:
 
 @app.get("/api/kb/search")
 def kb_search(q: str = "", k: int = 8, jurisdiction: str = "", binding: str = "", language: str = "",
-              mode: str = "hybrid"):
+              mode: str = "rerank"):
     q = q.strip()[:500]
     k = max(1, min(int(k), 50))
-    if mode not in ("hybrid", "dense", "bm25"):
-        mode = "hybrid"
+    if mode not in ("rerank", "hybrid", "dense", "bm25"):
+        mode = "rerank"
     cl = _clauses()
     if not q:
         return {"query": q, "mode": mode, "engine": None, "results": []}

@@ -1,4 +1,5 @@
-"""Retrieval eval: recall@5 and MRR@10 for dense/bm25/hybrid, exact and article level."""
+"""Retrieval eval: recall@5 and MRR@10 for dense/bm25/hybrid/rerank, exact and article level, plus
+the recall of the reranker's candidate pool (hybrid top-30)."""
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -34,8 +35,12 @@ def main(argv=None) -> int:
     rows = [r for r in rows if r.get("gold_clause_ids")]
     kb = KB.load(kb_dir)
     modes = ["dense", "bm25", "hybrid"] if kb.dense_available else ["bm25", "hybrid"]
+    if kb.default_mode() == "rerank":
+        modes.append("rerank")
     agg = {m: {"recall@5": 0.0, "mrr": 0.0, "recall@5_article": 0.0, "mrr_article": 0.0} for m in modes}
     per_q = []
+    pool_hits = 0
+    by_lang: dict = {}
     for r in rows:
         gold = set(r["gold_clause_ids"])
         gold_a = {article_key(g) for g in gold}
@@ -47,11 +52,20 @@ def main(argv=None) -> int:
             for key, v in (("recall@5", r5), ("mrr", mrr), ("recall@5_article", r5a), ("mrr_article", mrra)):
                 agg[m][key] += v
             pq[m] = {"top10": ranked, "recall@5": r5, "mrr": mrr, "recall@5_article": r5a, "mrr_article": mrra}
+        pool = [e.clause_id for e in kb.search(r["question"], k=30, mode="hybrid")]
+        pq["pool_recall@30"] = float(any(c in gold for c in pool))
+        pool_hits += pq["pool_recall@30"]
+        lg = by_lang.setdefault(r.get("lang"), {m: 0.0 for m in modes} | {"n": 0})
+        lg["n"] += 1
+        for m in modes:
+            lg[m] += pq[m]["recall@5"]
         per_q.append(pq)
     n = max(len(rows), 1)
     for m in modes:
         agg[m] = {k: round(v / n, 4) for k, v in agg[m].items()}
-    res = {"n_questions": len(rows), "by_mode": agg, "per_question": per_q,
+    recall_by_lang = {lg: {"n": d["n"], **{m: round(d[m] / d["n"], 4) for m in modes}} for lg, d in by_lang.items()}
+    res = {"n_questions": len(rows), "by_mode": agg, "pool_recall@30_hybrid": round(pool_hits / n, 4),
+           "recall@5_by_language": recall_by_lang, "per_question": per_q,
            "kb_version": kb.version, "dense_available": kb.dense_available}
     (kb_dir / "retrieval_eval_results.json").write_text(json.dumps(res, indent=2, ensure_ascii=False))
     print(f"n_questions={len(rows)} dense_available={kb.dense_available}\n")
@@ -60,6 +74,9 @@ def main(argv=None) -> int:
     for m in modes:
         s = agg[m]
         print(f"| {m} | {s['recall@5']:.3f} | {s['mrr']:.3f} | {s['recall@5_article']:.3f} | {s['mrr_article']:.3f} |")
+    print(f"\ncandidate pool (hybrid top-30) contains a gold clause: {pool_hits / n:.3f}")
+    for lg, d in recall_by_lang.items():
+        print(f"recall@5 [{lg}, n={d['n']}]: " + ", ".join(f"{m} {d[m]:.3f}" for m in modes))
     return 0
 
 

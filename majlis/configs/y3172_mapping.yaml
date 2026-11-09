@@ -10,7 +10,7 @@ rows:
       - {dim: 13, note: "Digital infrastructure: the cloud-region outage and failover are the data source of the incident (Data Centers)"}
       - {dim: 1, note: "Data collection sources: provenance recorded per document and per clause"}
     documents:
-      - {clause_id: "AE-DOH-RAI-2025/sec-3/en", note: "3.1.2.1.4: post-deployment monitoring for performance degradation is the telemetry this node carries"}
+      - {clause_id: "AE-DOH-RAI-2025/sec-3.1.2.1.4/en", note: "3.1.2.1.4: post-deployment monitoring for performance degradation is the telemetry this node carries"}
       - {clause_id: "AE-FL-2-2019/art-20/en", note: "Keeping health information and data"}
     extension: false
   - node: C
@@ -29,7 +29,7 @@ rows:
       - {dim: 1, note: "Dataset properties: clause-level, provenance and sha256 per record"}
       - {dim: 4, note: "Local datasets: UAE federal and Abu Dhabi texts; Arabic handling (extraction failures logged)"}
     documents:
-      - {clause_id: "AE-DOH-RAI-2025/sec-3.2.3.1.4/en", note: "Dataset quality requirements (no missing values, duplication, schema conflicts)"}
+      - {clause_id: "AE-DOH-RAI-2025/sec-3.2.3.2/en", note: "3.2.3.2: dataset quality requirements (no missing values, duplication, schema conflicts)"}
     extension: false
   - node: M
     use_case: "LLM agents: AI triage (system under test), DoH, TDRA, UAE Data Office (simulated), Legal & Policy Adviser; GLM via API, no training"
@@ -38,7 +38,7 @@ rows:
       - {dim: 5, note: "Level of integration of AI in workflows: AI inside clinical triage"}
       - {dim: 8, note: "Collaboration with AI: institutions consult an AI adviser that must cite"}
     documents:
-      - {clause_id: "AE-DOH-RAI-2025/sec-3/en", note: "3.1.3.1.1: validation against performance benchmarks before deployment"}
+      - {clause_id: "AE-DOH-RAI-2025/sec-3.1.3.1.1/en", note: "3.1.3.1.1: validation against performance benchmarks before deployment"}
       - {clause_id: "US-NIST-AI-100-1/sec-3.5/en", note: "Global practice: NIST AI RMF 3.5, explainable and interpretable AI outputs"}
     extension: false
   - node: P
@@ -49,7 +49,8 @@ rows:
       - {dim: 6, note: "Human interface: safety integration via escalation"}
     documents:
       - {clause_id: "AE-FL-2-2019/art-13/en", note: "Health data outside the State only in cases prescribed by a Health Authority decision (DENY 403 at T2)"}
-      - {clause_id: "AE-DOH-RAI-2025/sec-3/en", note: "3.1.1.2.2 escalation protocols (ESCALATE at T1); 3.1.2.1.2 fallback for continuity of care"}
+      - {clause_id: "AE-DOH-RAI-2025/sec-3.1.1.2.2/en", note: "3.1.1.2.2 escalation protocols (ESCALATE at T1)"}
+      - {clause_id: "AE-DOH-RAI-2025/sec-3.1.2.1.2/en", note: "3.1.2.1.2 fallback for continuity of care"}
       - {clause_id: "ITU-T-Y3172/sec-8.1-part1/en", note: "Y.3172 definition of the P node"}
     extension: false
   - node: D
@@ -67,7 +68,7 @@ rows:
       - {dim: 9, note: "Impacts of humans in AI integration: the exercise is a training tool for officials"}
       - {dim: 6, note: "Human interface: Approve / Reject with the quoted clause"}
     documents:
-      - {clause_id: "AE-DOH-RAI-2025/sec-3.1.7/en", note: "3.1.7.2.2 clinicians retain ultimate decision-making authority"}
+      - {clause_id: "AE-DOH-RAI-2025/sec-3.1.7.2.2/en", note: "3.1.7.2.2 clinicians retain ultimate decision-making authority"}
     extension: false
   - node: MLFO
     use_case: "Scenario engine orchestrates the run; the ML Intent is the scenario file plus the governance mode"
@@ -103,7 +104,7 @@ rows:
       - {dim: 9, note: "Expert intersection: clinicians decide"}
     documents:
       - {clause_id: "ITU-T-Y3173/sec-s8-part1/en", note: "Y.3173 NOTE 1: human decisions have the highest authority"}
-      - {clause_id: "AE-DOH-RAI-2025/sec-3/en", note: "3.1.1.2.1 human-in-the-loop or human-on-the-loop mechanisms"}
+      - {clause_id: "AE-DOH-RAI-2025/sec-3.1.1.2.1/en", note: "3.1.1.2.1 human-in-the-loop or human-on-the-loop mechanisms"}
     extension: true
   - node: AE
     use_case: "Audit Evidence: SHA-256 hash-chained ledger of every inject, retrieval, prompt, output, check and decision; replay"
@@ -111,8 +112,8 @@ rows:
     readiness:
       - {dim: 10, note: "Policy evaluation: audit metrics"}
     documents:
-      - {clause_id: "AE-DOH-RAI-2025/sec-3.1.7/en", note: "3.1.7.1.3 all decisions logged and traceable to a responsible party"}
-      - {clause_id: "AE-DOH-RAI-2025/sec-3.1.5.1.3/en", note: "3.1.6.2.3 end-to-end traceability logs of inputs, outputs and versions"}
+      - {clause_id: "AE-DOH-RAI-2025/sec-3.1.7.1.3/en", note: "3.1.7.1.3 all decisions logged and traceable to a responsible party"}
+      - {clause_id: "AE-DOH-RAI-2025/sec-3.1.6.2.3/en", note: "3.1.6.2.3 end-to-end traceability logs of inputs, outputs and versions"}
     extension: true
   - node: GM
     use_case: "Gap Miner: turns failures of the procedure (no rule, conflict, no owner, clock clash, standard silent) into gap records"

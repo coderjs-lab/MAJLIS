@@ -12,7 +12,7 @@ mandate: |
   and may impose sanctions for breaches of the Standard (Standard 5-6). As a local government health
   authority it is a "Health Authority" under Federal Law 2/2019 (Art. 1), the authority whose decision
   prescribes when health data may be processed outside the State (Art. 13).
-mandate_sources: [AE-DOH-RAI-2025/sec-1.2/en, AE-DOH-RAI-2025/sec-5/en, AE-FL-2-2019/art-1/en, AE-FL-2-2019/art-13/en]
+mandate_sources: [AE-DOH-RAI-2025/sec-1.2/en, AE-DOH-RAI-2025/sec-5.1/en, AE-FL-2-2019/art-1/en, AE-FL-2-2019/art-13/en]
 retrieval_filters:
   jurisdiction: [AE, AE-AZ]
   sectors: [health, data, ai]

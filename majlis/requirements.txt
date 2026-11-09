@@ -13,3 +13,4 @@ beautifulsoup4>=4.12
 lxml>=5.2
 networkx>=3.0
 pytest>=8.0
+snowballstemmer>=2.2
