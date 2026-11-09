@@ -1,0 +1,13 @@
+/* IBM Plex, vendored from @fontsource (SIL Open Font License). No runtime requests leave the machine. */
+@font-face { font-family: "Plex Sans"; font-style: normal; font-weight: 400; font-display: swap; src: url(../fonts/plex-sans-400.woff2) format("woff2"); }
+@font-face { font-family: "Plex Sans"; font-style: normal; font-weight: 500; font-display: swap; src: url(../fonts/plex-sans-500.woff2) format("woff2"); }
+@font-face { font-family: "Plex Sans"; font-style: normal; font-weight: 600; font-display: swap; src: url(../fonts/plex-sans-600.woff2) format("woff2"); }
+@font-face { font-family: "Plex Serif"; font-style: normal; font-weight: 400; font-display: swap; src: url(../fonts/plex-serif-400.woff2) format("woff2"); }
+@font-face { font-family: "Plex Serif"; font-style: italic; font-weight: 400; font-display: swap; src: url(../fonts/plex-serif-400-italic.woff2) format("woff2"); }
+@font-face { font-family: "Plex Serif"; font-style: normal; font-weight: 500; font-display: swap; src: url(../fonts/plex-serif-500.woff2) format("woff2"); }
+@font-face { font-family: "Plex Serif"; font-style: normal; font-weight: 600; font-display: swap; src: url(../fonts/plex-serif-600.woff2) format("woff2"); }
+@font-face { font-family: "Plex Sans Arabic"; font-style: normal; font-weight: 400; font-display: swap; src: url(../fonts/plex-sans-arabic-400.woff2) format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC; }
+@font-face { font-family: "Plex Sans Arabic"; font-style: normal; font-weight: 500; font-display: swap; src: url(../fonts/plex-sans-arabic-500.woff2) format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC; }
+@font-face { font-family: "Plex Sans Arabic"; font-style: normal; font-weight: 600; font-display: swap; src: url(../fonts/plex-sans-arabic-600.woff2) format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC; }
+@font-face { font-family: "Plex Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url(../fonts/plex-mono-400.woff2) format("woff2"); }
+@font-face { font-family: "Plex Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url(../fonts/plex-mono-500.woff2) format("woff2"); }

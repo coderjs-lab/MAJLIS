@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MAJLIS · Exercise Console</title>
+  <meta name="description" content="MAJLIS exercise console — fictional multi-institution AI incident exercise. Agents simulate institutions; not official positions, not legal advice." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%230E4F4C'/%3E%3Cpath d='M4 12V4l4 5 4-5v8' fill='none' stroke='%23F6F4EF' stroke-width='1.6'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/static/css/fonts.css" />
+  <link rel="stylesheet" href="/static/css/console.css" />
+</head>
+<body>
+  <div id="app"><div class="boot">MAJLIS · loading the exercise console…</div></div>
+  <noscript>The MAJLIS console needs JavaScript.</noscript>
+  <script type="module" src="/static/js/app.js"></script>
+  <script>/* headless screenshots: hold the load event so data can render (#...&shot=1) */
+    if (/[?&]shot=1/.test(location.hash)) document.write('<img alt="" style="position:absolute;width:1px;height:1px;opacity:0" src="/api/_hold?ms=3500">');</script>
+</body>
+</html>

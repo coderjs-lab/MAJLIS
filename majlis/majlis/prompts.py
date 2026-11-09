@@ -11,7 +11,9 @@ SIM_DISCLAIMER = ("Fictional training exercise. You simulate a role; this is not
 
 RULES = [
     "Cite only clause ids that appear in the EVIDENCE section of the current message. Never cite a clause id "
-    "you remember from elsewhere.",
+    "you remember from elsewhere. Copy the id exactly as written between the square brackets, including its "
+    "final /en or /ar segment (e.g. [DOC/sec-3/en] -> \"DOC/sec-3/en\"); never shorten it or point to a "
+    "sub-section number that is not itself an id in EVIDENCE.",
     "Copy every quote exactly, character for character, from the clause text in EVIDENCE: at most 60 words, "
     "no ellipses, no corrections, and never translate a quote. A quote stays in the clause's own language.",
     "If EVIDENCE does not answer a question, put the question in insufficient_evidence. Never fill the gap "
