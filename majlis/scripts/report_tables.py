@@ -16,9 +16,12 @@ from majlis.metrics import compute  # noqa: E402
 
 def label(entries: list[dict]) -> str:
     rs = next(e for e in entries if e["event_type"] == "run_start")["payload"]
+    import re
     extra = [e["payload"]["stage_id"] for e in entries if e["event_type"] == "inject"
-             and e["payload"]["stage_id"] not in {s["id"] for s in rs.get("stages", [])}]
-    return f"{rs['mode']} · {rs['lang'].upper()}" + (f" · +{','.join(extra)}" if extra else "")
+             and not re.fullmatch(r"T\d+", e["payload"]["stage_id"])]
+    appr = rs.get("approver", "")
+    tail = (f" · +{','.join(extra)}" if extra else "") + (" · approve_all" if appr == "approve_all" else "")
+    return f"{rs['mode']} · {rs['lang'].upper()}" + tail
 
 
 def metrics_table(runs: list[tuple[str, list[dict]]]) -> str:

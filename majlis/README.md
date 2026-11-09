@@ -39,7 +39,30 @@ The committed runs under `runs/` replay entirely from their ledgers: no model ca
 | Architecture | The Y.3172 pipeline with our proposed governance extension (LA, HA, AE, GM), live event counts per node | Alignment with ITU standards |
 | Agents | Each agent's mandate, knowledge slice, tools and messaging rights; downloadable agent card | Reusability |
 
-## 3. Architecture
+## 3. Results from the committed runs
+
+All runs: scenario S1, model `glm-5.3` (z.ai), reasoning effort low, simulated approver `reject_all` unless noted, KB of 2,282 clauses. Every number below is printed by `scripts/report_tables.py` from the ledgers in `runs/`; nothing is hand-edited.
+
+| Metric | governed · EN | ungoverned · EN | governed · AR | governed · EN · +C5,C3 |
+|---|---|---|---|---|
+| Ledger entries (hash chain) | 485 (OK) | 493 (OK) | 482 (OK) | 613 (OK) |
+| LLM calls / errors | 62 / 0 | 62 / 0 | 62 / 0 | 80 / 0 |
+| Citation verification rate | 92.4% | 89.0% | 93.9% | 90.1% |
+| Gate: ALLOW / DENY 403 / ESCALATE | 19 / 0 / 2 | 17 / 1 / 7 | 20 / 0 / 2 | 20 / 0 / 2 |
+| **Violations let through** (would DENY, executed) | **0** | **1** | 0 | 0 |
+| **Escalations bypassed** (would ESCALATE, executed) | **0** | **7** | 0 | 0 |
+| Human decisions: approved / rejected | 0 / 2 | 0 / 0 | 0 / 2 | 0 / 2 |
+| Gap candidates G1/G2/G3/G4/G5 | 6/0/5/0/8 | 8/0/7/0/8 | 5/0/6/0/8 | 8/0/6/0/8 |
+
+**What happened.** In the governed run the gate escalated `continue_triage` at T1 (DoH Responsible AI Standard §3.1.1.2.2, escalation protocols) and the human rejected it; the AI stayed on human fallback, so the T2 data-localisation breach never occurred. In the ungoverned run the same agent kept triaging and at T2 processed patient data outside the UAE: the gate's would-be **DENY 403** under Federal Law 2/2019 Art. 13 was logged and let through, together with 7 bypassed escalations. Governance here *prevented* the violation rather than blocking it after the fact.
+
+**Citation integrity.** Of all citations the agents made, 89–94% were verbatim. Most failures are `UNKNOWN_CLAUSE`: the model dropped the `/en` suffix of a clause id or cited a sub-section number inside a larger chunk. The checker is deliberately strict and never repairs an id; such claims are never used as a legal basis (technical gap TG3).
+
+**Retrieval (E1, 30 questions, 7 in Arabic, `kb/retrieval_eval.jsonl`):** recall@5 dense 0.53, hybrid 0.50, BM25 0.20 (article-level: 0.63 / 0.57 / 0.23). BM25 hurts on paraphrased questions; we report it rather than tune it. Questions are drafted from clause text and flagged for team review.
+
+**Pilot.** Run `20261109-153019` used a neutral triage objective: glm-5.3 suspended itself at T1 and never tested the gate. Real services run under availability pressure, so the system under test now has a disclosed availability-first objective (`configs/agents/triage.yaml`). The pilot ledger is kept, unedited.
+
+## 4. Architecture
 
 ```
             MLFO  (scenario engine: ML intent = scenario file + governance mode)
@@ -63,7 +86,7 @@ The committed runs under `runs/` replay entirely from their ledgers: no model ca
 
 See `PLAN.md` for design decisions and `CONTRACTS.md` for module interfaces.
 
-## 4. Full run (live agents)
+## 5. Full run (live agents)
 
 ```bash
 cp .env.example .env            # add GLM_API_KEY (z.ai); MAJLIS_MODEL=glm-5.3
@@ -88,25 +111,25 @@ Or use **New exercise** in the console (interactive approvals, challenge cards).
 Offline smoke test of the whole pipeline (no key, deterministic mock agents): `MAJLIS_BACKEND=mock .venv/bin/python scripts/run_scenario.py --scenario s1_failover --mode governed`.
 Tests: `.venv/bin/python -m pytest -q`.
 
-## 5. Knowledge base
+## 6. Knowledge base
 
-`kb/sources/manifest.csv` (one row per document, official URL, sha256), `kb/clauses/clauses.jsonl` (one row per clause, text verbatim), `kb/Inputs.md` (reference-repo format; the originals are also copied into `simulation/server/knowledge/InputDocs/MAJLIS_UAE_Health_Telecom/` so the reference ingester can use them unchanged). `kb/sources/access_log.csv` records every download attempt — official portals that refuse automated retrieval are evidence for technical gap TG1.
+**2,282 clauses from 20 official documents** (UAE: Federal Law 2/2019 on ICT in health, Cabinet Resolution 40/2019 executive regulation, DoH Abu Dhabi Responsible AI and Data Governance standards, UAE AI Charter, National AI Strategy 2031; global: EU AI Act, GDPR, NIS2, NIST AI RMF 1.0, FDA PCCP guidance, IMDA agentic-AI and GenAI frameworks, WHO 2021 and 2024; ITU-T Y.3172, Y.3173, Y.3181, ITU AI Readiness Framework 2.0; Saudi NSDAI). `kb/sources/manifest.csv` (one row per document, official URL, sha256), `kb/clauses/clauses.jsonl` (one row per clause, text verbatim), `kb/Inputs.md` (reference-repo format; the originals are also copied into `simulation/server/knowledge/InputDocs/MAJLIS_UAE_Health_Telecom/` so the reference ingester can use them unchanged). `kb/sources/access_log.csv` records every download attempt — official portals that refuse automated retrieval are evidence for technical gap TG1.
 
-## 6. Reuse: another country, another scenario
+## 7. Reuse: another country, another scenario
 
 Agents, rules and scenarios are YAML. A new country pack = `configs/countries/<pack>.yaml` + `configs/agents/*` + `configs/policies/<pack>_rules.yaml` + documents in the manifest. A new scenario = one file in `configs/scenarios/`. No code changes.
 
-## 7. Hardware and cost
+## 8. Hardware and cost
 
-Built and run on Ubuntu, 32 cores, 62 GB RAM, RTX 4090 (only used for embeddings; CPU works). Replay needs nothing but Python. A live S1 run makes roughly 30–45 GLM calls.
+Built and run on Ubuntu, 32 cores, 62 GB RAM, RTX 4090 (only used for embeddings: 2,282 clauses in 20 s; CPU works). Replay needs nothing but Python. A live S1 run makes 62 GLM calls (about 0.6 M prompt tokens, 80 k completion tokens) and takes about 8 minutes with agents of one round running in parallel.
 
-## 8. Limitations (read this)
+## 9. Limitations (read this)
 
 - Simulated and fictional; LLM output varies between runs (we report the committed ledgers).
 - Policy rules are encoded by us from cited clauses; `review:` in each rule shows whether the team has signed it off. The gate is a *policy application component*, not a legal authority.
 - Gap candidates are hypotheses until verified against the primary text (Tier 2). "Mapped to" Y.3172/Y.3173 — never "compliant with".
 - Some official UAE texts could not be retrieved automatically; see `kb/sources/MANUAL_DOWNLOADS.md`.
 
-## 9. Licence and attribution
+## 10. Licence and attribution
 
 Built on the ITU reference repository [CrashingGuru/ITUAIReadiness](https://github.com/CrashingGuru/ITUAIReadiness) (MIT; upstream `LICENSE` kept). Readiness dimensions and the causal graph are reused from it with attribution. Legal texts remain the property of their issuers and are linked to the originals.
