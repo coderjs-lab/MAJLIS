@@ -1,0 +1,182 @@
+# Tier 2 gap register: checked against the PRIMARY TEXT, kept separate from the agent-found Tier 1
+# candidates (organisers' guidance: keep agent output and the team's own analysis apart).
+#
+# status: verified            the primary texts in our KB show the gap
+#         rejected            we found a provision that covers it (a useful result in itself)
+#         needs_more_evidence the deciding text is not in our KB; we do not claim the gap
+# Every quote is verbatim from kb/clauses/clauses.jsonl (checked by scripts/check_gaps_verified.py).
+# Scope: "in our KB" means the 20 official documents listed in kb/sources/manifest.csv; the UAE PDPL,
+# Data Office law, telecom law and cyber strategy could not be retrieved automatically (TG1).
+# These are domain-level observations from a simulated exercise: not legal advice, not a verdict on
+# any UAE institution.
+checked_by: "build lead (Claude), from primary text, 2026-11-09"
+team_signoff: pending   # Abhra: change to the reviewer's name per row when signed off
+
+gaps:
+  - id: TV1
+    candidate: CG1
+    type: policy
+    pattern: G1_POLICY_VOID
+    title: "No visible emergency route for running a clinical AI service on health data abroad during an outage"
+    status: needs_more_evidence
+    statement: >-
+      Federal Law 2/2019 permits health data to be processed outside the State only in cases prescribed by a
+      Health Authority decision. The decision that lists those cases is not machine-retrievable (the MOHAP copy
+      of Cabinet Resolution 32/2020 is a scanned image; the 2021 exceptions resolution could not be located),
+      so we cannot establish whether an emergency / continuity-of-care case exists.
+    uae_evidence:
+      - clause_id: AE-FL-2-2019/art-13/en
+        quote: "may only be stored, processed, generated or transferred outside the State in the cases prescribed by virtue of a decision issued by the Health Authority in coordination with the Ministry"
+    global_example:
+      jurisdiction: EU
+      instrument: "GDPR, Art. 49(1)(f)"
+      clause_id: EU-REG-2016-679/art-49/para-1/en
+      quote: "the transfer is necessary in order to protect the vital interests of the data subject or of other persons, where the data subject is physically or legally incapable of giving consent"
+      how_it_handles: "An explicit derogation for transfers needed to protect vital interests, usable without prior authorisation."
+    readiness_dimensions: [10, 13]
+    implication: "During a failover a provider cannot tell within minutes whether continuing abroad is lawful; the exercise's gate therefore denies (fail-closed) and care depends on human fallback."
+    next_step: "Obtain the implementing decision; if no emergency case exists, propose a time-limited continuity-of-care case with mandatory notification to the Health Authority."
+
+  - id: TV2
+    candidate: CG2
+    type: policy
+    pattern: G4_CLOCK
+    title: "No deadline for reporting a serious clinical-AI incident"
+    status: verified
+    scope_note: "Within our KB. The PDPL breach-notification article (data, not AI incidents) is not yet ingested."
+    statement: >-
+      The DoH Responsible AI Standard assigns responsibility for reporting adverse outcomes to governance bodies
+      and requires risk communication to DoH, but sets no deadline and no definition of a serious AI incident.
+      No UAE instrument in our KB sets an AI-incident reporting clock.
+    uae_evidence:
+      - clause_id: AE-DOH-RAI-2025/sec-3.1.7/en
+        quote: "Reporting adverse outcomes or ethical concerns to governance bodies."
+      - clause_id: AE-DOH-RAI-2025/sec-3.3/en
+        quote: "A comprehensive risk assessment, ongoing mitigation efforts, and related reports must be communicated with all stakeholders including the DoH for all AI Systems."
+    global_example:
+      jurisdiction: EU
+      instrument: "AI Act, Art. 73(2)"
+      clause_id: EU-REG-2024-1689/art-73/para-2/en
+      quote: "not later than 15 days after the provider or, where applicable, the deployer, becomes aware of the serious incident"
+      how_it_handles: "Tiered clocks: 15 days by default, 2 days for widespread infringements (Art. 73(3)), 10 days in case of death (Art. 73(4))."
+    readiness_dimensions: [10, 7]
+    implication: "In the exercise each institution set its own timing; nothing aligned the health regulator's clock with other regimes."
+    next_step: "Define a serious clinical-AI incident and a tiered reporting clock in the DoH standard's risk protocol."
+
+  - id: TV3
+    candidate: CG5
+    type: policy
+    pattern: G1_POLICY_VOID
+    title: "Performance monitoring across patient-language subgroups"
+    status: rejected
+    statement: >-
+      Hypothesis rejected for the DoH standard: it requires bias detection and continuous monitoring for
+      performance degradation, which covers the Arabic-language drift at T1. It does not name language as a
+      subgroup; that is a guidance question, not a gap in the rule.
+    uae_evidence:
+      - clause_id: AE-DOH-RAI-2025/sec-3.1.5.1.3/en
+        quote: "Bias detection techniques must be implemented, and mitigation efforts must be traceable."
+      - clause_id: AE-DOH-RAI-2025/sec-3/en
+        quote: "Post deployment systems must be monitored continuously for performance degradation, anomalies, and unintended consequences, with automated alerts and manual review triggers."
+    global_example: null
+    readiness_dimensions: [11, 6]
+    implication: "The UAE standard already supports the control the scenario needed."
+    next_step: "Optional guidance: list patient language among the subgroups monitored for bias in Abu Dhabi."
+
+  - id: TV4
+    candidate: CG-T4
+    type: policy
+    pattern: G1_POLICY_VOID
+    title: "No duty to inform patients affected by an AI triage error"
+    status: needs_more_evidence
+    statement: >-
+      The DoH standard requires telling patients when AI contributes to decisions (disclosure), not informing
+      patients harmed by an AI error. The PDPL and the medical-liability law are not in our KB, so we do not
+      claim a gap.
+    uae_evidence:
+      - clause_id: AE-DOH-RAI-2025/sec-3.1.5.1.3/en
+        quote: "All healthcare AI systems must include mechanisms to inform patients, clinicians, and relevant stakeholders when AI contributes to clinical or operational decisions"
+    global_example:
+      jurisdiction: EU
+      instrument: "GDPR, Art. 34(1) (data breaches only)"
+      clause_id: EU-REG-2016-679/art-34/para-1/en
+      quote: "the controller shall communicate the personal data breach to the data subject without undue delay"
+      how_it_handles: "Communication to affected individuals is mandatory for high-risk data breaches; the AI Act's Art. 86 adds a right to an explanation of AI-based decisions."
+    readiness_dimensions: [6, 11]
+    implication: "At T4 agents could not ground a decision to contact the misdiagnosed patient."
+    next_step: "Check the PDPL and FDL 4/2016; if silent, propose an AI-error notification duty in the DoH standard."
+
+  - id: TV5
+    candidate: SG1
+    type: standards
+    pattern: G5_STANDARDS
+    title: "ITU-T Y.3172's Policy node does not specify legal applicability, human approval or audit evidence"
+    status: verified
+    statement: >-
+      Y.3172 defines the P node only as applying policies to model output; its example is an operator
+      rule. Nothing specifies where policies come from, how legal applicability is decided, how human
+      approval is recorded, or what evidence is kept. MAJLIS proposes LA, HA, AE and GM as an extension.
+    uae_evidence: []
+    standard_evidence:
+      - clause_id: ITU-T-Y3172/sec-8.1-part1/en
+        quote: "P (policy): This node enables the application of policies to the output of the model node."
+    global_example: null
+    readiness_dimensions: [10, 7]
+    implication: "Two Y.3172-aligned systems can both 'apply policy' while only one can show which law, who approved, and the evidence."
+    next_step: "Contribution to ITU-T SG13: a governance extension (LA/HA/AE/GM) around the P node, with MAJLIS as the reference implementation."
+
+  - id: TV6
+    candidate: SG2
+    type: standards
+    pattern: G5_STANDARDS
+    title: "ITU-T Y.3173 levels do not distinguish legally bounded decisions"
+    status: verified
+    statement: >-
+      Y.3173 rates the decision dimension by who defines the rules (human vs system), not by their legal
+      source or binding force.
+    uae_evidence: []
+    standard_evidence:
+      - clause_id: ITU-T-Y3173/sec-s8-part1/en
+        quote: "decisions and execution instructions provided by a human being have the highest authority"
+    global_example: null
+    readiness_dimensions: [10, 6]
+    implication: "Governed and ungoverned MAJLIS runs differ in legal accountability but could receive the same intelligence level."
+    next_step: "Propose a qualifier for Y.3173's decision dimension: 'rules traceable to a binding instrument'."
+
+  - id: TV7
+    candidate: TG1
+    type: technical
+    pattern: null
+    title: "No machine-readable, clause-level official UAE legal corpus"
+    status: verified
+    statement: >-
+      Official UAE legal portals refused automated retrieval (HTTP 403), the Arabic National AI Strategy PDF
+      has a reversed text layer (52 clauses unusable), Cabinet Resolution 32/2020 is a scanned image and the
+      Arabic Federal Law 2/2019 has no text layer. Evidence: kb/sources/access_log.csv,
+      kb/clauses/extraction_failed.jsonl.
+    uae_evidence: []
+    global_example:
+      jurisdiction: EU
+      instrument: "EU Publications Office Cellar API (practice, not a legal provision)"
+      clause_id: null
+      quote: null
+      how_it_handles: "EU legislation is served as structured XHTML through an official machine-access API; this build ingested the AI Act, GDPR and NIS2 (1,309 clauses) that way."
+    readiness_dimensions: [1, 4]
+    implication: "Agents representing UAE institutions reason over an incomplete corpus; TDRA and Data Office found little binding UAE text."
+    next_step: "Contribute the clause-level KB to the ITU AI for Good Lab; propose an official machine-readable feed (with Arabic text) for UAE legislation."
+
+  - id: TV8
+    candidate: TG2
+    type: technical
+    pattern: G5_STANDARDS
+    title: "No standard schema for institution-to-institution AI-incident messages"
+    status: verified
+    statement: "Y.3172 interface requirements cover moving data and models between ML functionalities, not coordination messages between governing institutions."
+    uae_evidence: []
+    standard_evidence:
+      - clause_id: ITU-T-Y3172/sec-7.3-part1/en
+        quote: "an interface to transfer data for training or testing models among ML functionalities of multiple levels"
+    global_example: null
+    readiness_dimensions: [7, 3]
+    implication: "Each agency in the exercise needs typed requests, assessments and decisions to coordinate; today these are ad hoc."
+    next_step: "Publish MAJLIS's blackboard message types as a draft schema for the 2027 multi-country error exercise."
