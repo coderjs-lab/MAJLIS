@@ -134,11 +134,14 @@ rules:
     review: pending_team_review   # INTERPRETATION by the team; flagged for legal review
     description: >-
       Team interpretation: when human fallback capacity is reduced, keeping the AI triage service running
-      becomes the available fallback procedure for continuity of care. If processing is abroad at the same
-      time, this collides with the localisation rule; the gate escalates and records a conflict.
+      in the UAE becomes the available fallback procedure for continuity of care. It does not apply while
+      processing is abroad: DoH RAI 3.1.4.5.1 places disaster-recovery sites inside the UAE, so the
+      standard itself rules out continuity from abroad (no conflict with the localisation rule). In the
+      UAE it meets the patient-safety escalation, and a human decides.
     applies_when:
       action_type: [continue_triage]
       state: {human_capacity_reduced: true}
+    unless_state: {processing_location: outside_AE}
     decision: REQUIRE
     clause_ids: [AE-DOH-RAI-2025/sec-3.1.2.1.2/en]
     quote: >-

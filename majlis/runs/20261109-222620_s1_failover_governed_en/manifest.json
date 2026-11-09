@@ -1,0 +1,37 @@
+{
+  "approver": "reject_all",
+  "backend": "glm",
+  "config_sha256": {
+    "configs/agents/data_office.yaml": "d8739b45d72ddeade27c0060a6380d2074733b51852539cf6db290f2da795d50",
+    "configs/agents/doh.yaml": "56722d2fead06c0fd8d0bf0edeb8e824722da5682c0c06c5225447263db60490",
+    "configs/agents/legal_adviser.yaml": "6184e7b60ff51e523ceea28de8671fa25210d5c9e801f23c4250963baf45ad65",
+    "configs/agents/tdra.yaml": "4b7e90f8c3f1fed46e1e710a9c6d8679d53f5e8325edc6da2b1b65ef9ca86521",
+    "configs/agents/triage.yaml": "1c28939944fbb40682cd5b8c9a230d50ca837e49d2075c101bbd5581cfbd8eb1",
+    "configs/countries/uae.yaml": "ee37041dd6f3f0b0c3e9523afd4fac3816e741cba0099251fe939c39e4d516d5",
+    "configs/duties.yaml": "80bded9b4b3a41ae9b02785c6b40fb544c1c615f68ef42ac2d85365d84332462",
+    "configs/policies/uae_rules.yaml": "80d526345f0b234d25ab84d4bb84b302aa9b61da22e5dee9c7b2cf2e00550eac",
+    "configs/scenarios/s1_failover.yaml": "593abaf5aad86fdd4d29303b3b5f8c16e38b4d621107abe8f4106abb6567559b",
+    "configs/standards_coverage.yaml": "bb01424e065160c0b335bdc202be53fb99a9c709a27dd5c5ef0430cb9a0f143c"
+  },
+  "disclaimer": "Fictional training exercise. You simulate a role; this is not an official position of any real institution. OasisCare and all telemetry are fictional.",
+  "git_commit": "15b359c02001d9c64a36f4ac6ca801fe3ed59d3c",
+  "kb_dense_available": true,
+  "kb_version": "133bd9f01e9017df0202367298010df6c6826f0b46a57d7aa1af704055d7253f",
+  "lang": "en",
+  "mode": "governed",
+  "model": "glm-5.3",
+  "pack": "uae",
+  "rules_file": "configs/policies/uae_rules.yaml",
+  "run_id": "20261109-222620_s1_failover_governed_en",
+  "scenario_file": "configs/scenarios/s1_failover.yaml",
+  "scenario_id": "s1_failover",
+  "stages": [
+    "T0",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5"
+  ],
+  "started_at": "2026-11-09T18:26:36.822Z"
+}
