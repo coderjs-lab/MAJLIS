@@ -147,7 +147,7 @@ MAJLIS turns this into a rehearsal. A \emph{majlis} is the traditional Gulf coun
 \draw[soft] (ledger.north -| miner.south) -- (miner.south);
 % Y.3172 node tags
 \foreach \n/\t in {intent/MLFO, engine/SRC\enspace C, kb/PP, agents/M, cite/P, gate/P\enspace LA, human/HA, board/D, sink/SINK, miner/GM, ledger/AE}
-  \node[tag] at ($(\n.north west)+(0.08,-0.13)$) {\t};
+  \node[tag] at ($(\n.north west)+(0.08,-0.05)$) {\t};
 \end{tikzpicture}
 \caption{How MAJLIS works. Teal shading marks language model steps and beige marks plain deterministic code. The dark labels give the matching ITU\mbox{-}T Y.3172 node. Boxes with a dashed teal border are our proposed extension around the policy node, human approval (HA), audit evidence (AE) and the gap miner (GM), together with legal applicability (LA) inside the gate.}
 \label{fig:arch}
