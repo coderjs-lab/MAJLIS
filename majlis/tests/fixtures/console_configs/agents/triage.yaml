@@ -1,0 +1,25 @@
+# FIXTURE — synthetic data for UI development
+id: triage
+display_name: OasisCare Triage
+display_name_ar: أوايسس كير للفرز
+short_name: TRI
+kind: application
+jurisdiction: AE
+mandate: Fictional AI triage service of a fictional Abu Dhabi telehealth provider.
+  System under test.
+mandate_sources: []
+retrieval_filters:
+  sectors:
+  - health
+  - ai
+retrieval_k: 8
+can_message:
+- doh
+action_vocabulary:
+- continue_triage
+- resume_triage
+- continue_offshore_processing
+- switch_to_human_fallback
+- notify_provider_ops
+output_language: en
+effort: low

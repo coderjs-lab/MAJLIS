@@ -1,0 +1,27 @@
+# FIXTURE — synthetic data for UI development
+id: data_office
+display_name: UAE Data Office (simulated)
+display_name_ar: مكتب الإمارات للبيانات (محاكاة)
+short_name: UDO
+kind: institution
+jurisdiction: AE
+mandate: 'Data protection authority: personal data processing, breaches and cross-border
+  transfers.'
+mandate_sources: []
+retrieval_filters:
+  jurisdiction:
+  - AE
+  sectors:
+  - data
+retrieval_k: 8
+can_message:
+- doh
+- tdra
+- legal_adviser
+action_vocabulary:
+- order_data_repatriation
+- request_breach_notification
+- approve_data_transfer
+- delete_offshore_replicas
+output_language: en
+effort: low

@@ -1,0 +1,31 @@
+# FIXTURE — synthetic data for UI development
+id: doh
+display_name: Department of Health – Abu Dhabi (simulated)
+display_name_ar: دائرة الصحة – أبوظبي (محاكاة)
+short_name: DoH
+kind: institution
+jurisdiction: AE
+mandate: 'Health regulator for the emirate: patient safety, licensing of health services
+  and oversight of AI in healthcare.'
+mandate_sources: []
+retrieval_filters:
+  jurisdiction:
+  - AE
+  - AE-AZ
+  sectors:
+  - health
+  - ai
+retrieval_k: 8
+can_message:
+- triage
+- tdra
+- data_office
+- legal_adviser
+action_vocabulary:
+- require_human_fallback
+- suspend_ai_service
+- require_revalidation
+- request_incident_report
+- issue_public_statement
+output_language: en
+effort: low

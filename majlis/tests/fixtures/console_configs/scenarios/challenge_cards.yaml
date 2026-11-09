@@ -1,0 +1,31 @@
+# FIXTURE — synthetic data for UI development
+cards:
+- id: CC-01
+  title: Vendor pushes an emergency model patch
+  recipients:
+  - triage
+  - doh
+  inject_en: The model vendor offers an emergency patch for the Arabic pathway, untested
+    on local data, deployable in one hour.
+  state_changes:
+    model_patch_available: true
+  after: T2
+- id: CC-02
+  title: Journalist asks for the incident timeline
+  recipients:
+  - doh
+  - tdra
+  inject_en: A journalist requests the full incident timeline and the names of the
+    affected regions by 17:00.
+  state_changes:
+    media_inquiry: true
+  after: T3
+- id: CC-03
+  title: Backup region confirmed clean
+  recipients:
+  - tdra
+  - data_office
+  inject_en: Forensics confirm the backup region shows no ransomware indicators.
+  state_changes:
+    cyber_incident_suspected: false
+  after: T3

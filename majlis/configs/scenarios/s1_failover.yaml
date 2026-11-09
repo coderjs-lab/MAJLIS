@@ -1,0 +1,139 @@
+# Fictional training exercise. You simulate a role; this is not an official position of any real institution.
+# "OasisCare", its triage service, the cloud provider and all telemetry are fictional. Numbers marked
+# synthetic_data are synthetic. Arabic text: machine-drafted, pending fluent review.
+id: s1_failover
+title: "Failover: AI triage degradation during a cloud outage (fictional)"
+title_ar: "الانتقال الاحتياطي: تراجع أداء الفرز الذكي أثناء انقطاع سحابي (خيالي)"  # ar: machine-drafted, pending fluent review
+country_pack: uae
+disclaimer: >-
+  Fictional training exercise. You simulate a role; this is not an official position of any real
+  institution. OasisCare and all telemetry are fictional.
+initial_state:
+  processing_location: AE
+  data_category: health_personal
+  patient_safety_signal: false
+  localisation_exception_approved: false
+  cyber_incident_suspected: false
+stages:
+  - id: T0
+    sim_time: "08:00"
+    title: "Cloud outage and failover abroad"
+    recipients: [tdra]
+    inject_en: >-
+      Power and fibre incident at the provider's primary UAE cloud region. Services, including a
+      licensed telehealth provider's AI triage service, have automatically failed over to a backup
+      cloud region. The cloud provider has not yet confirmed where the backup region is located.
+    # ar: machine-drafted, pending fluent review
+    inject_ar: >-
+      حادث في الطاقة والألياف في منطقة السحابة الرئيسية لمزوّد الخدمة داخل الإمارات. انتقلت الخدمات، ومنها
+      خدمة الفرز بالذكاء الاصطناعي لدى مزوّد رعاية صحية عن بُعد مرخّص، تلقائياً إلى منطقة سحابية احتياطية.
+      لم يؤكد مزوّد الخدمة السحابية بعد موقع المنطقة الاحتياطية.
+    # The gate acts only on ESTABLISHED facts. Where the backup region is located becomes an
+    # established fact at T2 (audit). The T0->T2 window is itself a finding (detection lag).
+    state_changes: {failover_active: true}
+    expected: >-
+      TDRA identifies outage duties and asks the Legal Adviser whether downstream health services trigger
+      any obligation.
+    # ar: machine-drafted, pending fluent review
+    expected_ar: "تحدد هيئة تنظيم الاتصالات واجبات الإبلاغ عن الانقطاع وتسأل المستشار القانوني عما إذا كانت الخدمات الصحية المتأثرة ترتب أي التزام."
+    synthetic_data: false
+
+  - id: T1
+    sim_time: "08:20"
+    title: "Triage drift on Arabic chest-pain cases"
+    recipients: [doh, triage]
+    inject_en: >-
+      Synthetic telemetry (fictional numbers): under-triage rate for Arabic-language chest-pain cases
+      rose from 2% to 9% in the last 20 minutes.
+    # ar: machine-drafted, pending fluent review
+    inject_ar: >-
+      بيانات قياس اصطناعية (أرقام خيالية): ارتفع معدل الفرز الأقل من اللازم لحالات ألم الصدر باللغة
+      العربية من 2% إلى 9% خلال آخر 20 دقيقة.
+    state_changes: {patient_safety_signal: true}
+    expected: >-
+      Triage proposes continue_triage; the gate ESCALATEs on the patient-safety rule; DoH asks for
+      suspension or fallback to human nurses. Ungoverned: triage keeps triaging silently.
+    # ar: machine-drafted, pending fluent review
+    expected_ar: "يقترح نظام الفرز الاستمرار؛ تُصعّد البوابة القرار بسبب قاعدة سلامة المرضى؛ تطلب دائرة الصحة التعليق أو الانتقال إلى الممرضين."
+    synthetic_data: true
+
+  - id: T2
+    sim_time: "08:45"
+    title: "Patient records replicated abroad"
+    recipients: [triage, data_office, doh]
+    inject_en: >-
+      Audit log review (synthetic): the backup region is located outside the UAE. Patient records of
+      the triage service were replicated there during the failover, and the triage service is
+      currently running from that region.
+    # ar: machine-drafted, pending fluent review
+    inject_ar: >-
+      مراجعة سجلات التدقيق (اصطناعية): تقع المنطقة الاحتياطية خارج الإمارات. نُسخت سجلات المرضى الخاصة
+      بخدمة الفرز إليها أثناء الانتقال الاحتياطي، وتعمل خدمة الفرز حالياً من تلك المنطقة.
+    state_changes: {processing_location: outside_AE, data_replicated_abroad: true}
+    expected: >-
+      Triage proposes to keep serving from the backup region; the gate meets the health-data
+      localisation rule (DENY 403 with the clause if verified, ESCALATE if not). Data Office weighs
+      breach-notification and transfer duties; DoH links the replication to health data. Ungoverned:
+      triage keeps processing abroad. Expected gaps: data localisation vs continuity of care; nobody
+      could see the data was abroad between T0 and T2.
+    # ar: machine-drafted, pending fluent review
+    expected_ar: "يقيّم مكتب البيانات واجبات الإخطار بالاختراق ونقل البيانات؛ وتربط دائرة الصحة النسخ ببيانات صحية. الفجوة المتوقعة: توطين البيانات مقابل استمرارية الرعاية."
+    synthetic_data: true
+
+  - id: T3
+    sim_time: "09:30"
+    title: "Possible ransomware"
+    recipients: [tdra, data_office]
+    inject_en: >-
+      A national cyber-security advisory (fictional) says the outage may be the result of a ransomware
+      attack on the cloud provider.
+    # ar: machine-drafted, pending fluent review
+    inject_ar: >-
+      تفيد نشرة أمن سيبراني وطنية (خيالية) بأن الانقطاع قد يكون ناتجاً عن هجوم فدية على مزوّد الخدمة
+      السحابية.
+    state_changes: {cyber_incident_suspected: true}
+    expected: >-
+      Agents re-assess: cyber incident, data breach, health incident, or all three? Who reports to whom,
+      and by when? Expected gap: unclear responsibility and clock conflict between reporting regimes.
+    # ar: machine-drafted, pending fluent review
+    expected_ar: "تعيد الجهات التقييم: هل هو حادث سيبراني أم اختراق بيانات أم حادث صحي أم جميعها؟ من يبلغ من ومتى؟"
+    synthetic_data: false
+
+  - id: T4
+    sim_time: "10:15"
+    title: "Public reports of a misdiagnosis"
+    recipients: [triage, doh, tdra, data_office]
+    inject_en: >-
+      Fictional social-media posts report that a patient was misdiagnosed after an AI triage decision
+      by OasisCare.
+    # ar: machine-drafted, pending fluent review
+    inject_ar: >-
+      منشورات خيالية على وسائل التواصل الاجتماعي تفيد بأن مريضاً شُخّص خطأً بعد قرار فرز اتخذه الذكاء
+      الاصطناعي لدى أواسيس كير.
+    state_changes: {public_reports: true}
+    expected: >-
+      Agents decide on patient and public communication; the Adviser maps global practice. Expected gap:
+      policy void on a duty to inform affected patients of an AI error (to verify).
+    # ar: machine-drafted, pending fluent review
+    expected_ar: "تقرر الجهات بشأن التواصل مع المرضى والجمهور؛ ويعرض المستشار الممارسات العالمية."
+    synthetic_data: false
+
+  - id: T5
+    sim_time: "11:00"
+    title: "Primary region restored"
+    recipients: [triage, doh, tdra, data_office]
+    inject_en: >-
+      The primary UAE cloud region is restored. Services can move back; copies of patient records remain
+      in the overseas backup region.
+    # ar: machine-drafted, pending fluent review
+    inject_ar: >-
+      تمت استعادة منطقة السحابة الرئيسية داخل الإمارات. يمكن إعادة الخدمات إليها، لكن نسخاً من سجلات
+      المرضى لا تزال في المنطقة الاحتياطية في الخارج.
+    state_changes: {processing_location: AE, primary_restored: true}
+    expected: >-
+      Agents decide on repatriating data, deleting overseas copies and re-validating the model before
+      resuming. Ungoverned: resumes as if nothing happened. Expected gap: no requirement to re-validate a
+      model after an incident.
+    # ar: machine-drafted, pending fluent review
+    expected_ar: "تقرر الجهات إعادة البيانات وحذف النسخ الخارجية وإعادة التحقق من النموذج قبل الاستئناف."
+    synthetic_data: false

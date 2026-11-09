@@ -1,0 +1,114 @@
+# FIXTURE placeholder — the lead writes configs/y3172_mapping.yaml
+rows:
+- node: SRC
+  use_case: Scenario injects and synthetic triage telemetry released stage by stage
+  majlis: configs/scenarios/*.yaml
+  readiness:
+  - dim: 13
+    note: Outage and failover of the hosting region
+  documents: []
+  extension: false
+- node: C
+  use_case: Inject delivery to the recipient institutions only
+  majlis: engine.deliver()
+  readiness:
+  - dim: 8
+    note: Who learns what, when
+  documents: []
+  extension: false
+- node: PP
+  use_case: Clause retrieval with each agent's knowledge slice
+  majlis: majlis/retrieval.py
+  readiness:
+  - dim: 1
+    note: Machine-readable legal corpus
+  documents:
+  - clause_id: TEST-DOC-A/art-1/en
+    note: data localisation
+  extension: false
+- node: M
+  use_case: Institution agents propose claims and actions
+  majlis: majlis/agents.py, llm.py
+  readiness:
+  - dim: 5
+    note: AI embedded in a clinical workflow
+  documents: []
+  extension: false
+- node: P
+  use_case: Citation check and policy gate decide
+  majlis: majlis/citation_check.py, policy_gate.py
+  readiness:
+  - dim: 10
+    note: Policy as code
+  documents:
+  - clause_id: TEST-DOC-B/sec-3/en
+    note: suspension duty
+  extension: false
+- node: D
+  use_case: Typed blackboard messages between agents
+  majlis: engine blackboard
+  readiness:
+  - dim: 8
+    note: Inter-agency coordination
+  documents: []
+  extension: false
+- node: SINK
+  use_case: Executed actions and the exercise record
+  majlis: runs/<id>/ledger.jsonl
+  readiness:
+  - dim: 10
+    note: Auditability of decisions
+  documents: []
+  extension: false
+- node: MLFO
+  use_case: Engine orchestrates stages, metrics and run lifecycle
+  majlis: majlis/engine.py
+  readiness:
+  - dim: 7
+    note: Exercise aligned with national strategy
+  documents: []
+  extension: false
+- node: SANDBOX
+  use_case: Whole exercise runs in a sandbox with fictional data
+  majlis: mock backend, fixtures
+  readiness:
+  - dim: 9
+    note: Humans exercise AI incidents safely
+  documents: []
+  extension: false
+- node: LA
+  use_case: 'Legal applicability: verbatim clause check before any action'
+  majlis: citation_check.py
+  readiness:
+  - dim: 10
+    note: Legal certainty
+  documents:
+  - clause_id: TEST-DOC-A/art-2/en
+    note: breach clock
+  extension: true
+- node: HA
+  use_case: Human approval for escalated actions
+  majlis: approvals/*.json
+  readiness:
+  - dim: 9
+    note: Human oversight
+  documents: []
+  extension: true
+- node: AE
+  use_case: Hash-chained audit evidence
+  majlis: majlis/ledger.py
+  readiness:
+  - dim: 10
+    note: Accountability
+  documents: []
+  extension: true
+- node: GM
+  use_case: 'Gap miner: policy and standards gaps'
+  majlis: majlis/gap_miner.py
+  readiness:
+  - dim: 10
+    note: Policy and standards gaps
+  documents:
+  - clause_id: TEST-EU/art-49/en
+    note: global comparator
+  extension: true

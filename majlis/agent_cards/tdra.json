@@ -1,0 +1,50 @@
+{
+  "id": "tdra",
+  "name": "Telecommunications and Digital Government Regulatory Authority (simulated)",
+  "name_ar": "هيئة تنظيم الاتصالات والحكومة الرقمية (محاكاة)",
+  "short_name": "TDRA",
+  "kind": "institution",
+  "jurisdiction": "AE",
+  "mandate": "Simulated federal telecom and digital-government regulator: networks, service outages and\ndigital government. Unverified summary pending source clauses.",
+  "mandate_verified": false,
+  "mandate_sources": [],
+  "knowledge": {
+    "retrieval_filters": {
+      "jurisdiction": [
+        "AE"
+      ],
+      "sectors": [
+        "telecom",
+        "cyber",
+        "ai"
+      ]
+    },
+    "retrieval_k": 8,
+    "source": "kb/clauses/clauses.jsonl"
+  },
+  "tools": [
+    "request_outage_report",
+    "coordinate_operator",
+    "issue_advisory"
+  ],
+  "can_message": [
+    "doh",
+    "data_office",
+    "legal_adviser"
+  ],
+  "output_languages": [
+    "en",
+    "ar"
+  ],
+  "default_output_language": "en",
+  "output_schema": "AgentTurn",
+  "limitations": [
+    "Simulation of a role; not an official position of the real institution.",
+    "Mandate summary not yet verified against its founding instrument."
+  ],
+  "disclaimer": "Fictional training exercise. You simulate a role; this is not an official position of any real institution.",
+  "framework_mapping": {
+    "y3172_node": "M",
+    "governance": "P/LA/HA/AE"
+  }
+}

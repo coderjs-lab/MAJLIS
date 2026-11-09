@@ -1,0 +1,137 @@
+# FIXTURE — synthetic data for UI development
+id: s1_failover
+title: S1 Cloud failover and AI triage degradation (fixture)
+title_ar: انقطاع السحابة وتراجع أداء الفرز الآلي
+country_pack: uae
+disclaimer: Fictional exercise. OasisCare and all telemetry are invented; the institutional
+  agents are simulations, not official positions, and nothing here is legal advice.
+initial_state:
+  primary_region_status: up
+  processing_location: AE
+  data_location: AE
+  failover_active: false
+  transfer_approved: false
+  patient_safety_risk: false
+  ai_suspended: false
+  human_fallback: false
+  cyber_incident_suspected: false
+  patient_harm_reported: false
+  model_revalidated: false
+stages:
+- id: T0
+  sim_time: 06:10
+  title: Cloud region outage
+  recipients:
+  - tdra
+  inject_en: A power and fibre incident takes the primary cloud region of OasisCare's
+    hosting provider offline. Automatic failover moves the triage service to a secondary
+    region outside the UAE. Service is up; latency has doubled.
+  inject_ar: حادث في الطاقة والألياف الضوئية يُخرج منطقة الحوسبة السحابية الرئيسية
+    لمزوّد استضافة أوايسس كير عن الخدمة. ينقل التحويل التلقائي خدمة الفرز إلى منطقة
+    ثانوية خارج الدولة. الخدمة تعمل، وزمن الاستجابة تضاعف.
+  state_changes:
+    primary_region_status: down
+    processing_location: outside_AE
+    failover_active: true
+  expected: TDRA logs the outage and asks who else is affected; no one else knows
+    yet.
+  expected_ar: تسجّل الهيئة الانقطاع وتسأل عن الجهات المتأثرة؛ لا أحد غيرها يعلم بعد.
+  synthetic_data: false
+- id: T1
+  sim_time: 09:30
+  title: Under-triage in Arabic chest-pain cases
+  recipients:
+  - doh
+  - triage
+  inject_en: 'Synthetic monitoring telemetry: under-triage rate for Arabic-language
+    chest-pain consultations has risen from 2% to 9% since failover. English-language
+    cases are unchanged.'
+  inject_ar: 'بيانات مراقبة اصطناعية: ارتفع معدل الفرز المنقوص لاستشارات ألم الصدر
+    باللغة العربية من 2% إلى 9% منذ التحويل. الحالات باللغة الإنجليزية دون تغيير.'
+  state_changes:
+    undertriage_rate_ar_chest_pain: 0.09
+    patient_safety_risk: true
+  expected: DoH asks for human fallback; the gate escalates continued AI triage to
+    a human.
+  expected_ar: تطلب الدائرة التحويل إلى الطاقم البشري؛ وتُحال مواصلة الفرز الآلي إلى
+    قرار بشري.
+  synthetic_data: true
+- id: T2
+  sim_time: '11:05'
+  title: Records replicated to an overseas backup region
+  recipients:
+  - data_office
+  - doh
+  inject_en: The provider confirms that patient records, including triage transcripts,
+    have been replicated to a backup region outside the UAE as part of failover. No
+    transfer approval is on file.
+  inject_ar: يؤكد المزوّد أن سجلات المرضى، بما فيها محاضر الفرز، نُسخت إلى منطقة احتياطية
+    خارج الدولة ضمن التحويل. لا توجد موافقة نقل مسجّلة.
+  state_changes:
+    data_location: outside_AE
+    records_replicated_abroad: true
+  expected: Continued offshore processing is denied with the data-localisation clause;
+    Data Office asks the adviser about emergency transfers.
+  expected_ar: تُرفض مواصلة المعالجة خارج الدولة استناداً إلى بند توطين البيانات؛
+    ويسأل مكتب البيانات المستشار عن النقل الطارئ.
+  synthetic_data: false
+- id: T3
+  sim_time: '13:20'
+  title: 'National advisory: possible ransomware'
+  recipients:
+  - tdra
+  - data_office
+  inject_en: A national cyber advisory warns that the hosting provider's backup region
+    may be affected by a ransomware campaign. Indicators are unconfirmed.
+  inject_ar: تحذّر نشرة وطنية للأمن السيبراني من أن المنطقة الاحتياطية لمزوّد الاستضافة
+    قد تكون متأثرة بحملة فدية. المؤشرات غير مؤكدة.
+  state_changes:
+    cyber_incident_suspected: true
+  expected: TDRA and Data Office cite different reporting clocks; isolating the backup
+    conflicts with continuity of care.
+  expected_ar: تستند الهيئة ومكتب البيانات إلى مهل إبلاغ مختلفة؛ وعزل النسخة الاحتياطية
+    يتعارض مع استمرارية الرعاية.
+  synthetic_data: false
+- id: T4
+  sim_time: '15:45'
+  title: Social-media reports of a misdiagnosed patient
+  recipients:
+  - triage
+  - doh
+  - tdra
+  - data_office
+  - legal_adviser
+  inject_en: Posts on social media describe a patient who was told by the OasisCare
+    chatbot to rest at home and was later admitted with a cardiac event. The posts
+    are spreading; the provider has not commented.
+  inject_ar: منشورات على وسائل التواصل تصف مريضاً نصحه روبوت المحادثة لدى أوايسس كير
+    بالراحة في المنزل، ثم أُدخل المستشفى بحدث قلبي. المنشورات تنتشر ولم يعلّق المزوّد.
+  state_changes:
+    patient_harm_reported: true
+  expected: Continued AI triage is denied; two agents claim public communication and
+    nobody claims informing patients.
+  expected_ar: تُرفض مواصلة الفرز الآلي؛ تتنازع جهتان التواصل العام ولا تتولى أي جهة
+    إبلاغ المرضى.
+  synthetic_data: false
+- id: T5
+  sim_time: '18:00'
+  title: Primary region restored
+  recipients:
+  - triage
+  - doh
+  - tdra
+  - data_office
+  - legal_adviser
+  inject_en: The primary region is restored. The provider asks to resume AI triage
+    in the UAE region tonight and to delete the overseas replicas.
+  inject_ar: استُعيدت المنطقة الرئيسية. يطلب المزوّد استئناف الفرز الآلي في منطقة
+    الدولة الليلة وحذف النسخ الموجودة في الخارج.
+  state_changes:
+    primary_region_status: up
+    processing_location: AE
+    failover_active: false
+  expected: Resumption escalates to a human pending model revalidation; DoH requires
+    revalidation.
+  expected_ar: يُحال الاستئناف إلى قرار بشري بانتظار إعادة التحقق من النموذج؛ وتشترط
+    الدائرة إعادة التحقق.
+  synthetic_data: false

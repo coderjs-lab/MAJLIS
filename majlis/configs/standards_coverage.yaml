@@ -1,0 +1,94 @@
+# G5 STANDARDS detector input: what the S1 exercise needed vs what the mapped ITU standard requires.
+# Curated by the team from the full text of Rec. ITU-T Y.3172 (06/2019), read 2026-11-09
+# (simulation/server/knowledge/InputDocs/AI_Use_Cases/T-REC-Y.3172-201906-I!!PDF-E.pdf).
+# Quotes are verbatim from that PDF. "covered" is OUR reading, not an ITU position:
+#   false   = no requirement in Y.3172 addresses the need
+#   partial = a requirement touches it but does not specify what the exercise needed
+# Y.3173 rows are added once its text is in the KB (status: to_verify until then).
+standard_source:
+  id: ITU-T-Y3172
+  title: "Rec. ITU-T Y.3172 (06/2019) Architectural framework for machine learning in future networks including IMT-2020"
+needs:
+  - id: N1
+    need: "Decide which legal provisions apply to a proposed ML output (jurisdiction, sector, data category) before it reaches a SINK"
+    standard: ITU-T-Y3172
+    section: "8.1 High-level architectural components (P node)"
+    quote: "P (policy): This node enables the application of policies to the output of the model node."
+    covered: partial
+    note: "The P node is defined generically. Its only example (NOTE 5) is an operator rule such as upgrades at night; no requirement covers where policies come from, legal applicability, or citing the governing provision. MAJLIS proposes LA (Legal Applicability) as an extension around P."
+    readiness_dimensions: [10, 7]
+    proposal: LA
+  - id: N2
+    need: "Hold high-impact ML outputs for human approval and record who approved what, when"
+    standard: ITU-T-Y3172
+    section: "7.1 Enablers for correlation (REQ-ML-COR-001, NOTE 2) — the only mention of humans"
+    quote: "give network design recommendations without human intervention"
+    covered: false
+    note: "No Y.3172 requirement covers human approval of ML outputs; the only reference to humans describes acting without human intervention. MAJLIS proposes HA (Human Approval) as an extension around P. Autonomy levels are the subject of ITU-T Y.3173 (check separately)."
+    readiness_dimensions: [6, 9]
+    proposal: HA
+  - id: N3
+    need: "Keep tamper-evident evidence of inputs, model outputs, policy decisions and the policy source for later review"
+    standard: ITU-T-Y3172
+    section: "whole text (no audit requirement found)"
+    quote: null
+    covered: false
+    note: "In our reading the text has no requirement for audit evidence or decision records of the ML pipeline (the word 'audit' appears only in a reference to network security auditing). MAJLIS proposes AE (Audit Evidence): a hash-chained ledger."
+    readiness_dimensions: [10]
+    proposal: AE
+  - id: N4
+    need: "Re-validate a model after an incident before it resumes serving"
+    standard: ITU-T-Y3172
+    section: "7.5 Management of ML functionalities (REQ-ML-MNG-002, REQ-ML-MNG-003)"
+    quote: "The ML architecture is required to support ML model training and model updates while preventing impact on the network."
+    covered: partial
+    note: "MNG-002/003 require updates and monitoring without impacting the network, but nothing requires re-validation after an incident or a gate before a suspended model resumes."
+    readiness_dimensions: [10, 5]
+    proposal: null
+  - id: N5
+    need: "Monitor model performance per user subgroup (e.g. Arabic- vs English-language patients)"
+    standard: ITU-T-Y3172
+    section: "7.5 Management of ML functionalities (REQ-ML-MNG-003)"
+    quote: "The ML architecture is required to support capabilities to monitor the network operations based on the effect of ML and to update the ML models and/or policies without impacting the network."
+    covered: false
+    note: "Monitoring is defined in terms of network operations; there is no requirement for subgroup or fairness monitoring of ML effects on people."
+    readiness_dimensions: [11, 6]
+    proposal: null
+  - id: N6
+    need: "A typed message format for institution-to-institution AI-incident coordination"
+    standard: ITU-T-Y3172
+    section: "7.3 Interface-related (REQ-ML-INT-001..004)"
+    quote: "The ML architecture is required to support an interface to transfer data for training or testing models among ML functionalities of multiple levels."
+    covered: false
+    note: "Interface requirements cover moving models and data between ML functionalities, not coordination messages between the organisations that govern an ML application. MAJLIS's blackboard message types are a starting proposal (see technical gap TG2)."
+    readiness_dimensions: [7, 3]
+    proposal: null
+  - id: N7
+    need: "Declare data-residency / jurisdiction constraints for where ML data may be processed"
+    standard: ITU-T-Y3172
+    section: "7.4 Declarative specifications (REQ-ML-SPEC-002)"
+    quote: "The ML architecture is required to support ML applications to specify the sources of data, repositories of ML models, targets for output from ML models, and constraints on network resources."
+    covered: partial
+    note: "The ML Intent can declare constraints on network resources, but not legal constraints such as the jurisdiction where personal data may be processed, which is exactly what fails at stage T2."
+    readiness_dimensions: [10, 4, 13]
+    proposal: LA
+  # --- ITU-T Y.3173 (02/2020) Framework for evaluating intelligence levels of future networks
+  #     (kb/raw/ITU-T-Y3173.pdf, read 2026-11-09). Quotes verbatim.
+  - id: N8
+    need: "Distinguish decisions bounded by binding legal rules from decisions bounded by any human-defined rule"
+    standard: ITU-T-Y3173
+    section: "7.1 Table 7-1, Decision dimension, 'Human and System' level"
+    quote: "Decision process is performed automatically by the system according to rules defined by a human being."
+    covered: partial
+    note: "The levels record WHO defines the rules (human vs system), not their source or binding force. A triage model bounded by a data-localisation law and one bounded by an operator's convenience rule rate the same. MAJLIS's gate records the clause behind each rule."
+    readiness_dimensions: [10, 6]
+    proposal: LA
+  - id: N9
+    need: "Let a human override any automated decision"
+    standard: ITU-T-Y3173
+    section: "7.1 Table 7-2, NOTE 1"
+    quote: "For each network intelligence level, the decision process has to support intervention by human being, i.e., decisions and execution instructions provided by a human being have the highest authority."
+    covered: true
+    note: "Covered. MAJLIS implements it as ESCALATE (HTTP 202) with Approve/Reject; the human decision is final and logged. Y.3173 does not say how the intervention is recorded (see N3)."
+    readiness_dimensions: [6]
+    proposal: HA

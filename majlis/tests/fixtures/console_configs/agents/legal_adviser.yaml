@@ -1,0 +1,19 @@
+# FIXTURE — synthetic data for UI development
+id: legal_adviser
+display_name: Legal & Policy Adviser
+display_name_ar: المستشار القانوني والسياساتي
+short_name: LPA
+kind: adviser
+jurisdiction: INTL
+mandate: Answers questions from the other agents with cited clauses and global comparators.
+  Does not decide.
+mandate_sources: []
+retrieval_filters: {}
+retrieval_k: 8
+can_message:
+- doh
+- tdra
+- data_office
+action_vocabulary: []
+output_language: en
+effort: low

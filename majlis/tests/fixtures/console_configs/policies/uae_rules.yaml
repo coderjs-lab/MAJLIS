@@ -1,0 +1,110 @@
+# FIXTURE — synthetic data for UI development
+high_impact_actions:
+- continue_offshore_processing
+- order_data_repatriation
+- isolate_backup_region
+- suspend_ai_service
+- resume_triage
+- continue_triage
+- delete_offshore_replicas
+rules:
+- rule_id: R-DATA-LOC-01
+  status: verified
+  review: fixture
+  description: Health data may not be processed outside the state without an approved
+    exception.
+  applies_when:
+    action_type:
+    - continue_offshore_processing
+    - replicate_records_offshore
+    state:
+      processing_location: outside_AE
+  unless_state:
+    transfer_approved: true
+  decision: DENY
+  clause_ids:
+  - TEST-DOC-A/art-1/en
+  message_en: Processing health data outside the state requires an approved exception.
+  message_ar: تتطلب معالجة البيانات الصحية خارج الدولة استثناءً معتمداً.
+- rule_id: R-HEALTH-MON-01
+  status: draft
+  review: pending_team_review
+  description: Continued AI triage while a patient-safety signal is open goes to a
+    human.
+  applies_when:
+    action_type:
+    - continue_triage
+    state:
+      patient_safety_risk: true
+  unless_state:
+    patient_harm_reported: true
+  decision: ESCALATE
+  clause_ids:
+  - TEST-DOC-B/sec-3/en
+  message_en: 'Patient-safety signal open: a clinician must decide whether AI triage
+    continues.'
+  message_ar: 'إشارة سلامة مرضى مفتوحة: يقرر الطبيب ما إذا كان الفرز الآلي يستمر.'
+- rule_id: R-HEALTH-SUSP-02
+  status: verified
+  review: fixture
+  description: AI triage may not continue once patient harm is reported.
+  applies_when:
+    action_type:
+    - continue_triage
+    state:
+      patient_harm_reported: true
+  unless_state: {}
+  decision: DENY
+  clause_ids:
+  - TEST-DOC-B/sec-3/en
+  message_en: 'Patient harm reported: AI triage must be suspended.'
+  message_ar: 'تم الإبلاغ عن ضرر لمريض: يجب تعليق الفرز الآلي.'
+- rule_id: R-CONT-01
+  status: verified
+  review: fixture
+  description: Isolating the only working region is denied while it carries patient
+    care.
+  applies_when:
+    action_type:
+    - isolate_backup_region
+    state:
+      failover_active: true
+  unless_state:
+    human_fallback: true
+  decision: DENY
+  clause_ids:
+  - TEST-DOC-B/sec-5/en
+  message_en: Isolating the active region would interrupt continuity of care.
+  message_ar: ''
+- rule_id: R-CYBER-01
+  status: draft
+  review: pending_team_review
+  description: A suspected cyber incident requires containment of the affected region.
+  applies_when:
+    action_type:
+    - isolate_backup_region
+    state:
+      cyber_incident_suspected: true
+  unless_state: {}
+  decision: REQUIRE
+  clause_ids:
+  - TEST-DOC-C/art-7/en
+  message_en: 'Suspected cyber incident: containment required.'
+  message_ar: ''
+- rule_id: R-HEALTH-REVAL-03
+  status: draft
+  review: pending_team_review
+  description: AI triage may not resume after a safety suspension until the model
+    is revalidated.
+  applies_when:
+    action_type:
+    - resume_triage
+    state:
+      ai_suspended: true
+  unless_state:
+    model_revalidated: true
+  decision: DENY
+  clause_ids:
+  - TEST-DOC-B/sec-3/en
+  message_en: Resumption requires revalidation of the model.
+  message_ar: ''

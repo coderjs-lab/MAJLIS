@@ -1,0 +1,17 @@
+# Country pack: UAE. Fictional training exercise; agents simulate institutions.
+id: uae
+name: "United Arab Emirates"
+name_ar: "الإمارات العربية المتحدة"
+agents_dir: configs/agents
+agents: [triage, doh, tdra, data_office, legal_adviser]   # order = turn order (application first)
+rules: configs/policies/uae_rules.yaml
+kb_dir: kb
+kb_jurisdictions: [AE, AE-AZ, AE-DU]
+duties: configs/duties.yaml
+standards_coverage: configs/standards_coverage.yaml
+display_names:
+  triage: {en: "OasisCare Triage", ar: "فرز أواسيس كير"}
+  doh: {en: "DoH Abu Dhabi (sim.)", ar: "دائرة الصحة (محاكاة)"}
+  tdra: {en: "TDRA (sim.)", ar: "هيئة تنظيم الاتصالات (محاكاة)"}
+  data_office: {en: "UAE Data Office (sim.)", ar: "مكتب الإمارات للبيانات (محاكاة)"}
+  legal_adviser: {en: "Legal & Policy Adviser (sim.)", ar: "المستشار القانوني (محاكاة)"}

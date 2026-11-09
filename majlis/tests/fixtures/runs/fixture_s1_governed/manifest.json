@@ -1,0 +1,16 @@
+{
+  "run_id": "fixture_s1_governed",
+  "fixture": true,
+  "git_commit": "fixture",
+  "scenario": "s1_failover",
+  "mode": "governed",
+  "approver": "reject_all",
+  "lang": "en",
+  "model": "mock-structured-v1",
+  "backend": "mock",
+  "kb_version": "954512a1fe5859a94fd0be771ce3a933243fe46e1063aa8d54bc21f5b07d9033",
+  "config_sha256": {
+    "configs/scenarios/s1_failover.yaml": "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d"
+  },
+  "started_at": "2026-11-09T08:00:00.000Z"
+}

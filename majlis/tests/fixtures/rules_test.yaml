@@ -1,0 +1,84 @@
+# Fake policy pack for tests. Rules point at fictional TEST-DOC clauses only.
+high_impact_actions:
+  - share_logs
+  - transfer_data
+  - failover_region
+  - suspend_service
+  - rotate_keys
+
+rules:
+  - rule_id: T-ALLOW-NOTIFY
+    status: verified
+    review: test_fixture
+    description: Reporting an adverse event to the health regulator is allowed.
+    applies_when:
+      action_type: [notify_regulator]
+    decision: ALLOW
+    clause_ids: [TEST-DOC-B/sec-4/en]
+    message_en: Reporting is allowed.
+
+  - rule_id: T-DENY-TRANSFER
+    status: verified
+    review: test_fixture
+    description: No transfer of patient data out of the test state unless approved.
+    applies_when:
+      action_type: [transfer_data]
+      state: {data_contains_phi: true}
+    unless_state: {transfer_approved: true}
+    decision: DENY
+    clause_ids: [TEST-DOC-A/art-1/en]
+    message_en: Patient data must stay in the test state.
+    message_ar: يجب أن تبقى بيانات المرضى داخل الدولة التجريبية.
+
+  - rule_id: T-REQUIRE-CONTINUITY
+    status: verified
+    review: test_fixture
+    description: Continuity of care requires failover when the service is down.
+    applies_when:
+      action_type: [failover_region]
+      state: {service_down: true}
+    decision: REQUIRE
+    clause_ids: [TEST-DOC-B/sec-5/en]
+    message_en: Continuity of care is required.
+
+  - rule_id: T-DENY-FAILOVER-ABROAD
+    status: verified
+    review: test_fixture
+    description: Failover to a region abroad moves patient data abroad.
+    applies_when:
+      action_type: [failover_region]
+      state: {target_region: [eu-west, us-east]}
+    decision: DENY
+    clause_ids: [TEST-DOC-A/art-1/en]
+    message_en: Failover abroad would move patient data out of the test state.
+
+  - rule_id: T-DRAFT-DENY-SUSPEND
+    status: draft
+    description: Do not suspend the service when no patient-safety risk is shown (draft).
+    applies_when:
+      action_type: [suspend_service]
+      state: {patient_safety_risk: false}
+    decision: DENY
+    clause_ids: [TEST-DOC-B/sec-3/en]
+    message_en: Draft rule, pending review.
+
+  - rule_id: T-ESC-PUBLIC
+    status: verified
+    review: test_fixture
+    description: Public statements need a human.
+    applies_when:
+      action_type: [send_status_update]
+      state: {audience: public}
+    decision: ESCALATE
+    clause_ids: [TEST-DOC-B/sec-5/en]
+    message_en: Public communication needs human approval.
+
+  - rule_id: T-DENY-MISSING-CLAUSE
+    status: verified
+    review: test_fixture
+    description: Rule whose clause is not in the KB.
+    applies_when:
+      action_type: [rotate_keys]
+    decision: DENY
+    clause_ids: [TEST-DOC-Z/art-99/en]
+    message_en: Cites a clause that does not exist.

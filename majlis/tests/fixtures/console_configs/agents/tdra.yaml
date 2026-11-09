@@ -1,0 +1,28 @@
+# FIXTURE — synthetic data for UI development
+id: tdra
+display_name: TDRA (simulated)
+display_name_ar: هيئة تنظيم الاتصالات والحكومة الرقمية (محاكاة)
+short_name: TDRA
+kind: institution
+jurisdiction: AE
+mandate: 'Telecommunications and digital government regulator: network outages, cloud
+  and cyber incident coordination.'
+mandate_sources: []
+retrieval_filters:
+  jurisdiction:
+  - AE
+  sectors:
+  - telecom
+  - cyber
+retrieval_k: 8
+can_message:
+- doh
+- data_office
+- legal_adviser
+action_vocabulary:
+- request_outage_report
+- isolate_backup_region
+- issue_cyber_advisory
+- issue_public_statement
+output_language: en
+effort: low

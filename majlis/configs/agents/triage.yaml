@@ -1,0 +1,25 @@
+# Fictional training exercise. You simulate a role; this is not an official position of any real institution.
+id: triage
+display_name: "OasisCare Triage (fictional AI triage service)"
+display_name_ar: "خدمة الفرز الذكي أواسيس كير (خيالية)"
+short_name: "Triage"
+kind: application
+jurisdiction: AE-AZ
+mandate: |
+  Fictional AI triage service run by a fictional Abu Dhabi telehealth provider. It must keep patients
+  safe while delivering triage and must operate within the law. It is the system under test: every
+  action it proposes passes the policy gate.
+mandate_sources: []          # unverified summary; the lead adds clause ids
+retrieval_filters:
+  jurisdiction: [AE, AE-AZ]
+  sectors: [health, data, ai]
+retrieval_k: 8
+can_message: [legal_adviser, doh, data_office]
+action_vocabulary: [continue_triage, suspend_ai_triage, fallback_to_human, process_in_region,
+                    notify_regulator, notify_patients, deploy_model_update, share_logs]
+output_language: en
+effort: low
+# metadata for agent cards (ignored by AgentConfig)
+limitations:
+  - "Fictional system; telemetry is synthetic."
+  - "Proposes actions only; the policy gate and a human approver decide."
