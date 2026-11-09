@@ -1,0 +1,15 @@
+# Closed duty vocabulary used in AgentTurn.responsibilities_claimed / _disclaimed.
+# The gap miner (G3) compares agents on these exact strings. Add new duties here only.
+duties:
+  - notify_data_protection_authority   # tell the data-protection authority about a personal-data event
+  - notify_health_regulator            # tell the health regulator about a patient-safety / AI incident
+  - report_network_outage              # report a telecom / cloud outage to the telecom regulator
+  - report_cyber_incident              # report a suspected cyber incident to the national cyber authority
+  - suspend_ai_service                 # decide to suspend or restrict the AI service
+  - require_human_fallback             # require clinicians to take over from the AI
+  - inform_affected_patients           # tell patients affected by an AI error or data event
+  - coordinate_public_communication    # lead public / media communication about the incident
+  - approve_data_transfer              # authorise processing or transfer of health data outside the country
+  - approve_model_update               # authorise an emergency change to the AI model
+  - revalidate_model                   # require re-validation of the model before it resumes
+  - investigate_root_cause             # lead the technical investigation

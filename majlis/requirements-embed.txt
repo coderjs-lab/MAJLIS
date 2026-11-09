@@ -1,0 +1,3 @@
+# Optional: dense multilingual retrieval (BAAI/bge-m3). Without it, search falls back to BM25 only.
+sentence-transformers>=3.0
+torch>=2.3
