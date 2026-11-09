@@ -41,7 +41,7 @@ The committed runs under `runs/` replay entirely from their ledgers: no model ca
 
 ## 3. Results from the committed runs
 
-Final runs: scenario S1, model `glm-5.3` (z.ai), knowledge base of 3,095 clauses from 29 official documents. Every number below is printed by `scripts/report_tables.py` from the ledgers in `runs/`; nothing is hand-edited. The technical report is `report/MAJLIS_Technical_Report.pdf` (rebuild: `.venv/bin/python report/make_data.py ...` then `tectonic report/majlis_report.tex`).
+Final runs: scenario S1, model `glm-5.3` (z.ai), knowledge base of 3,095 clauses from 29 official documents. Every number below is printed by `scripts/report_tables.py` from the ledgers in `runs/`; nothing is hand-edited. The technical report is [`report/MAJLIS_Technical_Report.pdf`](report/MAJLIS_Technical_Report.pdf), with the Word version in the official template beside it; [`report/README.md`](report/README.md) lists the LaTeX sources and the rebuild commands.
 
 | Metric | Governed | Ungoverned | Governed, Arabic | Governed, approving human, cards C5 and C3 |
 |---|---|---|---|---|

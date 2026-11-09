@@ -6,6 +6,8 @@ A reusable engine for rehearsing AI incidents across institutions: a fictional A
 
 **→ Start here: [`majlis/README.md`](majlis/README.md)** (quick look with no API key, results, architecture, reproduction).
 
+**Technical report:** [PDF](majlis/report/MAJLIS_Technical_Report.pdf) · [Word, official template](majlis/report/MAJLIS_Technical_Report.docx) · [LaTeX source](majlis/report/majlis_report.tex) · [how it is built](majlis/report/README.md)
+
 > Fictional exercise: agents simulate institutions; nothing here is an official position or legal advice.
 
 ---

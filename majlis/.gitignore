@@ -5,3 +5,6 @@ __pycache__/
 .pytest_cache/
 runs/_scratch*/
 report/figures/docx_preview.html
+
+# LaTeX build output (the published copy is report/MAJLIS_Technical_Report.pdf)
+report/majlis_report.pdf
