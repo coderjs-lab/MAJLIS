@@ -24,17 +24,20 @@ rules:
       state: {data_category: health_personal, processing_location: outside_AE}
     unless_state: {localisation_exception_approved: true}
     decision: DENY
-    clause_ids: [AE-FL-2-2019/art-13/en]
+    clause_ids: [AE-FL-2-2019/art-13/en, AE-MR-51-2021/art-2/para-1/en]
     quote: >-
       The health information and data related to the health services provided in the State may only be
       stored, processed, generated or transferred outside the State in the cases prescribed by virtue of a
       decision issued by the Health Authority in coordination with the Ministry.
     applicability:
-      note: "Federal law; the triage service is a health service provided in the State."
-      clause_ids: [AE-FL-2-2019/art-2/en]
+      note: >-
+        Federal law; the triage service is a health service provided in the State. Ministerial Resolution
+        51/2021 Art. 2 lists the permitted cases; none covers failover or disaster-recovery replication to a
+        foreign cloud region. `localisation_exception_approved` models case 8 (Health Authority agreement).
+      clause_ids: [AE-FL-2-2019/art-2/en, AE-MR-51-2021/art-2/para-1/en, AE-MR-51-2021/art-2/para-3-c1/en]
     message_en: >-
-      Processing patient data outside the UAE requires a Health Authority decision prescribing the case.
-      None is recorded for this incident.
+      Processing patient data outside the UAE is permitted only in the cases listed by Ministerial
+      Resolution 51/2021; emergency failover is not one of them and no Health Authority approval is recorded.
     message_ar: >-
       لا تجوز معالجة بيانات المرضى خارج الدولة إلا في الحالات التي يحددها قرار صادر عن الجهة الصحية، ولا يوجد
       قرار مسجل لهذه الحادثة.
@@ -161,6 +164,6 @@ rules:
 # Deliberately NOT encoded (no clause in the KB supports a rule; the exercise should surface these):
 # - a duty to inform patients affected by an AI error (DoH RAI §3.1.6.1.1 covers disclosure that AI is
 #   used, not notification of AI errors) -> expected G1 / insufficient-evidence finding
-# - an emergency exception route for processing health data abroad (the Health Authority decision that
-#   Art. 13 refers to is not in the KB) -> expected G1 + technical gap TG1
+# - an emergency / disaster-recovery case for processing health data abroad: Ministerial Resolution 51/2021
+#   Art. 2 lists ten cases and none covers it -> verified gap TV1
 # - re-validating a model before it resumes after an incident -> expected G5 (N4)

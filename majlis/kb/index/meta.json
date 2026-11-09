@@ -1,7 +1,7 @@
 {
   "model": "BAAI/bge-m3",
   "dim": 1024,
-  "n": 2282,
-  "kb_version": "2763452dc70d0696c86d73ade19ea0eacd25f138052801a56261802db12d41b9",
-  "created_at": "2026-11-09T11:22:18.025595+00:00"
+  "n": 2873,
+  "kb_version": "88c8aa24dc9535c04550bcbc3ac2a28e69d7eea7b57ad0b80e536b6c513eb1e9",
+  "created_at": "2026-11-09T12:44:15.908407+00:00"
 }

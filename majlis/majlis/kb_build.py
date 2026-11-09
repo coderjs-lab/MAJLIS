@@ -323,7 +323,9 @@ def _fix_glyphs(s: str, extra: dict | None, counter: collections.Counter) -> str
 
 
 def pdf_lines(path: Path, glyph_fixes: dict | None = None,
-              counter: collections.Counter | None = None) -> tuple[list[Line], int]:
+              counter: collections.Counter | None = None,
+              pages: tuple[int, int] | None = None,
+              keep_rx: "re.Pattern | None" = None) -> tuple[list[Line], int]:
     import pymupdf
     counter = counter if counter is not None else collections.Counter()
     doc = pymupdf.open(path)
@@ -331,6 +333,8 @@ def pdf_lines(path: Path, glyph_fixes: dict | None = None,
     bno = 0
     toc_pages = set()
     for pno, page in enumerate(doc, 1):
+        if pages and not (pages[0] <= pno <= pages[1]):
+            continue                    # e.g. bilingual file: only this language's page range
         d = page.get_text("dict", sort=True)
         h = page.rect.height
         ptxt = page.get_text()
@@ -366,7 +370,7 @@ def pdf_lines(path: Path, glyph_fixes: dict | None = None,
     rep = {k for k, ps in pages_with.items() if len(ps) >= thresh and len(re.findall(r"[^\W\d_]", k)) >= 3}
     out = []
     for l in lines:
-        if key(l.text) in rep:
+        if key(l.text) in rep and not (keep_rx is not None and keep_rx.match(l.text)):
             continue
         if re.fullmatch(r"[-–—\s]*(page\s*)?[0-9ivxlc]{1,4}[-–—\s]*", l.text, re.I) \
                 and (l.yrel < 0.1 or l.yrel > 0.88):
@@ -450,7 +454,8 @@ def split_sections(lines: list[Line], *, numbered=True, font_headings=True,
                 m = rx.match(t)
                 if m:
                     flush_para()
-                    secs.append(_Sec(_safe(m.group(1)), t if words(t) <= 20 else None, l.page))
+                    head = (heading_after(i, None) or t) if t.strip() == m.group(1) else (t if words(t) <= 20 else None)
+                    secs.append(_Sec(_safe(m.group(1)), head, l.page))
                     started = True
                     break
             if not started:
@@ -569,7 +574,7 @@ AR_TENS = {"عشرة": 10, "العشرون": 20, "الثلاثون": 30, "الأ
            "السبعون": 70, "الثمانون": 80, "التسعون": 90}
 AR_DIGITS = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
 
-EN_ART = re.compile(r"^\s*Article\s*\(?\s*(\d+)\s*\)?(?:\s*[-–:.]\s*|\s+|$)(.*)$", re.I)
+EN_ART = re.compile(r"^\s*(?::\s*)?Article\s*\(?\s*(\d+)\s*\)?(?:\s*[-–:.]\s*|\s+|$)(.*)$", re.I)
 AR_ART = re.compile(r"^\s*(?:ال)?مادة\s*(?:رقم)?\s*[\(（]?\s*([0-9٠-٩]+)\s*[\)）]?\s*[-–:]?\s*(.*)$")
 AR_ART_ORD = re.compile(r"^\s*(?:ال)?مادة\s+((?:\S+)(?:\s+(?:و?\S+)){0,2})\s*$")
 EN_PARA = re.compile(r"^\s*(\d{1,2})\s*[.\-–)]\s*\S")
@@ -747,14 +752,21 @@ def flipbook_paragraphs(path: Path) -> list[tuple[str, int | None]]:
 
 
 def pdf_law_paragraphs(path: Path, counter) -> list[tuple[str, int | None]]:
-    lines, _ = pdf_lines(path, None, counter)
+    # law mode: "Article (n)" / "المادة (n)" lines repeat on many pages but are structure, not running headers
+    keep = re.compile(r"^\s*(?::\s*)?(?:Article\s*\(?\s*\d+\s*\)?\s*$|(?:ال)?مادة\s*[\(（]?\s*[0-9٠-٩]+\s*[\)）]?\s*$)", re.I)
+    lines, _ = pdf_lines(path, None, counter, keep_rx=keep)
     out: list[tuple[str, int | None]] = []
     cur: list[str] = []
     cur_block = None
     cur_page = None
     for l in lines:
         is_marker = bool(EN_ART.match(l.text) or AR_ART.match(l.text) or AR_ART_ORD.match(l.text))
-        new_para = l.block != cur_block or is_marker or bool(EN_PARA.match(l.text) or AR_PARA.match(l.text))
+        # a new paragraph starts at an article marker, a numbered/lettered/bulleted item, or a block
+        # change after a line that ends a sentence; other line wraps are joined (whitespace only)
+        prev_end = bool(cur) and bool(re.search(r"[.:;؛]\s*$", cur[-1]))
+        item = bool(EN_PARA.match(l.text) or AR_PARA.match(l.text)
+                    or re.match(r"^\s*(?:[•▪●-]|\(?[a-z]\)|[a-z]\.|\([ivx]+\))\s", l.text))
+        new_para = is_marker or item or (l.block != cur_block and (prev_end or not cur))
         if new_para and cur:
             out.append((join_lines(cur), cur_page))
             cur = []
@@ -782,13 +794,18 @@ PARSE_CONFIG: dict[str, dict] = {
     "SG-IMDA-AGENTIC-2026": {"mode": "pdf"},
     "WHO-AI-HEALTH-2021": {"mode": "pdf"},
     "WHO-AI-LMM-2024": {"mode": "pdf"},
+    # ADHICS: control / sub-control codes printed alone on a line ("HR 2", "HR 2.1")
+    "AE-DOH-ADHICS": {"mode": "pdf", "font_headings": False, "extra_markers": [r"^((?:HR|AM|PE|AC|OM|CM|HI|TP|SA|IM|SC|IG)\s?\d{1,2}(?:\.\d{1,2})?)$"]},
+    # bilingual file (EN pages 1-34, AR pages 36-69); keys "<doc_id>:<lang>" override "<doc_id>"
+    "AE-CSC-NCS-2025:en": {"mode": "pdf", "pages": (1, 34)},
+    "AE-CSC-NCS-2025:ar": {"mode": "pdf", "pages": (36, 69)},
 }
 
 
 def parse_document(row: dict, path: Path, lang: str) -> tuple[list[Unit], dict]:
     """Return (units, info). info: mode, glyph_repairs, notes, extraction status."""
     info: dict = {"notes": [], "glyph_repairs": {}}
-    cfg = PARSE_CONFIG.get(row["doc_id"], {})
+    cfg = PARSE_CONFIG.get(f"{row['doc_id']}:{lang}") or PARSE_CONFIG.get(row["doc_id"], {})
     itype = row["instrument_type"]
     is_law = itype in ("law", "decree", "regulation") or row["doc_id"].startswith(("AE-FDL", "AE-FL", "AE-CR"))
     counter: collections.Counter = collections.Counter()
@@ -816,7 +833,7 @@ def parse_document(row: dict, path: Path, lang: str) -> tuple[list[Unit], dict]:
             info["notes"] += notes
         else:
             info["mode"] = "pdf_sections"
-            lines, _ = pdf_lines(path, cfg.get("glyph_fixes"), counter)
+            lines, _ = pdf_lines(path, cfg.get("glyph_fixes"), counter, cfg.get("pages"))
             secs = split_sections(lines, numbered=cfg.get("numbered", True),
                                   font_headings=cfg.get("font_headings", True),
                                   extra_markers=cfg.get("extra_markers"))

@@ -5,9 +5,13 @@
   "short_name": "TDRA",
   "kind": "institution",
   "jurisdiction": "AE",
-  "mandate": "Simulated federal telecom and digital-government regulator: networks, service outages and\ndigital government. Unverified summary pending source clauses.",
-  "mandate_verified": false,
-  "mandate_sources": [],
+  "mandate": "Simulated General Authority for Regulating the Telecommunications Sector and the Digital Government\n(the \"Authority\" under Federal Decree-Law 3/2003, Art. 1). Its objectives include ensuring that the\nsector provides high quality and efficient services and that licensees comply with performance\nquality standards (Art. 13); it is solely responsible for regulations on telecommunications services\nand their quality standards (Art. 14). It has no health or data-protection mandate.",
+  "mandate_verified": true,
+  "mandate_sources": [
+    "AE-FDL-3-2003/art-1/para-1-c2/en",
+    "AE-FDL-3-2003/art-13/en",
+    "AE-FDL-3-2003/art-14/para-1/en"
+  ],
   "knowledge": {
     "retrieval_filters": {
       "jurisdiction": [

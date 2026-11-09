@@ -5,9 +5,14 @@
   "short_name": "DoH",
   "kind": "institution",
   "jurisdiction": "AE-AZ",
-  "mandate": "Simulated health regulator for the Emirate of Abu Dhabi: facility licensing, patient safety,\nhealth data and the responsible use of AI in healthcare. Unverified summary pending source clauses.",
-  "mandate_verified": false,
-  "mandate_sources": [],
+  "mandate": "Simulated Department of Health - Abu Dhabi, acting through its Responsible AI Standard, which applies\nto the DoH and all licensed healthcare entities in the Emirate that develop, procure or deploy AI\nsystems (Standard 1.2). DoH conducts periodic audits and technical assessments of regulated entities\nand may impose sanctions for breaches of the Standard (Standard 5-6). As a local government health\nauthority it is a \"Health Authority\" under Federal Law 2/2019 (Art. 1), the authority whose decision\nprescribes when health data may be processed outside the State (Art. 13).",
+  "mandate_verified": true,
+  "mandate_sources": [
+    "AE-DOH-RAI-2025/sec-1.2/en",
+    "AE-DOH-RAI-2025/sec-5/en",
+    "AE-FL-2-2019/art-1/en",
+    "AE-FL-2-2019/art-13/en"
+  ],
   "knowledge": {
     "retrieval_filters": {
       "jurisdiction": [

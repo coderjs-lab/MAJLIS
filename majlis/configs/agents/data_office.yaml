@@ -6,9 +6,13 @@ short_name: "Data Office"
 kind: institution
 jurisdiction: AE
 mandate: |
-  Simulated federal data-protection authority: personal data processing, cross-border transfers
-  and breach notification. Unverified summary pending source clauses.
-mandate_sources: []
+  Simulated UAE Data Office, established by Federal Decree-Law 44/2021 and the "Bureau" of the Personal
+  Data Protection Law (FDL 45/2021, Art. 1). It implements control over the application of federal
+  data-protection legislation and conducts investigations, receives complaints and issues guidance
+  (FDL 44/2021, Art. 3). Under the PDPL, controllers notify it of personal-data breaches (Art. 9) and it
+  approves cross-border transfer cases (Art. 22). The PDPL does not apply to personal health data that
+  has its own legislation (Art. 2(2)(e)), so its role for health data must be established case by case.
+mandate_sources: [AE-FDL-44-2021/art-3/para-5/en, AE-FDL-45-2021/art-1/para-1/en, AE-FDL-45-2021/art-2/en, AE-FDL-45-2021/art-9/para-1/en, AE-FDL-45-2021/art-22/en]
 retrieval_filters:
   jurisdiction: [AE]
   sectors: [data]

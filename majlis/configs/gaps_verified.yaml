@@ -5,8 +5,10 @@
 #         rejected            we found a provision that covers it (a useful result in itself)
 #         needs_more_evidence the deciding text is not in our KB; we do not claim the gap
 # Every quote is verbatim from kb/clauses/clauses.jsonl (checked by scripts/check_gaps_verified.py).
-# Scope: "in our KB" means the 20 official documents listed in kb/sources/manifest.csv; the UAE PDPL,
-# Data Office law, telecom law and cyber strategy could not be retrieved automatically (TG1).
+# Scope: "in our KB" means the 29 official documents with clauses in kb/sources/manifest.csv (2,873 clauses).
+# The UAE PDPL, Data Office law, telecom law, medical liability law, Cabinet Resolution 32/2020, Ministerial
+# Resolution 51/2021, ADHICS, the DHA AI policy and the cyber strategy were refused to automated retrieval and
+# added by manual browser download (TG1). Arabic texts could not be extracted cleanly (all failed QA).
 # These are domain-level observations from a simulated exercise: not legal advice, not a verdict on
 # any UAE institution.
 checked_by: "build lead (Claude), from primary text, 2026-11-09"
@@ -17,16 +19,21 @@ gaps:
     candidate: CG1
     type: policy
     pattern: G1_POLICY_VOID
-    title: "No visible emergency route for running a clinical AI service on health data abroad during an outage"
-    status: needs_more_evidence
+    title: "No emergency or disaster-recovery case for processing health data abroad during an outage"
+    status: verified
     statement: >-
-      Federal Law 2/2019 permits health data to be processed outside the State only in cases prescribed by a
-      Health Authority decision. The decision that lists those cases is not machine-retrievable (the MOHAP copy
-      of Cabinet Resolution 32/2020 is a scanned image; the 2021 exceptions resolution could not be located),
-      so we cannot establish whether an emergency / continuity-of-care case exists.
+      Federal Law 2/2019 permits health data abroad only in cases prescribed by a Health Authority decision.
+      Ministerial Resolution 51/2021 lists those cases (ten). None covers failover or disaster-recovery
+      replication of a health service to a foreign cloud region. The nearest are tele-health (a named doctor,
+      time-limited access, the patient's written consent) and case-by-case Health Authority agreement, neither
+      of which can be obtained in the minutes of an outage.
     uae_evidence:
       - clause_id: AE-FL-2-2019/art-13/en
         quote: "may only be stored, processed, generated or transferred outside the State in the cases prescribed by virtue of a decision issued by the Health Authority in coordination with the Ministry"
+      - clause_id: AE-MR-51-2021/art-2/para-1/en
+        quote: "Health data and information may not be stored or transferred outside the country if it is related to health services provided inside the country, with the exception of the following cases"
+      - clause_id: AE-MR-51-2021/art-2/para-3-c1/en
+        quote: "Any other health information or data that the health authority agrees to transfer or store outside the country"
     global_example:
       jurisdiction: EU
       instrument: "GDPR, Art. 49(1)(f)"
@@ -35,7 +42,7 @@ gaps:
       how_it_handles: "An explicit derogation for transfers needed to protect vital interests, usable without prior authorisation."
     readiness_dimensions: [10, 13]
     implication: "During a failover a provider cannot tell within minutes whether continuing abroad is lawful; the exercise's gate therefore denies (fail-closed) and care depends on human fallback."
-    next_step: "Obtain the implementing decision; if no emergency case exists, propose a time-limited continuity-of-care case with mandatory notification to the Health Authority."
+    next_step: "Propose an eleventh case in Ministerial Resolution 51/2021: time-limited failover of a licensed service abroad for continuity of care, with encryption, immediate notification to the Health Authority and repatriation and deletion after recovery."
 
   - id: TV2
     candidate: CG2
@@ -43,16 +50,19 @@ gaps:
     pattern: G4_CLOCK
     title: "No deadline for reporting a serious clinical-AI incident"
     status: verified
-    scope_note: "Within our KB. The PDPL breach-notification article (data, not AI incidents) is not yet ingested."
+    scope_note: "Within our KB (29 documents). The PDPL's Executive Regulations, which would set its breach clock, are not in the KB."
     statement: >-
       The DoH Responsible AI Standard assigns responsibility for reporting adverse outcomes to governance bodies
       and requires risk communication to DoH, but sets no deadline and no definition of a serious AI incident.
-      No UAE instrument in our KB sets an AI-incident reporting clock.
+      The PDPL's breach notification defers the period to Executive Regulations. No UAE instrument in our KB
+      sets an AI-incident reporting clock.
     uae_evidence:
       - clause_id: AE-DOH-RAI-2025/sec-3.1.7/en
         quote: "Reporting adverse outcomes or ethical concerns to governance bodies."
       - clause_id: AE-DOH-RAI-2025/sec-3.3/en
         quote: "A comprehensive risk assessment, ongoing mitigation efforts, and related reports must be communicated with all stakeholders including the DoH for all AI Systems."
+      - clause_id: AE-FDL-45-2021/art-9/para-1/en
+        quote: "within the period and in accordance with the measures and requirements set by the Executive Regulations"
     global_example:
       jurisdiction: EU
       instrument: "AI Act, Art. 73(2)"
@@ -88,14 +98,18 @@ gaps:
     type: policy
     pattern: G1_POLICY_VOID
     title: "No duty to inform patients affected by an AI triage error"
-    status: needs_more_evidence
+    status: verified
+    scope_note: "Within our KB. The medical liability law binds physicians, not AI services or their providers."
     statement: >-
       The DoH standard requires telling patients when AI contributes to decisions (disclosure), not informing
-      patients harmed by an AI error. The PDPL and the medical-liability law are not in our KB, so we do not
-      claim a gap.
+      patients harmed by an AI error. The medical liability law requires a physician to keep the patient
+      informed of their condition, which does not reach an AI triage error made before any physician saw the
+      patient. No instrument in our KB requires informing patients affected by an AI error.
     uae_evidence:
       - clause_id: AE-DOH-RAI-2025/sec-3.1.5.1.3/en
         quote: "All healthcare AI systems must include mechanisms to inform patients, clinicians, and relevant stakeholders when AI contributes to clinical or operational decisions"
+      - clause_id: AE-FDL-4-2016/art-4/para-7/en
+        quote: "Keep the patient informed of the nature of the medical condition and its level of seriousness"
     global_example:
       jurisdiction: EU
       instrument: "GDPR, Art. 34(1) (data breaches only)"
@@ -104,7 +118,7 @@ gaps:
       how_it_handles: "Communication to affected individuals is mandatory for high-risk data breaches; the AI Act's Art. 86 adds a right to an explanation of AI-based decisions."
     readiness_dimensions: [6, 11]
     implication: "At T4 agents could not ground a decision to contact the misdiagnosed patient."
-    next_step: "Check the PDPL and FDL 4/2016; if silent, propose an AI-error notification duty in the DoH standard."
+    next_step: "Propose an AI-error notification duty (who informs the patient, by when) in the DoH Responsible AI Standard."
 
   - id: TV5
     candidate: SG1
@@ -150,10 +164,12 @@ gaps:
     title: "No machine-readable, clause-level official UAE legal corpus"
     status: verified
     statement: >-
-      Official UAE legal portals refused automated retrieval (HTTP 403), the Arabic National AI Strategy PDF
-      has a reversed text layer (52 clauses unusable), Cabinet Resolution 32/2020 is a scanned image and the
-      Arabic Federal Law 2/2019 has no text layer. Evidence: kb/sources/access_log.csv,
-      kb/clauses/extraction_failed.jsonl.
+      The official UAE legislation portals refused automated retrieval (HTTP 403), so 11 instruments, including
+      the PDPL, had to be downloaded by hand in a browser. None of the four Arabic texts, which are the
+      authoritative versions of federal law, could be extracted cleanly (broken lam-alef joins, presentation
+      forms, scrambled order: 146 units failed QA). Cabinet Resolution 32/2020's MOHAP copy is a scanned image,
+      and the English Ministerial Resolution 51/2021 has scrambled line order. Evidence:
+      kb/sources/access_log.csv, kb/clauses/extraction_failed.jsonl, kb/sources/MANUAL_DOWNLOADS.md.
     uae_evidence: []
     global_example:
       jurisdiction: EU
@@ -180,3 +196,29 @@ gaps:
     readiness_dimensions: [7, 3]
     implication: "Each agency in the exercise needs typed requests, assessments and decisions to coordinate; today these are ad hoc."
     next_step: "Publish MAJLIS's blackboard message types as a draft schema for the 2027 multi-country error exercise."
+
+  - id: TV9
+    candidate: CG6
+    type: policy
+    pattern: G3_RESPONSIBILITY
+    title: "Unclear lead authority for a breach of AI-processed health data"
+    status: verified
+    statement: >-
+      The PDPL, under which controllers notify the UAE Data Office of breaches, does not apply to personal
+      health data that has its own legislation. The health-data law's executive regulation only says suspicious
+      activities "shall be reported", without naming a recipient or a deadline. For the triage records
+      replicated abroad, no instrument in our KB names the authority that must be notified, or by when.
+    uae_evidence:
+      - clause_id: AE-FDL-45-2021/art-2/en
+        quote: "Personal Health Data that has legislation regulating its protection and processing"
+      - clause_id: AE-CR-32-2020/art-6/para-5/en
+        quote: "Any suspicious activities that would affect the confidentiality of data and information shall be reported"
+    global_example:
+      jurisdiction: EU
+      instrument: "GDPR, Art. 33(1) (one regime, health data included)"
+      clause_id: EU-REG-2016-679/art-33/para-1/en
+      quote: "notify the personal data breach to the supervisory authority competent in accordance with Article 55"
+      how_it_handles: "Health data falls under the same breach regime as other personal data, with one competent supervisory authority and one clock."
+    readiness_dimensions: [7, 10]
+    implication: "In every run the agents claimed overlapping notification duties (G3); the texts confirm nobody is clearly in charge."
+    next_step: "Name the authority (and clock) for health-data breaches in the executive regulation of Federal Law 2/2019, aligned with the PDPL regime."

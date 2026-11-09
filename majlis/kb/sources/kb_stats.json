@@ -1,20 +1,30 @@
 {
   "built_at": "2026-11-09",
-  "kb_version_sha256": "2763452dc70d0696c86d73ade19ea0eacd25f138052801a56261802db12d41b9",
-  "manifest_rows": 36,
+  "kb_version_sha256": "88c8aa24dc9535c04550bcbc3ac2a28e69d7eea7b57ad0b80e536b6c513eb1e9",
+  "manifest_rows": 37,
   "documents_total": 31,
-  "documents_with_clauses": 20,
+  "documents_with_clauses": 29,
   "files_by_status": {
-    "manual_pending": 13,
-    "ok": 23
+    "manual_ok": 12,
+    "manual_pending": 4,
+    "ok": 21
   },
-  "clauses_total": 2282,
+  "clauses_total": 2873,
   "clauses_per_doc": {
     "AE-AI-CHARTER-2024[en]": 4,
+    "AE-CR-32-2020[en]": 41,
     "AE-CR-40-2019[en]": 27,
+    "AE-CSC-NCS-2025[en]": 67,
+    "AE-DHA-AI-POLICY[en]": 13,
+    "AE-DOH-ADHICS[en]": 154,
     "AE-DOH-DGS-2025[en]": 21,
     "AE-DOH-RAI-2025[en]": 21,
+    "AE-FDL-3-2003[en]": 124,
+    "AE-FDL-4-2016[en]": 66,
+    "AE-FDL-44-2021[en]": 29,
+    "AE-FDL-45-2021[en]": 85,
     "AE-FL-2-2019[en]": 32,
+    "AE-MR-51-2021[en]": 12,
     "AE-NSAI-2031[en]": 51,
     "EU-DIR-2022-2555[en]": 252,
     "EU-REG-2016-679[en]": 419,
@@ -32,11 +42,12 @@
     "WHO-AI-LMM-2024[en]": 117
   },
   "languages": {
-    "en": 2282
+    "en": 2873
   },
   "jurisdictions": {
-    "AE": 114,
-    "AE-AZ": 42,
+    "AE": 538,
+    "AE-AZ": 196,
+    "AE-DU": 13,
     "EU": 1309,
     "US": 145,
     "SG": 99,
@@ -44,38 +55,50 @@
     "SA": 27
   },
   "tiers": {
-    "A": 59,
-    "B": 55,
-    "C": 42,
+    "A": 416,
+    "B": 122,
+    "C": 209,
     "D": 1906,
     "E": 193,
     "F": 27
   },
   "binding": {
-    "binding": 1410,
-    "non_binding": 872
+    "binding": 1934,
+    "non_binding": 939
   },
-  "avg_words": 152.0,
-  "clauses_over_400_words": 15,
-  "clauses_under_50_words": 627,
-  "extraction_failures_total": 55,
+  "avg_words": 142.3,
+  "clauses_over_400_words": 18,
+  "clauses_under_50_words": 822,
+  "extraction_failures_total": 146,
   "extraction_failures_by_doc": {
-    "AE-FL-2-2019[ar]": {
-      "n": 1,
+    "AE-FDL-45-2021[ar]": {
+      "n": 14,
       "reasons": {
-        "no_arabic_text": 1
+        "broken_lam_alef": 14
       }
     },
-    "AE-CR-32-2020[en]": {
-      "n": 1,
+    "AE-FL-2-2019[ar]": {
+      "n": 6,
       "reasons": {
-        "no_units:no text layer (0 words on 5 pages; scanned image)": 1
+        "presentation_forms": 6
       }
     },
     "AE-NSAI-2031[ar]": {
       "n": 52,
       "reasons": {
         "broken_lam_alef": 52
+      }
+    },
+    "AE-CSC-NCS-2025[ar]": {
+      "n": 72,
+      "reasons": {
+        "broken_lam_alef": 72
+      }
+    },
+    "AE-DHA-AI-POLICY[en]": {
+      "n": 1,
+      "reasons": {
+        "unmapped_glyphs": 1
       }
     },
     "SG-IMDA-AGENTIC-2026[en]": {
@@ -90,16 +113,44 @@
   "unpaired_sample": [],
   "per_document": {
     "AE-FDL-45-2021[en]": {
-      "status": "manual_pending",
-      "clauses": 0
+      "status": "manual_ok",
+      "mode": "law_pdf",
+      "clauses": 85,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 76.9,
+      "min_words": 14,
+      "max_words": 394,
+      "glyph_repairs": {},
+      "notes": []
     },
     "AE-FDL-45-2021[ar]": {
-      "status": "manual_pending",
-      "clauses": 0
+      "status": "manual_ok",
+      "mode": "law_pdf",
+      "clauses": 0,
+      "extraction_failed": 14,
+      "failure_reasons": {
+        "broken_lam_alef": 14
+      },
+      "avg_words": 0,
+      "min_words": 0,
+      "max_words": 0,
+      "glyph_repairs": {},
+      "notes": [
+        "no article markers found"
+      ]
     },
     "AE-FDL-44-2021[en]": {
-      "status": "manual_pending",
-      "clauses": 0
+      "status": "manual_ok",
+      "mode": "law_pdf",
+      "clauses": 29,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 37.7,
+      "min_words": 12,
+      "max_words": 76,
+      "glyph_repairs": {},
+      "notes": []
     },
     "AE-FDL-44-2021[ar]": {
       "status": "manual_pending",
@@ -118,12 +169,12 @@
       "notes": []
     },
     "AE-FL-2-2019[ar]": {
-      "status": "ok",
-      "mode": "law_html",
+      "status": "manual_ok",
+      "mode": "law_pdf",
       "clauses": 0,
-      "extraction_failed": 1,
+      "extraction_failed": 6,
       "failure_reasons": {
-        "no_arabic_text": 1
+        "presentation_forms": 6
       },
       "avg_words": 0,
       "min_words": 0,
@@ -134,24 +185,28 @@
       ]
     },
     "AE-CR-32-2020[en]": {
-      "status": "ok",
-      "mode": "pdf_no_text",
-      "clauses": 0,
-      "extraction_failed": 1,
-      "failure_reasons": {
-        "no_units:no text layer (0 words on 5 pages; scanned image)": 1
-      },
-      "avg_words": 0,
-      "min_words": 0,
-      "max_words": 0,
+      "status": "manual_ok",
+      "mode": "law_pdf",
+      "clauses": 41,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 45.3,
+      "min_words": 15,
+      "max_words": 149,
       "glyph_repairs": {},
-      "notes": [
-        "no text layer (0 words on 5 pages; scanned image)"
-      ]
+      "notes": []
     },
-    "AE-MOHAP-DATALOC-2021[en]": {
-      "status": "manual_pending",
-      "clauses": 0
+    "AE-MR-51-2021[en]": {
+      "status": "manual_ok",
+      "mode": "law_pdf",
+      "clauses": 12,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 102.9,
+      "min_words": 15,
+      "max_words": 362,
+      "glyph_repairs": {},
+      "notes": []
     },
     "AE-CR-40-2019[en]": {
       "status": "ok",
@@ -166,12 +221,28 @@
       "notes": []
     },
     "AE-FDL-4-2016[en]": {
-      "status": "manual_pending",
-      "clauses": 0
+      "status": "manual_ok",
+      "mode": "law_pdf",
+      "clauses": 66,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 79.8,
+      "min_words": 5,
+      "max_words": 348,
+      "glyph_repairs": {},
+      "notes": []
     },
-    "AE-TDRA-TELECOM-LAW[en]": {
-      "status": "manual_pending",
-      "clauses": 0
+    "AE-FDL-3-2003[en]": {
+      "status": "manual_ok",
+      "mode": "law_pdf",
+      "clauses": 124,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 65.9,
+      "min_words": 3,
+      "max_words": 387,
+      "glyph_repairs": {},
+      "notes": []
     },
     "AE-NSAI-2031[en]": {
       "status": "ok",
@@ -222,8 +293,30 @@
       "clauses": 0
     },
     "AE-CSC-NCS-2025[en]": {
-      "status": "manual_pending",
-      "clauses": 0
+      "status": "manual_ok",
+      "mode": "pdf_sections",
+      "clauses": 67,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 185.4,
+      "min_words": 46,
+      "max_words": 416,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "AE-CSC-NCS-2025[ar]": {
+      "status": "manual_ok",
+      "mode": "pdf_sections",
+      "clauses": 0,
+      "extraction_failed": 72,
+      "failure_reasons": {
+        "broken_lam_alef": 72
+      },
+      "avg_words": 0,
+      "min_words": 0,
+      "max_words": 0,
+      "glyph_repairs": {},
+      "notes": []
     },
     "AE-DOH-RAI-2025[en]": {
       "status": "ok",
@@ -250,12 +343,30 @@
       "notes": []
     },
     "AE-DOH-ADHICS[en]": {
-      "status": "manual_pending",
-      "clauses": 0
+      "status": "manual_ok",
+      "mode": "pdf_sections",
+      "clauses": 154,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 146.0,
+      "min_words": 26,
+      "max_words": 439,
+      "glyph_repairs": {},
+      "notes": []
     },
     "AE-DHA-AI-POLICY[en]": {
-      "status": "manual_pending",
-      "clauses": 0
+      "status": "manual_ok",
+      "mode": "pdf_sections",
+      "clauses": 13,
+      "extraction_failed": 1,
+      "failure_reasons": {
+        "unmapped_glyphs": 1
+      },
+      "avg_words": 220.3,
+      "min_words": 62,
+      "max_words": 398,
+      "glyph_repairs": {},
+      "notes": []
     },
     "EU-REG-2024-1689[en]": {
       "status": "ok",

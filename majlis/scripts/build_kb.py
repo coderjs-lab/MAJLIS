@@ -147,6 +147,12 @@ def resolve_files(rows: list[dict], do_download: bool, retry_blocked: bool) -> N
                 r["retrieved_at"] = dt.date.fromtimestamp(mf.stat().st_mtime).isoformat()
             r["sha256"] = sha256(mf)
             continue
+        ext = Path(r.get("local_path") or "")
+        if r["status"] == "manual_ok" and ext.is_absolute():
+            # large file kept outside the repo (not redistributed); read in place
+            if ext.exists():
+                r["sha256"] = sha256(ext)
+            continue
         if r["status"] == "manual_ok":          # manual file was removed
             r["status"] = "manual_pending"
         local = ROOT / r["local_path"] if r.get("local_path") else RAW / f"{r['doc_id']}{lang_suffix(r)}{default_ext(r)}"
@@ -192,6 +198,10 @@ def build(rows: list[dict]) -> dict:
             stats_docs[key] = {"status": r["status"], "clauses": 0}
             continue
         path = ROOT / r["local_path"]
+        if not path.exists():
+            stats_docs[key] = {"status": r["status"], "clauses": 0,
+                               "notes": [f"file not present on this machine: {r['local_path']}"]}
+            continue
         units, info = parse_document(r, path, r["lang"])
         doc_failed_reason = None
         if r["lang"] == "ar" and units:
@@ -350,12 +360,15 @@ def write_inputs_and_copy(rows, st) -> None:
     for i, r in enumerate(rows, 1):
         have = r["status"] in ("ok", "manual_ok")
         fname = inputdocs_name(r) if have else f"(manual) {Path(r['local_path']).name}"
+        if have and Path(r["local_path"]).is_absolute():
+            fname = f"(external, not redistributed) {Path(r['local_path']).name}"
         n = per.get(f"{r['doc_id']}[{r['lang']}]", 0)
         desc = f"**{r['title']}**. Tier {r['tier']}, {r['binding'].replace('_', '-')}, {r['jurisdiction']}, lang {r['lang']}; sectors {r['sectors'].replace(';', ', ')}."
         lines.append(f"| {i} | `{fname}` | `{TYPE_MAP.get(r['instrument_type'], r['instrument_type'])}` | {desc} | "
                      f"{r['issuer']} | {r['date'] or 'n/a'} | {r['url']} | {r['status']} | {n} |")
         usable = n > 0
-        if have and usable and not r["download_url"].startswith("repo:"):
+        external = Path(r["local_path"]).is_absolute()
+        if have and usable and not external and not r["download_url"].startswith("repo:"):
             src = ROOT / r["local_path"]
             dst = INPUTDOCS / inputdocs_name(r)
             if not dst.exists() or dst.stat().st_size != src.stat().st_size:
