@@ -1,0 +1,11 @@
+\begin{tikzpicture}
+\begin{axis}[xbar stacked, width=\linewidth, height=4.1cm, bar width=8pt, xmin=0, xmax=100,
+  ytick={0,1,2,3}, yticklabels={{Governed},{Ungoverned},{Governed in Arabic},{Approving human}}, y dir=reverse, enlarge y limits=0.2,
+  xlabel={share of checked citations (\%)}, tick label style={font=\scriptsize}, label style={font=\scriptsize},
+  legend style={font=\tiny, at={(0.5,1.03)}, anchor=south, legend columns=2, draw=none}, axis lines*=left]
+\addplot[fill=okc, draw=okc] coordinates {(97.2,0) (96.0,1) (96.2,2) (93.9,3)};\addlegendentry{Verbatim}
+\addplot[fill=escc, draw=escc] coordinates {(0.9,0) (2.2,1) (1.4,2) (1.4,3)};\addlegendentry{Near match}
+\addplot[fill=denyc, draw=denyc] coordinates {(0.9,0) (1.5,1) (2.1,2) (4.7,3)};\addlegendentry{Failed or unsupported}
+\addplot[fill=black!45, draw=black!45] coordinates {(0.9,0) (0.3,1) (0.3,2) (0.0,3)};\addlegendentry{Malformed clause id}
+\end{axis}
+\end{tikzpicture}
