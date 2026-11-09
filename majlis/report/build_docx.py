@@ -25,6 +25,8 @@ from docx.text.paragraph import Paragraph
 
 HERE = Path(__file__).resolve().parent
 TEX = (HERE / "majlis_report.tex").read_text(encoding="utf-8")
+# generated table bodies (tab_*.tex) are inlined; figure inputs stay as images
+TEX = re.sub(r"\\input\{(generated/tab_[^}]+)\}", lambda m: (HERE / m.group(1)).read_text(encoding="utf-8").strip(), TEX)
 TEMPLATE = HERE / "submission-template.docx"
 OUT_DOCX = HERE / "MAJLIS_Technical_Report.docx"
 OUT_HTML = HERE / "figures" / "docx_preview.html"
@@ -33,11 +35,12 @@ TITLE = "AI for Good Sandbox Hackathon – Team MAJLIS – MAJLIS: Rehearsing AI
 META = [("Team leader", "Abhra Dubey"), ("Team members", "Abhra Dubey, Harmanjot Singh, Aya Elsayed"),
         ("Contact details", "abhra.dubey@mbzuai.ac.ae"), ("Github link", "https://github.com/coderjs-lab/itu")]
 COLORS = {"okc": "1F7A4D", "denyc": "B42318", "escc": "A86A00", "brand": "0E4F4C"}
-FIGS = {"fig:arch": ("fig1_architecture.png", 6.3), "fig:timeline": ("fig2_timeline.png", 5.6),
-        "fig:outcomes": ("fig3_outcomes.png", 3.0), "fig:cites": ("fig4_citations.png", 3.0)}
+FIGS = {"fig:arch": ("fig1_architecture.png", 6.1), "fig:timeline": ("fig2_timeline.png", 4.8),
+        "fig:outcomes": ("fig3_outcomes.png", 2.8), "fig:cites": ("fig4_citations.png", 2.8)}
 TABLE_WIDTHS = {"tab:req": [0.8, 2.6, 3.1], "tab:map": [0.85, 1.85, 1.75, 2.05],
-                "tab:rules": [2.4, 1.0, 3.1], "tab:gaps": [1.65, 0.75, 2.2, 1.35, 0.55]}
-BODY_PT, TABLE_PT, CAPTION_PT = 9.5, 7.5, 8
+                "tab:rules": [2.4, 1.0, 3.1], "tab:gaps": [1.65, 0.75, 2.2, 1.35, 0.55],
+                "tab:kb": [3.7, 0.8, 1.0, 1.0]}
+BODY_PT, TABLE_PT, CAPTION_PT = 9.0, 7.0, 7.6
 
 NUMBERS = dict(re.findall(r"\\newcommand\{\\(\w+)\}\{([^}]*)\}",
                           (HERE / "generated" / "numbers.tex").read_text(encoding="utf-8")))
@@ -112,6 +115,7 @@ def label_of(block: str) -> str:
 def parse_table(block: str):
     inner = block[block.index("\\toprule") + len("\\toprule"): block.index("\\bottomrule")]
     head, body = inner.split("\\midrule", 1)
+    body = body.replace("\\midrule", "")  # inner rules (e.g. verified above, rejected below) have no Word equivalent
     split_row = lambda r: [tex2md(c) for c in r.split(" & ")]
     header = split_row(head.strip().rstrip("\\").strip())
     rows = [split_row(r.strip()) for r in re.split(r"\\\\\s*\n", body) if r.strip()]
@@ -394,7 +398,7 @@ table.t td, table.t th {{ border: 0.5pt solid #bbb; padding: 1.5pt 3pt; vertical
         elif b[0] == "figure":
             o.append(f"<img src='{FIGS[b[1]][0]}' style='width:{FIGS[b[1]][1]}in'><p class='cap'>{md_html(b[2])}</p>")
         elif b[0] == "figpair":
-            cells = "".join(f"<td style='width:50%;vertical-align:top'><img src='{FIGS[fb[1]][0]}' style='width:3.0in'>"
+            cells = "".join(f"<td style='width:50%;vertical-align:top'><img src='{FIGS[fb[1]][0]}' style='width:{FIGS[fb[1]][1]}in'>"
                             f"<p class='cap'>{md_html(fb[2])}</p></td>" for fb in b[1:])
             o.append(f"<table style='width:100%'><tr>{cells}</tr></table>")
         elif b[0] == "table":

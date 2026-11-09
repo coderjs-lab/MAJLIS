@@ -5,6 +5,7 @@ Outputs into report/latex/generated/:
   fig_timeline.tex  TikZ: who received which inject, and what the gate did at each stage, per run
   fig_outcomes.tex  pgfplots: governance outcomes per run
   fig_citations.tex pgfplots: citation integrity per run
+  tab_kb.tex        the knowledge-base composition table (from kb/clauses/clauses.jsonl)
 
 Usage (from ITUAIReadiness/majlis):
   .venv/bin/python report/make_data.py --gov runs/<id> --ungov runs/<id> --ar runs/<id> --cards runs/<id>
@@ -83,6 +84,21 @@ def numbers(R: dict, kb: dict, ev: dict, gaps: list, rules: list) -> str:
     out += [macro("VerifMin", f"{min(rates):.1f}"), macro("VerifMax", f"{max(rates):.1f}")]
     by_status = {s: sum(1 for g in gaps if g["status"] == s) for s in ("verified", "rejected", "needs_more_evidence")}
     hy, de, bm = (ev["by_mode"][k] for k in ("hybrid", "dense", "bm25"))
+    rr = ev["by_mode"]["rerank"]
+    lang = ev["recall@5_by_language"]
+    out += [
+        macro("RecallRerank", f"{rr['recall@5']:.2f}"), macro("MRRRerank", f"{rr['mrr']:.2f}"),
+        macro("MRRDense", f"{de['mrr']:.2f}"), macro("MRRHybrid", f"{hy['mrr']:.2f}"),
+        macro("RecallRerankArt", f"{rr['recall@5_article']:.2f}"),
+        macro("PoolRecall", f"{ev['pool_recall@30_hybrid']:.2f}"),
+        macro("RecallRerankEn", f"{lang['en']['rerank']:.2f}"), macro("RecallRerankAr", f"{lang['ar']['rerank']:.2f}"),
+        macro("EvalNAr", lang["ar"]["n"]),
+    ]
+    # how often the agents cited (and quoted exactly) the DoH disaster-recovery clause that closed TV1
+    dr = "AE-DOH-RAI-2025/sec-3.1.4.5.1/en"
+    for key, tag in (("gov", "Gov"), ("ungov", "Ungov"), ("ar", "Ar"), ("cards", "Cards")):
+        res = [x for e in R[key]["E"] if e["event_type"] == "citation_check" for x in e["payload"]["results"]]
+        out.append(macro(f"{tag}DRCites", sum(1 for x in res if x["clause_id"] == dr and x["status"] == "VERIFIED")))
     out += [
         macro("KBDocs", kb["documents_with_clauses"]), macro("KBClauses", f"{kb['clauses_total']:,}"),
         macro("EvalN", ev["n_questions"]),
@@ -94,6 +110,35 @@ def numbers(R: dict, kb: dict, ev: dict, gaps: list, rules: list) -> str:
         macro("NGapsPending", by_status["needs_more_evidence"]),
     ]
     return "\n".join(out) + "\n"
+
+
+KB_GROUPS = [  # (label, jurisdictions)
+    ("UAE federal laws and strategies", {"AE"}),
+    ("Abu Dhabi DoH standards", {"AE-AZ"}),
+    ("Dubai DHA AI policy", {"AE-DU"}),
+    ("EU AI Act, GDPR, NIS2", {"EU"}),
+    ("ITU and WHO", {"INTL"}),
+    ("US, Singapore, Saudi", {"US", "SG", "SA"}),
+]
+
+
+def kb_table() -> tuple[str, list[str]]:
+    rows = [json.loads(l) for l in (MAJLIS / "kb/clauses/clauses.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()]
+    lines = ["\\begin{tabularx}{\\columnwidth}{@{}Lrrr@{}}", "\\toprule",
+             "\\textbf{Source} & \\textbf{Docs} & \\textbf{Clauses} & \\textbf{Binding}\\\\", "\\midrule"]
+    macros = []
+    for label, jur in KB_GROUPS:
+        sel = [r for r in rows if r["jurisdiction"] in jur]
+        docs = len({r["doc_id"] for r in sel})
+        binding = sum(1 for r in sel if r["binding"] == "binding")
+        lines.append(f"{label} & {docs} & {len(sel):,} & {binding:,}\\\\")
+    uae = [r for r in rows if r["jurisdiction"].startswith("AE")]
+    macros += [macro("KBUaeClauses", f"{len(uae):,}"), macro("KBUaeDocs", len({r['doc_id'] for r in uae})),
+               macro("KBDohRaiClauses", sum(1 for r in rows if r["doc_id"] == "AE-DOH-RAI-2025"))]
+    lines.append("\\midrule")
+    lines.append(f"Total & {len({r['doc_id'] for r in rows})} & {len(rows):,} & {sum(1 for r in rows if r['binding'] == 'binding'):,}\\\\")
+    lines += ["\\bottomrule", "\\end{tabularx}"]
+    return "\n".join(lines) + "\n", macros
 
 
 def timeline(R: dict, scenario: dict) -> str:
@@ -207,6 +252,10 @@ def main() -> None:
         f.write(macro("EarlyLetThrough", early["m"]["gate"]["would_deny_let_through"]) + "\n")
         f.write(macro("EarlyBypassed", early["m"]["gate"]["would_escalate_let_through"]) + "\n")
     (OUT / "fig_citations.tex").write_text(citations(R))
+    tab, kb_macros = kb_table()
+    (OUT / "tab_kb.tex").write_text(tab)
+    with open(OUT / "numbers.tex", "a") as f:
+        f.write("\n".join(kb_macros) + "\n")
     (OUT / "runs.txt").write_text("\n".join(f"{k}: {getattr(a, k)}" for k in ("gov", "ungov", "ar", "cards")) + "\n")
     print("generated:", ", ".join(p.name for p in sorted(OUT.iterdir())))
 
