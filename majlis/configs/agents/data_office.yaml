@@ -13,6 +13,7 @@ retrieval_filters:
   jurisdiction: [AE]
   sectors: [data]
 retrieval_k: 8
+retrieval_focus: "personal data breach notification transfer of health data outside the State confidentiality data protection"   # standing search interests (search terms, not legal claims)
 can_message: [doh, tdra, legal_adviser, triage]
 action_vocabulary: [request_breach_notification, order_processing_halt, request_transfer_justification]
 output_language: en

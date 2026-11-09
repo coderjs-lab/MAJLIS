@@ -1,0 +1,227 @@
+ts,doc_id,url,http_status,bytes,content_type,result,note
+2026-11-09T11:00:57Z,US-NIST-AI-100-1,https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf,200,1946127,application/pdf,ok,probe
+2026-11-09T11:00:59Z,ITU-T-Y3173,https://www.itu.int/rec/dologin_pub.asp?lang=e&id=T-REC-Y.3173-202002-I!!PDF-E&type=items,200,832240,application/pdf,ok,probe
+2026-11-09T11:01:00Z,ITU-T-Y3181,https://www.itu.int/rec/T-REC-Y.3181/en,200,9538,text/html,ok,probe
+2026-11-09T11:01:11Z,ITU-T-Y3181,https://www.itu.int/rec/dologin_pub.asp?lang=e&id=T-REC-Y.3181-202209-I!!PDF-E&type=items,200,1140428,application/pdf,ok,probe
+2026-11-09T11:01:13Z,WHO-AI-LMM-2024,https://www.who.int/publications/i/item/9789240084759,200,89899,text/html; charset=utf-8,ok,probe
+2026-11-09T11:01:15Z,WHO-AI-LMM-2024,https://iris.who.int/bitstream/handle/10665/375579/9789240084759-eng.pdf,200,755,text/html; charset=UTF-8,ok,probe
+2026-11-09T11:01:44Z,AE-FDL-45-2021,https://uaelegislation.gov.ae/en/legislations/1972/download,403,5668,text/html; charset=UTF-8,blocked_403,probe
+2026-11-09T11:01:44Z,AE-FDL-45-2021,https://government.ae/-/media/Documents-2023/ArFederal-Decree-Law-No-45-of-2021-regarding-the-Protection-of-Personal-Data.pdf,,0,,error,"probe ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'government.ae'. (_ssl.c:1000)"
+2026-11-09T11:01:45Z,AE-FDL-45-2021,https://u.ae/-/media/Documents-2023/ArFederal-Decree-Law-No-45-of-2021-regarding-the-Protection-of-Personal-Data.pdf,404,0,,http_404,probe
+2026-11-09T11:01:46Z,AE-FL-2-2019,https://uaelegislation.gov.ae/en/legislations/1209/download,403,5668,text/html; charset=UTF-8,blocked_403,probe
+2026-11-09T11:01:46Z,AE-FL-2-2019,https://elaws.moj.gov.ae/UAE-MOJ_LC-En/00_Health/UAE-LC-En_2019-02-06_00002_Kait.html?val=EL1,,0,,error,probe ConnectTimeout: timed out
+2026-11-09T11:02:47Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-77/files/basic-html/page2.html,200,10904,text/html,ok,probe
+2026-11-09T11:02:47Z,AE-FL-2-2019,https://www.mohap.gov.ae/FlipBooks/PublicHealthPolicies/PHP-LAW-EN-77/mobile/index.html,404,360046,text/html;charset=UTF-8,http_404,probe final_url=https://www.mohap.gov.ae/en/FlipBooks/PublicHealthPolicies/PHP-LAW-EN-77/mobile/index.html
+2026-11-09T11:02:49Z,AE-NSAI-2031,https://u.ae/-/media/AI-publications/UAE-National-Strategy-for-Artificial-Intelligence-2031.pdf,404,0,,http_404,probe
+2026-11-09T11:02:49Z,AE-NSAI-2031,https://u.ae/-/media/AI-publications/Ar-UAE-National-Strategy-for-Artificial-Intelligence-2031-AR-(1).pdf,404,0,,http_404,probe
+2026-11-09T11:02:50Z,AE-DOH-PROBE,https://www.doh.gov.ae/-/media/B84FF5DD027846699C51F36C439A580F.ashx,,0,,error,probe ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+2026-11-09T11:02:50Z,AE-DOH-PROBE,https://www.doh.gov.ae/-/media/DCA581EEE66A4D01A6BC878C59BC42C0.ashx,,0,,error,probe ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+2026-11-09T11:02:50Z,AE-DOH-PROBE,https://www.doh.gov.ae/-/media/3096D636D0E24FA78971CFF2EE180367.ashx,,0,,error,probe ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+2026-11-09T11:02:51Z,AE-DOH-PROBE,https://www.doh.gov.ae/-/media/AFA341921009447CAF724051A0D29AAC.ashx,,0,,error,probe ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+2026-11-09T11:02:51Z,AE-DOH-PROBE,https://www.doh.gov.ae/-/media/F996F876FAC8471AAEC72FB94E83F3FA.ashx,,0,,error,probe ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+2026-11-09T11:02:52Z,SG-IMDA-AGENTIC-2026,https://www.imda.gov.sg/assets/d1e45a56-d898-4b9f-972e-8ae94be1a5a5.pdf,200,2169295,application/pdf,ok,probe
+2026-11-09T11:02:55Z,SG-IMDA-AGENTIC-2026,https://www.imda.gov.sg/-/media/imda/files/about/emerging-tech-and-research/artificial-intelligence/mgf-for-agentic-ai.pdf,200,2169295,application/pdf,ok,probe
+2026-11-09T11:03:30Z,AE-DOH-PROBE,https://www.doh.gov.ae/-/media/B84FF5DD027846699C51F36C439A580F.ashx,200,490537,application/pdf,ok,probe
+2026-11-09T11:03:33Z,AE-DOH-PROBE,https://www.doh.gov.ae/-/media/DCA581EEE66A4D01A6BC878C59BC42C0.ashx,200,794616,application/pdf,ok,probe
+2026-11-09T11:03:34Z,AE-DOH-PROBE,https://www.doh.gov.ae/-/media/3096D636D0E24FA78971CFF2EE180367.ashx,200,728557,application/pdf,ok,probe
+2026-11-09T11:03:34Z,AE-DOH-PROBE,https://www.doh.gov.ae/-/media/AFA341921009447CAF724051A0D29AAC.ashx,200,973011,application/pdf,ok,probe
+2026-11-09T11:03:35Z,AE-DOH-PROBE,https://www.doh.gov.ae/-/media/F996F876FAC8471AAEC72FB94E83F3FA.ashx,200,11906499,application/pdf,ok,probe
+2026-11-09T11:03:50Z,AE-DOH-PROBE,https://www.doh.gov.ae/en/about/law-and-legislations,200,27417,text/html; charset=utf-8,ok,probe
+2026-11-09T11:04:12Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-77/index.html,200,5082,text/html,ok,probe
+2026-11-09T11:04:44Z,AE-AI-CHARTER-2024,https://ai.gov.ae/wp-content/uploads/2024/07/UAEAI-Methaq-EN2-3.pdf,200,9457883,application/pdf,ok,probe
+2026-11-09T11:04:46Z,AE-AI-CHARTER-2024,https://u.ae/en/about-the-uae/strategies-initiatives-and-awards/policies/Ai/The-UAE-Charter-for-the-Development-and-Use-of-Artificial-Intelligence,200,73366,text/html; charset=utf-8,ok,probe
+2026-11-09T11:04:47Z,AE-FDL-44-2021,https://uaelegislation.gov.ae/en/legislations/2433/download,403,5668,text/html; charset=UTF-8,blocked_403,probe
+2026-11-09T11:04:47Z,AE-CR-32-2020,https://uaelegislation.gov.ae/en/legislations/1444/download,403,5668,text/html; charset=UTF-8,blocked_403,probe
+2026-11-09T11:04:48Z,AE-NSAI-2031,https://ai.gov.ae/strategy/,403,5656,text/html; charset=UTF-8,blocked_403,probe
+2026-11-09T11:04:48Z,AE-EHS-INDEX,https://www.ehs.gov.ae/en/about-ehs/legislations,200,152275,text/html; charset=utf-8,ok,probe final_url=https://www.ehs.gov.ae/en/page-not-found.aspx
+2026-11-09T11:04:49Z,AE-EHS-INDEX,https://www.ehs.gov.ae/en,200,218516,text/html; charset=utf-8,ok,probe final_url=https://www.ehs.gov.ae/en/home
+2026-11-09T11:05:06Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-1/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:06Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-2/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:06Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-3/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:07Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-4/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:07Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-5/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:07Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-6/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:07Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-7/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:07Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-8/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:07Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-9/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:07Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-10/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:07Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-11/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:07Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-12/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:07Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-13/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:07Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-14/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:08Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-15/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:08Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-16/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:08Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-17/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:08Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-18/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:08Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-19/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:08Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-20/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:08Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-21/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:08Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-22/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:08Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-23/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:08Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-24/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:09Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-25/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:09Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-26/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:09Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-27/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:09Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-28/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:09Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-29/index.html,200,5274,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:09Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-30/index.html,200,5114,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:09Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-31/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:09Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-32/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:09Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-33/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:10Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-34/index.html,200,4990,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:10Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-35/index.html,200,5082,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:10Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-36/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:10Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-37/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:10Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-38/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:10Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-39/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:10Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-40/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:10Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-41/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:10Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-42/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:10Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-43/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:10Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-44/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:11Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-45/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:11Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-46/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:11Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-47/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:11Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-48/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:11Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-49/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:11Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-50/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:11Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-51/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:11Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-52/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:11Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-53/index.html,200,5014,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:11Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-54/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:11Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-55/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:12Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-56/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:12Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-57/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:12Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-58/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:12Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-59/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:12Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-60/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:12Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-61/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:12Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-62/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:12Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-63/index.html,200,4604,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:12Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-64/index.html,200,4930,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:12Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-65/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:13Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-66/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:13Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-67/index.html,200,5190,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:13Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-68/index.html,200,5094,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:13Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-69/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:13Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-70/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:13Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-71/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:13Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-72/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:13Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-73/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:13Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-74/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:13Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-75/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:13Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-76/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:14Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-77/index.html,200,5082,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:14Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-78/index.html,200,4874,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:14Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-79/index.html,200,5250,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:14Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-80/index.html,200,5094,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:14Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-81/index.html,200,5038,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:14Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-82/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:14Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-83/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:14Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-84/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:14Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-85/index.html,200,4926,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:14Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-86/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:15Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-87/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:15Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-88/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:15Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-89/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:15Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-90/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:15Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-91/index.html,200,5510,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:15Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-92/index.html,200,5206,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:15Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-93/index.html,200,5066,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:15Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-94/index.html,200,5282,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:16Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-95/index.html,200,5202,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:16Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-96/index.html,200,5074,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:16Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-97/index.html,200,5294,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:16Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-98/index.html,200,5510,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:16Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-99/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:16Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-100/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:16Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-101/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:16Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-102/index.html,200,5562,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:16Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-103/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:16Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-104/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:17Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-105/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:17Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-106/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:17Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-107/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:17Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-108/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:17Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-109/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:17Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-110/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:17Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-111/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:17Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-112/index.html,200,4906,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:17Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-113/index.html,200,5014,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:18Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-114/index.html,200,4906,text/html,ok,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:18Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-115/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:18Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-116/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:18Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-117/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:18Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-118/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:18Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-119/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:18Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-120/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:18Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-121/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:18Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-122/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:18Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-123/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:18Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-124/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:18Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-125/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:19Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-126/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:19Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-127/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:19Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-128/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:19Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-129/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:19Z,AE-EHS-SCAN,https://www.ehs.gov.ae/app_content/legislations/php-law-en-130/index.html,404,1245,text/html,http_404,scan of EHS legislation flipbooks for title
+2026-11-09T11:05:28Z,AE-FDL-45-2021,https://u.ae/en/about-the-uae/digital-uae/data/data-protection-laws,200,73956,text/html; charset=utf-8,ok,probe
+2026-11-09T11:05:43Z,AE-NSAI-2031,https://ai.gov.ae/wp-content/uploads/2021/07/UAE-National-Strategy-for-Artificial-Intelligence-2031-AR.pdf,200,13841695,application/pdf,ok,probe
+2026-11-09T11:05:45Z,AE-NSAI-2031,https://ai.gov.ae/wp-content/uploads/2021/07/UAE-National-Strategy-for-Artificial-Intelligence-2031.pdf,200,13543206,application/pdf,ok,probe
+2026-11-09T11:05:47Z,AE-AI-CHARTER-2024,https://ai.gov.ae/wp-content/uploads/2024/07/UAEAI-Methaq-AR2-3.pdf,404,138183,text/html; charset=UTF-8,http_404,probe
+2026-11-09T11:05:49Z,AE-AI-CHARTER-2024,https://uaelegislation.gov.ae/en/policy/details/the-uae-charter-for-the-development-and-use-of-artificial-intelligence,403,5668,text/html; charset=UTF-8,blocked_403,probe
+2026-11-09T11:05:49Z,AE-FDL-45-2021,https://ai.gov.ae/personal-data-protection-law/,403,5656,text/html; charset=UTF-8,blocked_403,probe
+2026-11-09T11:05:50Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-ar-77/index.html,200,5262,text/html,ok,probe
+2026-11-09T11:06:18Z,AE-DOH-ADHICS,https://www.doh.gov.ae/-/media/78A323607B4C4ACAA58D0C9ACCFB3D59.ashx,,0,,error,probe ConnectError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)
+2026-11-09T11:06:28Z,AE-DOH-ADHICS,https://www.doh.gov.ae/-/media/032019_ADHICS.ashx,,0,,error,probe ConnectError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)
+2026-11-09T11:06:28Z,SA-SDAIA-AI-ETHICS,https://sdaia.gov.sa/en/SDAIA/about/Documents/ai-principles.pdf,,0,,error,probe RemoteProtocolError: Server disconnected without sending a response.
+2026-11-09T11:06:29Z,WHO-AI-LMM-2024,https://www.who.int/publications/i/item/9789240084759,200,89899,text/html; charset=utf-8,ok,probe
+2026-11-09T11:06:41Z,WHO-AI-LMM-2024,https://iris.who.int/server/api/core/bitstreams/e9e62c65-6045-481e-bd04-20e206bc5039/content,200,1219926,application/pdf;charset=UTF-8,ok,probe
+2026-11-09T11:06:46Z,WHO-AI-LMM-2024,https://iris.who.int/server/api/core/bitstreams/07adef0b-703f-436f-a016-dc935b770ff9/content,200,8003,image/jpeg;charset=UTF-8,not_pdf,probe
+2026-11-09T11:06:47Z,AE-DOH-ADHICS,https://www.doh.gov.ae/-/media/032019_ADHICS.ashx,,0,,error,probe ConnectError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)
+2026-11-09T11:06:57Z,EU-REG-2024-1689,http://publications.europa.eu/resource/celex/32024R1689,200,1262391,application/xhtml+xml;charset=UTF-8,ok,final_url=http://publications.europa.eu/resource/cellar/dc8116a1-3fe6-11ef-865a-01aa75ed71a1.0006.03/DOC_1
+2026-11-09T11:07:00Z,EU-REG-2016-679,http://publications.europa.eu/resource/celex/32016R0679,200,806864,application/xhtml+xml;charset=UTF-8,ok,final_url=http://publications.europa.eu/resource/cellar/3e485e15-11bd-11e6-ba9a-01aa75ed71a1.0006.03/DOC_1
+2026-11-09T11:07:01Z,EU-DIR-2022-2555,http://publications.europa.eu/resource/celex/32022L2555,200,702913,application/xhtml+xml;charset=UTF-8,ok,final_url=http://publications.europa.eu/resource/cellar/9b84d482-85bd-11ed-9887-01aa75ed71a1.0006.03/DOC_1
+2026-11-09T11:09:04Z,US-FDA-PCCP-2024,https://www.fda.gov/media/166704/download,200,666195,application/pdf,ok,probe
+2026-11-09T11:09:05Z,AE-CSC-NCS-2025,https://csc.gov.ae/en,200,315481,text/html;charset=UTF-8,ok,probe final_url=https://csc.gov.ae/en/home
+2026-11-09T11:09:06Z,AE-FL-2-2019,https://mohap.gov.ae/en/w/cabinet-resolution-no.-32-of-the-year-2020-concerning-the-executive-regulations-of-federal-law-no.2-of-the-year-2019-regarding-the-use-of-information-and-communication-technology-in-health-fields,200,306983,text/html;charset=UTF-8,ok,probe
+2026-11-09T11:09:14Z,AE-CR-32-2020,https://mohap.gov.ae/documents/20117/1421791/PHP-LAW-EN-95A.pdf/6641091b-c188-aaa0-6051-b5bc52572078?t=1739453209889,200,4215485,application/pdf,ok,probe
+2026-11-09T11:14:09Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-77/files/basic-html/page1.html,200,11082,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:09Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-77/files/basic-html/page2.html,200,10904,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:09Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-77/files/basic-html/page3.html,200,10328,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:09Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-77/files/basic-html/page4.html,200,10531,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:09Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-77/files/basic-html/page5.html,200,10594,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:09Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-77/files/basic-html/page6.html,200,10723,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:09Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-77/files/basic-html/page7.html,200,10278,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:09Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-77/files/basic-html/page8.html,200,10776,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:09Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-77/files/basic-html/page9.html,200,9006,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:09Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-77/files/basic-html/page10.html,404,1245,text/html,http_404,flipbook basic-html page
+2026-11-09T11:14:10Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-ar-77/files/basic-html/page1.html,200,8128,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:10Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-ar-77/files/basic-html/page2.html,200,7702,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:10Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-ar-77/files/basic-html/page3.html,200,7746,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:10Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-ar-77/files/basic-html/page4.html,200,7731,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:10Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-ar-77/files/basic-html/page5.html,200,7777,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:10Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-ar-77/files/basic-html/page6.html,200,7882,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:10Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-ar-77/files/basic-html/page7.html,200,7838,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:10Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-ar-77/files/basic-html/page8.html,200,7794,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:10Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-ar-77/files/basic-html/page9.html,200,7752,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:11Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-ar-77/files/basic-html/page10.html,200,7655,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:11Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-ar-77/files/basic-html/page11.html,200,7591,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:11Z,AE-FL-2-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-ar-77/files/basic-html/page12.html,404,1245,text/html,http_404,flipbook basic-html page
+2026-11-09T11:14:11Z,AE-CR-40-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-79/files/basic-html/page1.html,200,11293,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:11Z,AE-CR-40-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-79/files/basic-html/page2.html,200,11282,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:11Z,AE-CR-40-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-79/files/basic-html/page3.html,200,11321,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:12Z,AE-CR-40-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-79/files/basic-html/page4.html,200,11365,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:12Z,AE-CR-40-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-79/files/basic-html/page5.html,200,11100,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:12Z,AE-CR-40-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-79/files/basic-html/page6.html,200,11040,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:12Z,AE-CR-40-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-79/files/basic-html/page7.html,200,10861,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:12Z,AE-CR-40-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-79/files/basic-html/page8.html,200,11111,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:12Z,AE-CR-40-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-79/files/basic-html/page9.html,200,11489,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:12Z,AE-CR-40-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-79/files/basic-html/page10.html,200,11297,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:12Z,AE-CR-40-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-79/files/basic-html/page11.html,200,10430,text/html,ok,flipbook basic-html page
+2026-11-09T11:14:12Z,AE-CR-40-2019,https://www.ehs.gov.ae/app_content/legislations/php-law-en-79/files/basic-html/page12.html,404,1245,text/html,http_404,flipbook basic-html page
+2026-11-09T11:14:13Z,SG-IMDA-GENAI-2024,repo:../simulation/server/knowledge/InputDocs/AI_Strategies/Singapore_Model_AI_Governance_GenAI_2024.pdf,,608729,application/pdf,ok,copied from reference repo InputDocs
+2026-11-09T11:14:13Z,WHO-AI-HEALTH-2021,repo:../simulation/server/knowledge/InputDocs/AI_Strategies/WHO Content 9789240029200.pdf,,1969366,application/pdf,ok,copied from reference repo InputDocs
+2026-11-09T11:14:13Z,ITU-T-Y3172,repo:../simulation/server/knowledge/InputDocs/AI_Use_Cases/T-REC-Y.3172-201906-I!!PDF-E.pdf,,1145173,application/pdf,ok,copied from reference repo InputDocs
+2026-11-09T11:14:13Z,ITU-AIRF-2-2026,repo:../simulation/server/knowledge/InputDocs/AI_Strategies/AI_Ready_Framework_2025.pdf,,1109667,application/pdf,ok,copied from reference repo InputDocs
+2026-11-09T11:14:13Z,SA-NSDAI,repo:../simulation/server/knowledge/InputDocs/AI_Strategies/Saudi_Arabia_NSDAI.pdf,,5360551,application/pdf,ok,copied from reference repo InputDocs

@@ -14,6 +14,7 @@ retrieval_filters:
   jurisdiction: [AE, AE-AZ]
   sectors: [health, data, ai]
 retrieval_k: 8
+retrieval_focus: "patient safety AI system performance monitoring human oversight fallback continuity of care storage of health data outside the State"   # standing search interests (search terms, not legal claims)
 can_message: [legal_adviser, doh, data_office]
 action_vocabulary: [continue_triage, suspend_ai_triage, fallback_to_human, process_in_region,
                     notify_regulator, notify_patients, deploy_model_update, share_logs]

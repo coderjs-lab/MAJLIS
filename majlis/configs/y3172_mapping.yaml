@@ -1,0 +1,124 @@
+# MAJLIS mapped to ITU-T Y.3172, the ITU AI Readiness Framework 2.0 and domain policies.
+# Same shape as section 4 of the official submission template ("Mapping with ITU-T Y.3172, Readiness 2.0
+# Report, and domain-specific policies"). Every clause_id exists verbatim in kb/clauses/clauses.jsonl.
+# "Mapped to", not "compliant with". LA/HA/AE/GM are our proposed extension around the P node.
+rows:
+  - node: SRC
+    use_case: "Synthetic triage telemetry (under-triage rate by patient language), staged scenario injects, official legal texts"
+    majlis: "configs/scenarios/s1_failover.yaml (injects, state changes); kb/sources/manifest.csv (official sources, sha256)"
+    readiness:
+      - {dim: 13, note: "Digital infrastructure: the cloud-region outage and failover are the data source of the incident (Data Centers)"}
+      - {dim: 1, note: "Data collection sources: provenance recorded per document and per clause"}
+    documents:
+      - {clause_id: "AE-DOH-RAI-2025/sec-3/en", note: "3.1.2.1.4: post-deployment monitoring for performance degradation is the telemetry this node carries"}
+      - {clause_id: "AE-FL-2-2019/art-20/en", note: "Keeping health information and data"}
+    extension: false
+  - node: C
+    use_case: "The scenario engine delivers each inject only to its recipients, at its stage (information asymmetry)"
+    majlis: "majlis/engine.py (visibility rules); majlis/kb_fetch.py (logged downloads, access_log.csv)"
+    readiness:
+      - {dim: 7, note: "Coordination level: who learns what, and when, across institutions"}
+      - {dim: 3, note: "Cross-domain correlation: health, telecom, data and cyber facts arrive through different agencies"}
+    documents:
+      - {clause_id: "AE-FL-2-2019/art-10/en", note: "Coordination between the Ministry and the Health Authority"}
+    extension: false
+  - node: PP
+    use_case: "Clause-aware segmentation, metadata (binding, jurisdiction, sector), Arabic normalisation, bge-m3 embeddings"
+    majlis: "majlis/kb_build.py; majlis/retrieval.py (hybrid BM25 + dense, RRF)"
+    readiness:
+      - {dim: 1, note: "Dataset properties: clause-level, provenance and sha256 per record"}
+      - {dim: 4, note: "Local datasets: UAE federal and Abu Dhabi texts; Arabic handling (extraction failures logged)"}
+    documents:
+      - {clause_id: "AE-DOH-RAI-2025/sec-3.2.3.1.4/en", note: "Dataset quality requirements (no missing values, duplication, schema conflicts)"}
+    extension: false
+  - node: M
+    use_case: "LLM agents: AI triage (system under test), DoH, TDRA, UAE Data Office (simulated), Legal & Policy Adviser; GLM via API, no training"
+    majlis: "majlis/agents.py, majlis/llm.py, configs/agents/*.yaml; schema-validated JSON"
+    readiness:
+      - {dim: 5, note: "Level of integration of AI in workflows: AI inside clinical triage"}
+      - {dim: 8, note: "Collaboration with AI: institutions consult an AI adviser that must cite"}
+    documents:
+      - {clause_id: "AE-DOH-RAI-2025/sec-3/en", note: "3.1.3.1.1: validation against performance benchmarks before deployment"}
+      - {clause_id: "US-NIST-AI-100-1/sec-3.5/en", note: "Global practice: NIST AI RMF 3.5, explainable and interpretable AI outputs"}
+    extension: false
+  - node: P
+    use_case: "Policy gate: ALLOW / DENY 403 with the clause / ESCALATE to a human; citation checker verifies every quote verbatim"
+    majlis: "majlis/policy_gate.py, configs/policies/uae_rules.yaml, majlis/citation_check.py"
+    readiness:
+      - {dim: 10, note: "AI & Policies: policy sandbox; safety policies applied as code"}
+      - {dim: 6, note: "Human interface: safety integration via escalation"}
+    documents:
+      - {clause_id: "AE-FL-2-2019/art-13/en", note: "Health data outside the State only in cases prescribed by a Health Authority decision (DENY 403 at T2)"}
+      - {clause_id: "AE-DOH-RAI-2025/sec-3/en", note: "3.1.1.2.2 escalation protocols (ESCALATE at T1); 3.1.2.1.2 fallback for continuity of care"}
+      - {clause_id: "ITU-T-Y3172/sec-8.1-part1/en", note: "Y.3172 definition of the P node"}
+    extension: false
+  - node: D
+    use_case: "Typed blackboard: requests, advice, assessments (visible to others from the next stage), gate and human decisions"
+    majlis: "majlis/engine.py (message routing)"
+    readiness:
+      - {dim: 7, note: "Interoperability standards: typed institution-to-institution messages (see technical gap TG2)"}
+    documents:
+      - {clause_id: "AE-FL-2-2019/art-10/en", note: "Coordination duty between health authorities"}
+    extension: false
+  - node: SINK
+    use_case: "Simulated execution of allowed actions; human approver; gap register; after-action report"
+    majlis: "runs/<id>/ledger.jsonl, runs/<id>/aar.md, console"
+    readiness:
+      - {dim: 9, note: "Impacts of humans in AI integration: the exercise is a training tool for officials"}
+      - {dim: 6, note: "Human interface: Approve / Reject with the quoted clause"}
+    documents:
+      - {clause_id: "AE-DOH-RAI-2025/sec-3.1.7/en", note: "3.1.7.2.2 clinicians retain ultimate decision-making authority"}
+    extension: false
+  - node: MLFO
+    use_case: "Scenario engine orchestrates the run; the ML Intent is the scenario file plus the governance mode"
+    majlis: "majlis/engine.py, scripts/run_scenario.py"
+    readiness:
+      - {dim: 7, note: "Intent representations: scenario YAML as a declarative exercise intent"}
+    documents:
+      - {clause_id: "ITU-T-Y3172/sec-8.1-part3/en", note: "ML Intent as a declarative description of an ML application"}
+    extension: false
+  - node: SANDBOX
+    use_case: "The whole exercise is a sandbox: fictional provider, simulated institutions, synthetic telemetry"
+    majlis: "configs/scenarios/*, mock and live backends, replay"
+    readiness:
+      - {dim: 10, note: "Policy sandbox metric"}
+    documents:
+      - {clause_id: "ITU-T-Y3181/sec-2/en", note: "Y.3181 clause 3.1.3 (in this chunk): definition of the machine learning sandbox"}
+    extension: false
+  - node: LA
+    use_case: "Legal Applicability: which instrument applies to which actor (recorded per rule)"
+    majlis: "configs/policies/uae_rules.yaml (applicability)"
+    readiness:
+      - {dim: 10, note: "Policy evaluation"}
+      - {dim: 4, note: "Contextualisation: Abu Dhabi standard vs federal law"}
+    documents:
+      - {clause_id: "AE-DOH-RAI-2025/sec-1.2/en", note: "Scope of the DoH Responsible AI Standard (licensed entities deploying AI)"}
+      - {clause_id: "AE-FL-2-2019/art-2/en", note: "Scope of Federal Law 2/2019"}
+    extension: true
+  - node: HA
+    use_case: "Human Approval: ESCALATE (202) holds the action; Approve / Reject is recorded and final"
+    majlis: "engine approver modes (interactive / reject_all / approve_all); console approval tray"
+    readiness:
+      - {dim: 6, note: "Safety integration"}
+      - {dim: 9, note: "Expert intersection: clinicians decide"}
+    documents:
+      - {clause_id: "ITU-T-Y3173/sec-s8-part1/en", note: "Y.3173 NOTE 1: human decisions have the highest authority"}
+      - {clause_id: "AE-DOH-RAI-2025/sec-3/en", note: "3.1.1.2.1 human-in-the-loop or human-on-the-loop mechanisms"}
+    extension: true
+  - node: AE
+    use_case: "Audit Evidence: SHA-256 hash-chained ledger of every inject, retrieval, prompt, output, check and decision; replay"
+    majlis: "majlis/ledger.py, scripts/verify_ledger.py"
+    readiness:
+      - {dim: 10, note: "Policy evaluation: audit metrics"}
+    documents:
+      - {clause_id: "AE-DOH-RAI-2025/sec-3.1.7/en", note: "3.1.7.1.3 all decisions logged and traceable to a responsible party"}
+      - {clause_id: "AE-DOH-RAI-2025/sec-3.1.5.1.3/en", note: "3.1.6.2.3 end-to-end traceability logs of inputs, outputs and versions"}
+    extension: true
+  - node: GM
+    use_case: "Gap Miner: turns failures of the procedure (no rule, conflict, no owner, clock clash, standard silent) into gap records"
+    majlis: "majlis/gap_miner.py, configs/standards_coverage.yaml"
+    readiness:
+      - {dim: 10, note: "Policy extrapolation"}
+      - {dim: 7, note: "Coordination level"}
+    documents: []
+    extension: true

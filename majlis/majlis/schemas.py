@@ -94,6 +94,7 @@ class AgentConfig(BaseModel):
     mandate_sources: List[str] = Field(default_factory=list)  # clause_ids; empty => "unverified summary"
     retrieval_filters: RetrievalFilters = Field(default_factory=RetrievalFilters)
     retrieval_k: int = 8
+    retrieval_focus: Optional[str] = None       # standing interests, fused into every turn's retrieval
     can_message: List[str] = Field(default_factory=list)
     action_vocabulary: List[str] = Field(default_factory=list)
     output_language: Language = "en"
@@ -199,6 +200,7 @@ class Rule(BaseModel):
     unless_state: Dict[str, Any] = Field(default_factory=dict)
     decision: Literal["ALLOW", "DENY", "ESCALATE", "REQUIRE"]
     clause_ids: List[str] = Field(default_factory=list)
+    quote: Optional[str] = None                # verbatim excerpt of clause_ids[0]; checked by the gate
     message_en: str = ""
     message_ar: str = ""
 

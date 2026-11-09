@@ -13,6 +13,7 @@ retrieval_filters:
   jurisdiction: [AE, AE-AZ]
   sectors: [health, data, ai]
 retrieval_k: 8
+retrieval_focus: "patient safety human oversight escalation AI system monitoring validation transparency inform patients health data"   # standing search interests (search terms, not legal claims)
 can_message: [tdra, data_office, legal_adviser, triage]
 action_vocabulary: [request_suspension, require_human_fallback, request_incident_report,
                     require_revalidation, issue_guidance, request_patient_notification]

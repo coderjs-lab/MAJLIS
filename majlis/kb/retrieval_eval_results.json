@@ -1,0 +1,1812 @@
+{
+  "n_questions": 30,
+  "by_mode": {
+    "dense": {
+      "recall@5": 0.5333,
+      "mrr": 0.3689,
+      "recall@5_article": 0.6333,
+      "mrr_article": 0.4272
+    },
+    "bm25": {
+      "recall@5": 0.2,
+      "mrr": 0.1714,
+      "recall@5_article": 0.2333,
+      "mrr_article": 0.2092
+    },
+    "hybrid": {
+      "recall@5": 0.5,
+      "mrr": 0.3604,
+      "recall@5_article": 0.5667,
+      "mrr_article": 0.4187
+    }
+  },
+  "per_question": [
+    {
+      "qid": "Q01",
+      "lang": "en",
+      "topic": "health",
+      "gold": [
+        "AE-FL-2-2019/art-20/en"
+      ],
+      "dense": {
+        "top10": [
+          "AE-FL-2-2019/art-20/en",
+          "AE-CR-40-2019/art-21/para-1-c6/en",
+          "EU-REG-2024-1689/art-18/para-1/en",
+          "AE-CR-40-2019/art-21/para-1-c1/en",
+          "EU-REG-2024-1689/art-26/para-6/en",
+          "AE-CR-40-2019/art-21/para-1-c5/en",
+          "WHO-AI-LMM-2024/sec-2.3-part1/en",
+          "AE-FL-2-2019/art-13/en",
+          "EU-REG-2024-1689/art-19/para-1/en",
+          "EU-REG-2024-1689/art-23/para-5/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      },
+      "bm25": {
+        "top10": [
+          "AE-CR-40-2019/art-21/para-1-c5/en",
+          "AE-CR-40-2019/art-21/para-1-c6/en",
+          "WHO-AI-LMM-2024/sec-2.1-part2/en",
+          "WHO-AI-HEALTH-2021/sec-2-part2/en",
+          "WHO-AI-LMM-2024/sec-2.3-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part1/en",
+          "AE-CR-40-2019/art-3/para-1/en",
+          "WHO-AI-LMM-2024/sec-2.1-part1/en",
+          "WHO-AI-HEALTH-2021/sec-6.5-part3/en",
+          "AE-CR-40-2019/art-8/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "AE-CR-40-2019/art-21/para-1-c6/en",
+          "AE-CR-40-2019/art-21/para-1-c5/en",
+          "WHO-AI-LMM-2024/sec-2.3-part1/en",
+          "WHO-AI-LMM-2024/sec-2.1-part2/en",
+          "AE-CR-40-2019/art-21/para-1-c1/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part1/en",
+          "AE-DOH-RAI-2025/sec-3.2.1.4/en",
+          "AE-CR-40-2019/art-21/para-1-c4/en",
+          "AE-CR-40-2019/art-21/para-1-c3/en",
+          "WHO-AI-HEALTH-2021/sec-8.1-part2/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      }
+    },
+    {
+      "qid": "Q02",
+      "lang": "ar",
+      "topic": "health",
+      "gold": [
+        "AE-DOH-RAI-2025/sec-3.1.3.1.2/en"
+      ],
+      "dense": {
+        "top10": [
+          "WHO-AI-HEALTH-2021/sec-8.1-part1/en",
+          "WHO-AI-HEALTH-2021/sec-7.2-part2/en",
+          "WHO-AI-HEALTH-2021/sec-6.1-part5/en",
+          "WHO-AI-HEALTH-2021/sec-8.1-part2/en",
+          "WHO-AI-HEALTH-2021/sec-6.1-part4/en",
+          "US-FDA-PCCP-2025/sec-appendix-A-part9/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part1/en",
+          "WHO-AI-LMM-2024/sec-2.1-part6/en",
+          "WHO-AI-HEALTH-2021/sec-6.8-part2/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part2/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "bm25": {
+        "top10": [],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "WHO-AI-HEALTH-2021/sec-8.1-part1/en",
+          "WHO-AI-HEALTH-2021/sec-7.2-part2/en",
+          "WHO-AI-HEALTH-2021/sec-6.1-part5/en",
+          "WHO-AI-HEALTH-2021/sec-8.1-part2/en",
+          "WHO-AI-HEALTH-2021/sec-6.1-part4/en",
+          "US-FDA-PCCP-2025/sec-appendix-A-part9/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part1/en",
+          "WHO-AI-LMM-2024/sec-2.1-part6/en",
+          "WHO-AI-HEALTH-2021/sec-6.8-part2/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part2/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      }
+    },
+    {
+      "qid": "Q03",
+      "lang": "en",
+      "topic": "health",
+      "gold": [
+        "AE-DOH-RAI-2025/sec-3.1.7/en"
+      ],
+      "dense": {
+        "top10": [
+          "AE-DOH-RAI-2025/sec-3.4.1.2.4/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part1/en",
+          "AE-DOH-RAI-2025/sec-3.4/en",
+          "AE-DOH-RAI-2025/sec-1.2/en",
+          "AE-DOH-RAI-2025/sec-3.1.7/en",
+          "AE-DOH-RAI-2025/sec-5/en",
+          "AE-DOH-DGS-2025/sec-1-part2/en",
+          "WHO-AI-HEALTH-2021/sec-9.4-part1/en",
+          "WHO-AI-HEALTH-2021/sec-6.4-part4/en",
+          "WHO-AI-HEALTH-2021/sec-8.1-part1/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 0.2,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.2
+      },
+      "bm25": {
+        "top10": [
+          "AE-DOH-DGS-2025/sec-1-part2/en",
+          "AE-DOH-DGS-2025/sec-3.2/en",
+          "AE-DOH-DGS-2025/sec-s1/en",
+          "WHO-AI-HEALTH-2021/sec-s27-part4/en",
+          "AE-DOH-RAI-2025/sec-2/en",
+          "AE-DOH-DGS-2025/sec-3.2.4/en",
+          "AE-DOH-DGS-2025/sec-3.3.2/en",
+          "WHO-AI-HEALTH-2021/sec-5.3-part1/en",
+          "US-FDA-PCCP-2025/sec-appendix-A-part8/en",
+          "EU-REG-2024-1689/art-10/para-2/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "AE-DOH-DGS-2025/sec-1-part2/en",
+          "AE-DOH-DGS-2025/sec-3.2/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part1/en",
+          "AE-DOH-RAI-2025/sec-5/en",
+          "AE-DOH-RAI-2025/sec-1.2/en",
+          "AE-DOH-RAI-2025/sec-1/en",
+          "WHO-AI-HEALTH-2021/sec-5.4-part1/en",
+          "WHO-AI-HEALTH-2021/sec-6.4-part5/en",
+          "US-FDA-PCCP-2025/sec-s9-part3/en",
+          "WHO-AI-HEALTH-2021/sec-6.5-part3/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      }
+    },
+    {
+      "qid": "Q04",
+      "lang": "en",
+      "topic": "health",
+      "gold": [
+        "AE-DOH-RAI-2025/sec-1.2/en"
+      ],
+      "dense": {
+        "top10": [
+          "AE-DOH-RAI-2025/sec-1.2/en",
+          "AE-DOH-RAI-2025/sec-3.2.1.4/en",
+          "AE-DOH-RAI-2025/sec-3.4/en",
+          "AE-DOH-RAI-2025/sec-1/en",
+          "AE-DOH-RAI-2025/sec-3.4.1.2.4/en",
+          "AE-DOH-DGS-2025/sec-1-part2/en",
+          "AE-DOH-RAI-2025/sec-3.3/en",
+          "WHO-AI-HEALTH-2021/sec-9.3-part1/en",
+          "AE-DOH-RAI-2025/sec-5/en",
+          "US-FDA-PCCP-2025/sec-s8-part1/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      },
+      "bm25": {
+        "top10": [
+          "SG-IMDA-GENAI-2024/sec-s1/en",
+          "AE-DOH-RAI-2025/sec-2/en",
+          "AE-DOH-DGS-2025/sec-1-part2/en",
+          "AE-DOH-DGS-2025/sec-3.3.2/en",
+          "AE-DOH-DGS-2025/sec-s1/en",
+          "AE-DOH-RAI-2025/sec-1.2/en",
+          "SA-NSDAI/sec-s38-part3/en",
+          "AE-NSAI-2031/sec-s13/en",
+          "ITU-AIRF-2-2026/sec-s22-part2/en",
+          "AE-DOH-DGS-2025/sec-3.2/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.16666666666666666,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.16666666666666666
+      },
+      "hybrid": {
+        "top10": [
+          "AE-DOH-RAI-2025/sec-1.2/en",
+          "AE-DOH-DGS-2025/sec-1-part2/en",
+          "AE-DOH-RAI-2025/sec-1/en",
+          "AE-DOH-RAI-2025/sec-3.2.1.4/en",
+          "AE-DOH-DGS-2025/sec-s1/en",
+          "AE-DOH-RAI-2025/sec-5/en",
+          "AE-DOH-DGS-2025/sec-3.2/en",
+          "AE-DOH-DGS-2025/sec-3.2.4/en",
+          "AE-DOH-DGS-2025/sec-3.1/en",
+          "AE-DOH-RAI-2025/sec-2.5/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      }
+    },
+    {
+      "qid": "Q05",
+      "lang": "en",
+      "topic": "health",
+      "gold": [
+        "AE-DOH-RAI-2025/sec-3.1.4.3/en"
+      ],
+      "dense": {
+        "top10": [
+          "AE-DOH-RAI-2025/sec-3.1.4.3/en",
+          "AE-DOH-RAI-2025/sec-3.1.4.4.2/en",
+          "US-FDA-PCCP-2025/sec-appendix-A-part8/en",
+          "WHO-AI-HEALTH-2021/sec-s39-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s39-part2/en",
+          "WHO-AI-HEALTH-2021/sec-9.5-part4/en",
+          "US-FDA-PCCP-2025/sec-s9-part3/en",
+          "WHO-AI-HEALTH-2021/sec-6.7-part2/en",
+          "WHO-AI-HEALTH-2021/sec-6.7-part1/en",
+          "WHO-AI-LMM-2024/sec-99-part4/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      },
+      "bm25": {
+        "top10": [
+          "SG-IMDA-AGENTIC-2026/sec-s34-part1/en",
+          "SG-IMDA-AGENTIC-2026/sec-s30-part2/en",
+          "SG-IMDA-AGENTIC-2026/sec-s39-part4/en",
+          "SG-IMDA-AGENTIC-2026/sec-s10/en",
+          "SG-IMDA-AGENTIC-2026/sec-s32/en",
+          "US-FDA-PCCP-2025/sec-appendix-A-part8/en",
+          "SG-IMDA-GENAI-2024/sec-6/en",
+          "SG-IMDA-AGENTIC-2026/sec-s6/en",
+          "US-NIST-AI-100-1/sec-appendix-B-part1/en",
+          "WHO-AI-LMM-2024/sec-s12-part2/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "US-FDA-PCCP-2025/sec-appendix-A-part8/en",
+          "AE-DOH-RAI-2025/sec-3.1.4.3/en",
+          "SG-IMDA-GENAI-2024/sec-6/en",
+          "WHO-AI-HEALTH-2021/sec-9.5-part4/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part1/en",
+          "US-FDA-PCCP-2025/sec-appendix-A-part7/en",
+          "WHO-AI-HEALTH-2021/sec-6.1-part4/en",
+          "SG-IMDA-AGENTIC-2026/sec-3/en",
+          "SG-IMDA-AGENTIC-2026/sec-s34-part1/en",
+          "SG-IMDA-AGENTIC-2026/sec-s30-part2/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 0.5,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.5
+      }
+    },
+    {
+      "qid": "Q06",
+      "lang": "ar",
+      "topic": "health",
+      "gold": [
+        "AE-DOH-RAI-2025/sec-3.1.8/en"
+      ],
+      "dense": {
+        "top10": [
+          "AE-DOH-RAI-2025/sec-5/en",
+          "AE-DOH-RAI-2025/sec-1.2/en",
+          "AE-DOH-DGS-2025/sec-1-part2/en",
+          "AE-DOH-RAI-2025/sec-3.4/en",
+          "AE-DOH-RAI-2025/sec-3.2.1.4/en",
+          "AE-DOH-RAI-2025/sec-1/en",
+          "AE-DOH-DGS-2025/sec-3.2.4/en",
+          "AE-DOH-RAI-2025/sec-3.4.1.2.4/en",
+          "AE-DOH-DGS-2025/sec-3.3.2/en",
+          "WHO-AI-LMM-2024/sec-99-part4/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "bm25": {
+        "top10": [],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "AE-DOH-RAI-2025/sec-5/en",
+          "AE-DOH-RAI-2025/sec-1.2/en",
+          "AE-DOH-DGS-2025/sec-1-part2/en",
+          "AE-DOH-RAI-2025/sec-3.4/en",
+          "AE-DOH-RAI-2025/sec-3.2.1.4/en",
+          "AE-DOH-RAI-2025/sec-1/en",
+          "AE-DOH-DGS-2025/sec-3.2.4/en",
+          "AE-DOH-RAI-2025/sec-3.4.1.2.4/en",
+          "AE-DOH-DGS-2025/sec-3.3.2/en",
+          "WHO-AI-LMM-2024/sec-99-part4/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      }
+    },
+    {
+      "qid": "Q07",
+      "lang": "en",
+      "topic": "health",
+      "gold": [
+        "AE-DOH-RAI-2025/sec-3.3/en"
+      ],
+      "dense": {
+        "top10": [
+          "AE-DOH-RAI-2025/sec-1.2/en",
+          "AE-DOH-RAI-2025/sec-3.3/en",
+          "AE-DOH-RAI-2025/sec-3.4.1.2.4/en",
+          "AE-DOH-RAI-2025/sec-3.4/en",
+          "EU-REG-2024-1689/art-26/para-6/en",
+          "AE-DOH-RAI-2025/sec-3.2.1.4/en",
+          "AE-DOH-DGS-2025/sec-1-part2/en",
+          "AE-DOH-RAI-2025/sec-5/en",
+          "AE-DOH-RAI-2025/sec-2.5/en",
+          "AE-DOH-RAI-2025/sec-3.1.4/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 0.5,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.5
+      },
+      "bm25": {
+        "top10": [
+          "AE-DOH-DGS-2025/sec-s1/en",
+          "AE-DOH-DGS-2025/sec-1-part2/en",
+          "AE-DOH-RAI-2025/sec-2/en",
+          "EU-REG-2024-1689/sec-annex-VII-1/en",
+          "WHO-AI-HEALTH-2021/sec-7.4/en",
+          "AE-DOH-RAI-2025/sec-5/en",
+          "EU-REG-2016-679/art-30/para-2/en",
+          "SG-IMDA-AGENTIC-2026/sec-s35-part3/en",
+          "EU-REG-2024-1689/art-53/para-1/en",
+          "EU-DIR-2022-2555/art-28/para-6/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "AE-DOH-DGS-2025/sec-1-part2/en",
+          "AE-DOH-RAI-2025/sec-5/en",
+          "AE-DOH-RAI-2025/sec-2.5/en",
+          "EU-REG-2024-1689/art-53/para-1/en",
+          "EU-REG-2024-1689/art-16/en",
+          "AE-DOH-DGS-2025/sec-s1/en",
+          "EU-REG-2024-1689/sec-annex-VIII-1/en",
+          "AE-DOH-RAI-2025/sec-1/en",
+          "AE-DOH-DGS-2025/sec-3.3.2/en",
+          "AE-DOH-DGS-2025/sec-3.2.4/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      }
+    },
+    {
+      "qid": "Q08",
+      "lang": "ar",
+      "topic": "health",
+      "gold": [
+        "WHO-AI-HEALTH-2021/sec-s5-part3/en"
+      ],
+      "dense": {
+        "top10": [
+          "WHO-AI-HEALTH-2021/sec-6.5-part1/en",
+          "WHO-AI-HEALTH-2021/sec-4.5/en",
+          "WHO-AI-HEALTH-2021/sec-5.1-part1/en",
+          "WHO-AI-HEALTH-2021/sec-6.4-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s1-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s2-part2/en",
+          "WHO-AI-HEALTH-2021/sec-8.1-part1/en",
+          "WHO-AI-HEALTH-2021/sec-6.4-part5/en",
+          "WHO-AI-HEALTH-2021/sec-9.7-part1/en",
+          "WHO-AI-HEALTH-2021/sec-4.1-part1/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "bm25": {
+        "top10": [],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "WHO-AI-HEALTH-2021/sec-6.5-part1/en",
+          "WHO-AI-HEALTH-2021/sec-4.5/en",
+          "WHO-AI-HEALTH-2021/sec-5.1-part1/en",
+          "WHO-AI-HEALTH-2021/sec-6.4-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s1-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s2-part2/en",
+          "WHO-AI-HEALTH-2021/sec-8.1-part1/en",
+          "WHO-AI-HEALTH-2021/sec-6.4-part5/en",
+          "WHO-AI-HEALTH-2021/sec-9.7-part1/en",
+          "WHO-AI-HEALTH-2021/sec-4.1-part1/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      }
+    },
+    {
+      "qid": "Q09",
+      "lang": "en",
+      "topic": "health",
+      "gold": [
+        "WHO-AI-LMM-2024/sec-s12-part4/en"
+      ],
+      "dense": {
+        "top10": [
+          "WHO-AI-LMM-2024/sec-2.2-part3/en",
+          "WHO-AI-LMM-2024/sec-26/en",
+          "WHO-AI-HEALTH-2021/sec-8.3/en",
+          "WHO-AI-LMM-2024/sec-5.2-part7/en",
+          "WHO-AI-LMM-2024/sec-7-part3/en",
+          "WHO-AI-HEALTH-2021/sec-8.5-part2/en",
+          "WHO-AI-LMM-2024/sec-34/en",
+          "WHO-AI-LMM-2024/sec-2.2-part1/en",
+          "WHO-AI-LMM-2024/sec-2.2-part5/en",
+          "WHO-AI-LMM-2024/sec-99-part4/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "bm25": {
+        "top10": [
+          "WHO-AI-LMM-2024/sec-2.2-part5/en",
+          "WHO-AI-LMM-2024/sec-7-part3/en",
+          "WHO-AI-LMM-2024/sec-7-part2/en",
+          "WHO-AI-LMM-2024/sec-2.2-part3/en",
+          "WHO-AI-HEALTH-2021/sec-8.3/en",
+          "WHO-AI-HEALTH-2021/sec-8.5-part2/en",
+          "WHO-AI-LMM-2024/sec-2.1-part2/en",
+          "WHO-AI-LMM-2024/sec-6.4-part1/en",
+          "WHO-AI-LMM-2024/sec-5.1-part1/en",
+          "WHO-AI-LMM-2024/sec-s12-part4/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.1,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.1
+      },
+      "hybrid": {
+        "top10": [
+          "WHO-AI-LMM-2024/sec-2.2-part3/en",
+          "WHO-AI-LMM-2024/sec-7-part3/en",
+          "WHO-AI-HEALTH-2021/sec-8.3/en",
+          "WHO-AI-LMM-2024/sec-2.2-part5/en",
+          "WHO-AI-HEALTH-2021/sec-8.5-part2/en",
+          "WHO-AI-LMM-2024/sec-2.1-part2/en",
+          "WHO-AI-LMM-2024/sec-7-part2/en",
+          "WHO-AI-LMM-2024/sec-26/en",
+          "WHO-AI-LMM-2024/sec-7-part1/en",
+          "WHO-AI-LMM-2024/sec-5.2-part7/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      }
+    },
+    {
+      "qid": "Q10",
+      "lang": "en",
+      "topic": "health",
+      "gold": [
+        "AE-CR-40-2019/art-5/en"
+      ],
+      "dense": {
+        "top10": [
+          "AE-CR-40-2019/art-5/en",
+          "WHO-AI-HEALTH-2021/sec-6.4-part5/en",
+          "WHO-AI-HEALTH-2021/sec-8.1-part1/en",
+          "WHO-AI-HEALTH-2021/sec-8.1-part2/en",
+          "WHO-AI-HEALTH-2021/sec-8.2-part1/en",
+          "AE-DOH-RAI-2025/sec-3.2.1.4/en",
+          "WHO-AI-HEALTH-2021/sec-6.4-part1/en",
+          "WHO-AI-LMM-2024/sec-7-part3/en",
+          "WHO-AI-LMM-2024/sec-7-part1/en",
+          "US-FDA-PCCP-2025/sec-s8-part1/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      },
+      "bm25": {
+        "top10": [
+          "AE-CR-40-2019/art-5/en",
+          "WHO-AI-HEALTH-2021/sec-8.2-part2/en",
+          "WHO-AI-LMM-2024/sec-7-part2/en",
+          "AE-CR-40-2019/art-21/para-1-c5/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part2/en",
+          "WHO-AI-LMM-2024/sec-7-part3/en",
+          "WHO-AI-HEALTH-2021/sec-8.1-part1/en",
+          "WHO-AI-HEALTH-2021/sec-8/en",
+          "WHO-AI-HEALTH-2021/sec-8.3/en",
+          "WHO-AI-LMM-2024/sec-2.3-part1/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      },
+      "hybrid": {
+        "top10": [
+          "AE-CR-40-2019/art-5/en",
+          "WHO-AI-HEALTH-2021/sec-8.1-part1/en",
+          "WHO-AI-LMM-2024/sec-7-part3/en",
+          "WHO-AI-HEALTH-2021/sec-8.2-part2/en",
+          "WHO-AI-LMM-2024/sec-7-part1/en",
+          "WHO-AI-HEALTH-2021/sec-8.3/en",
+          "WHO-AI-LMM-2024/sec-7-part2/en",
+          "WHO-AI-HEALTH-2021/sec-8.2-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s35-part23/en",
+          "AE-NSAI-2031/sec-s27-part1/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      }
+    },
+    {
+      "qid": "Q11",
+      "lang": "ar",
+      "topic": "data",
+      "gold": [
+        "AE-FL-2-2019/art-13/en"
+      ],
+      "dense": {
+        "top10": [
+          "AE-FL-2-2019/art-13/en",
+          "AE-DOH-RAI-2025/sec-3.2.1.4/en",
+          "WHO-AI-HEALTH-2021/sec-s35-part13/en",
+          "WHO-AI-HEALTH-2021/sec-9.1-part3/en",
+          "WHO-AI-HEALTH-2021/sec-9.1-part5/en",
+          "AE-CR-40-2019/art-21/para-1-c1/en",
+          "WHO-AI-HEALTH-2021/sec-6.3-part4/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part2/en",
+          "WHO-AI-HEALTH-2021/sec-9.2-part3/en",
+          "AE-NSAI-2031/sec-s50/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      },
+      "bm25": {
+        "top10": [],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "AE-FL-2-2019/art-13/en",
+          "AE-DOH-RAI-2025/sec-3.2.1.4/en",
+          "WHO-AI-HEALTH-2021/sec-s35-part13/en",
+          "WHO-AI-HEALTH-2021/sec-9.1-part3/en",
+          "WHO-AI-HEALTH-2021/sec-9.1-part5/en",
+          "AE-CR-40-2019/art-21/para-1-c1/en",
+          "WHO-AI-HEALTH-2021/sec-6.3-part4/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part2/en",
+          "WHO-AI-HEALTH-2021/sec-9.2-part3/en",
+          "AE-NSAI-2031/sec-s50/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      }
+    },
+    {
+      "qid": "Q12",
+      "lang": "en",
+      "topic": "data",
+      "gold": [
+        "AE-FL-2-2019/art-16/en"
+      ],
+      "dense": {
+        "top10": [
+          "AE-DOH-RAI-2025/sec-3.2.1.4/en",
+          "WHO-AI-HEALTH-2021/sec-9.1-part3/en",
+          "AE-NSAI-2031/sec-s51/en",
+          "WHO-AI-HEALTH-2021/sec-s35-part13/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s27-part3/en",
+          "WHO-AI-HEALTH-2021/sec-s27-part4/en",
+          "AE-FL-2-2019/art-16/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part2/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part1/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.125,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.125
+      },
+      "bm25": {
+        "top10": [
+          "AE-CR-40-2019/art-21/para-1-c5/en",
+          "WHO-AI-HEALTH-2021/sec-s27-part4/en",
+          "AE-NSAI-2031/sec-s44/en",
+          "WHO-AI-HEALTH-2021/sec-9.1-part3/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part1/en",
+          "AE-NSAI-2031/sec-s48/en",
+          "AE-FL-2-2019/art-16/en",
+          "AE-NSAI-2031/sec-s27-part1/en",
+          "WHO-AI-LMM-2024/sec-2.2-part3/en",
+          "AE-CR-40-2019/art-3/para-1/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.14285714285714285,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.14285714285714285
+      },
+      "hybrid": {
+        "top10": [
+          "WHO-AI-HEALTH-2021/sec-9.1-part3/en",
+          "WHO-AI-HEALTH-2021/sec-s27-part4/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part1/en",
+          "AE-FL-2-2019/art-16/en",
+          "AE-DOH-RAI-2025/sec-3.2.1.4/en",
+          "AE-NSAI-2031/sec-s27-part1/en",
+          "WHO-AI-HEALTH-2021/sec-7.2-part1/en",
+          "AE-NSAI-2031/sec-s48/en",
+          "AE-CR-40-2019/art-21/para-1-c1/en",
+          "AE-CR-40-2019/art-6/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 0.25,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.25
+      }
+    },
+    {
+      "qid": "Q13",
+      "lang": "en",
+      "topic": "data",
+      "gold": [
+        "AE-DOH-DGS-2025/sec-3.4.7/en"
+      ],
+      "dense": {
+        "top10": [
+          "AE-DOH-DGS-2025/sec-1-part2/en",
+          "AE-DOH-DGS-2025/sec-3.2/en",
+          "AE-DOH-DGS-2025/sec-3.4.7/en",
+          "AE-DOH-DGS-2025/sec-3.3.2/en",
+          "AE-DOH-DGS-2025/sec-s1/en",
+          "AE-DOH-RAI-2025/sec-2.5/en",
+          "AE-DOH-DGS-2025/sec-4-part1/en",
+          "AE-DOH-DGS-2025/sec-1-part1/en",
+          "AE-DOH-DGS-2025/sec-3.2.4/en",
+          "AE-DOH-RAI-2025/sec-3.2.1.4/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 0.3333333333333333,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.3333333333333333
+      },
+      "bm25": {
+        "top10": [
+          "AE-DOH-DGS-2025/sec-3.4.7/en",
+          "AE-DOH-DGS-2025/sec-3.2/en",
+          "AE-DOH-DGS-2025/sec-1-part2/en",
+          "AE-DOH-DGS-2025/sec-1-part1/en",
+          "AE-DOH-DGS-2025/sec-3.3.2/en",
+          "AE-DOH-RAI-2025/sec-5/en",
+          "AE-DOH-RAI-2025/sec-2/en",
+          "AE-DOH-DGS-2025/sec-s1/en",
+          "SG-IMDA-AGENTIC-2026/sec-s42/en",
+          "AE-DOH-DGS-2025/sec-3.2.4/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      },
+      "hybrid": {
+        "top10": [
+          "AE-DOH-DGS-2025/sec-3.4.7/en",
+          "AE-DOH-DGS-2025/sec-1-part2/en",
+          "AE-DOH-DGS-2025/sec-3.2/en",
+          "AE-DOH-DGS-2025/sec-3.3.2/en",
+          "AE-DOH-DGS-2025/sec-1-part1/en",
+          "AE-DOH-DGS-2025/sec-s1/en",
+          "AE-DOH-RAI-2025/sec-5/en",
+          "AE-DOH-RAI-2025/sec-2.5/en",
+          "AE-DOH-DGS-2025/sec-3.2.4/en",
+          "AE-DOH-RAI-2025/sec-1.2/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      }
+    },
+    {
+      "qid": "Q14",
+      "lang": "en",
+      "topic": "data",
+      "gold": [
+        "AE-DOH-RAI-2025/sec-3.1.4.4.2/en"
+      ],
+      "dense": {
+        "top10": [
+          "AE-DOH-RAI-2025/sec-3.1.4.4.2/en",
+          "WHO-AI-HEALTH-2021/sec-s38-part4/en",
+          "EU-REG-2024-1689/art-59/para-1/en",
+          "WHO-AI-HEALTH-2021/sec-5.1-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s38-part5/en",
+          "AE-DOH-RAI-2025/sec-3.1.4/en",
+          "WHO-AI-HEALTH-2021/sec-s37-part4/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s5-part3/en",
+          "AE-DOH-RAI-2025/sec-3.1.5.1.3/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      },
+      "bm25": {
+        "top10": [
+          "AE-CR-40-2019/art-21/para-1-c6/en",
+          "WHO-AI-HEALTH-2021/sec-6.5-part3/en",
+          "AE-DOH-RAI-2025/sec-3.1.4.4.2/en",
+          "ITU-AIRF-2-2026/sec-s27-part1/en",
+          "WHO-AI-LMM-2024/sec-6.1/en",
+          "AE-CR-40-2019/art-21/para-1-c5/en",
+          "WHO-AI-LMM-2024/sec-3.1-part4/en",
+          "AE-DOH-RAI-2025/sec-3.1.8/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part6/en",
+          "AE-CR-40-2019/art-21/para-1-c4/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 0.3333333333333333,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.3333333333333333
+      },
+      "hybrid": {
+        "top10": [
+          "AE-DOH-RAI-2025/sec-3.1.4.4.2/en",
+          "WHO-AI-HEALTH-2021/sec-s37-part4/en",
+          "AE-DOH-RAI-2025/sec-3.1.5.1.3/en",
+          "WHO-AI-HEALTH-2021/sec-s38-part4/en",
+          "SG-IMDA-GENAI-2024/sec-2-part1/en",
+          "AE-DOH-RAI-2025/sec-3.1.8/en",
+          "AE-DOH-RAI-2025/sec-3.2.1.4/en",
+          "US-FDA-PCCP-2025/sec-appendix-A-part9/en",
+          "WHO-AI-HEALTH-2021/sec-5.3-part1/en",
+          "SG-IMDA-GENAI-2024/sec-3-part1/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      }
+    },
+    {
+      "qid": "Q15",
+      "lang": "en",
+      "topic": "data",
+      "gold": [
+        "EU-REG-2016-679/art-17/para-1/en"
+      ],
+      "dense": {
+        "top10": [
+          "WHO-AI-HEALTH-2021/sec-s13-part2/en",
+          "WHO-AI-HEALTH-2021/sec-s35-part13/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part4/en",
+          "WHO-AI-LMM-2024/sec-3.2-part2/en",
+          "WHO-AI-HEALTH-2021/sec-9.1-part3/en",
+          "WHO-AI-HEALTH-2021/sec-9.1-part4/en",
+          "EU-REG-2016-679/art-17/para-1/en",
+          "AE-FL-2-2019/art-16/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part5/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.125,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.125
+      },
+      "bm25": {
+        "top10": [
+          "WHO-AI-LMM-2024/sec-2.2-part3/en",
+          "WHO-AI-LMM-2024/sec-3.2-part1/en",
+          "SG-IMDA-AGENTIC-2026/sec-s33-part5/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part2/en",
+          "WHO-AI-LMM-2024/sec-3.1-part4/en",
+          "WHO-AI-LMM-2024/sec-3.2-part2/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part1/en",
+          "WHO-AI-HEALTH-2021/sec-6.9-part3/en",
+          "WHO-AI-LMM-2024/sec-2.2-part4/en",
+          "EU-DIR-2022-2555/art-12/para-2/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "WHO-AI-HEALTH-2021/sec-s13-part2/en",
+          "WHO-AI-LMM-2024/sec-3.2-part2/en",
+          "WHO-AI-LMM-2024/sec-3.2-part1/en",
+          "WHO-AI-HEALTH-2021/sec-9.1-part4/en",
+          "WHO-AI-HEALTH-2021/sec-6.9-part3/en",
+          "WHO-AI-LMM-2024/sec-2.2-part3/en",
+          "AE-FL-2-2019/art-16/en",
+          "WHO-AI-HEALTH-2021/sec-9.1-part3/en",
+          "WHO-AI-LMM-2024/sec-7-part2/en",
+          "WHO-AI-HEALTH-2021/sec-6.5-part4/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      }
+    },
+    {
+      "qid": "Q16",
+      "lang": "en",
+      "topic": "data",
+      "gold": [
+        "EU-REG-2016-679/art-35/para-3/en"
+      ],
+      "dense": {
+        "top10": [
+          "WHO-AI-LMM-2024/sec-3.3-part4/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part4/en",
+          "WHO-AI-LMM-2024/sec-3.2-part2/en",
+          "WHO-AI-HEALTH-2021/sec-9.1-part3/en",
+          "EU-REG-2016-679/art-9/para-2-h/en",
+          "WHO-AI-LMM-2024/sec-5.2-part3/en",
+          "WHO-AI-HEALTH-2021/sec-9.1-part7/en",
+          "WHO-AI-LMM-2024/sec-4.2-part2/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part2/en",
+          "WHO-AI-HEALTH-2021/sec-9.1-part4/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "bm25": {
+        "top10": [
+          "WHO-AI-HEALTH-2021/sec-3.2-part1/en",
+          "WHO-AI-LMM-2024/sec-3.3-part7/en",
+          "WHO-AI-HEALTH-2021/sec-s30-part1/en",
+          "WHO-AI-LMM-2024/sec-2.1-part2/en",
+          "EU-REG-2016-679/art-11/para-1/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part1/en",
+          "WHO-AI-LMM-2024/sec-2.1-part1/en",
+          "WHO-AI-LMM-2024/sec-3.2-part2/en",
+          "EU-REG-2016-679/art-13/para-2/en",
+          "WHO-AI-LMM-2024/sec-s11-part2/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "WHO-AI-LMM-2024/sec-3.2-part2/en",
+          "WHO-AI-LMM-2024/sec-3.3-part4/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part4/en",
+          "WHO-AI-HEALTH-2021/sec-s35-part14/en",
+          "WHO-AI-HEALTH-2021/sec-9.1-part3/en",
+          "WHO-AI-LMM-2024/sec-5.2-part5/en",
+          "WHO-AI-HEALTH-2021/sec-6.9-part4/en",
+          "WHO-AI-LMM-2024/sec-4.2-part2/en",
+          "WHO-AI-LMM-2024/sec-3.3-part5/en",
+          "WHO-AI-HEALTH-2021/sec-7.3-part2/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      }
+    },
+    {
+      "qid": "Q17",
+      "lang": "en",
+      "topic": "telecom_cyber",
+      "gold": [
+        "EU-DIR-2022-2555/art-23/para-4/en"
+      ],
+      "dense": {
+        "top10": [
+          "SG-IMDA-GENAI-2024/sec-s5/en",
+          "EU-REG-2024-1689/art-73/para-3/en",
+          "EU-REG-2024-1689/art-73/para-2/en",
+          "EU-DIR-2022-2555/art-23/para-4/en",
+          "EU-DIR-2022-2555/art-9/para-5/en",
+          "EU-REG-2024-1689/art-73/para-4/en",
+          "EU-DIR-2022-2555/art-18/para-1/en",
+          "WHO-AI-HEALTH-2021/sec-s35-part16/en",
+          "EU-DIR-2022-2555/art-16/para-5/en",
+          "EU-DIR-2022-2555/art-40/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 0.25,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.25
+      },
+      "bm25": {
+        "top10": [
+          "EU-DIR-2022-2555/art-23/para-4/en",
+          "WHO-AI-LMM-2024/sec-1-part4/en",
+          "EU-REG-2016-679/art-33/para-1/en",
+          "WHO-AI-HEALTH-2021/sec-8.1-part2/en",
+          "WHO-AI-LMM-2024/sec-3.1-part3/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part1/en",
+          "WHO-AI-HEALTH-2021/sec-3.4-part3/en",
+          "WHO-AI-HEALTH-2021/sec-6.4-part4/en",
+          "EU-REG-2024-1689/art-73/para-2/en",
+          "WHO-AI-HEALTH-2021/sec-8.5-part1/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      },
+      "hybrid": {
+        "top10": [
+          "EU-DIR-2022-2555/art-23/para-4/en",
+          "EU-REG-2024-1689/art-73/para-2/en",
+          "EU-REG-2016-679/art-33/para-1/en",
+          "WHO-AI-HEALTH-2021/sec-3.4-part3/en",
+          "EU-DIR-2022-2555/art-23/para-5/en",
+          "EU-DIR-2022-2555/art-18/para-2/en",
+          "SG-IMDA-GENAI-2024/sec-s5/en",
+          "WHO-AI-LMM-2024/sec-1-part4/en",
+          "EU-REG-2024-1689/art-73/para-3/en",
+          "WHO-AI-HEALTH-2021/sec-8.1-part2/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      }
+    },
+    {
+      "qid": "Q18",
+      "lang": "ar",
+      "topic": "telecom_cyber",
+      "gold": [
+        "EU-DIR-2022-2555/art-23/para-3/en"
+      ],
+      "dense": {
+        "top10": [
+          "SG-IMDA-GENAI-2024/sec-s5/en",
+          "EU-DIR-2022-2555/art-23/para-10/en",
+          "EU-DIR-2022-2555/art-16/para-5/en",
+          "EU-REG-2024-1689/art-73/para-10/en",
+          "EU-REG-2024-1689/art-73/para-1/en",
+          "EU-DIR-2022-2555/art-23/para-4/en",
+          "EU-DIR-2022-2555/art-16/para-2/en",
+          "EU-DIR-2022-2555/art-6/para-7/en",
+          "EU-REG-2024-1689/art-73/para-2/en",
+          "EU-DIR-2022-2555/art-23/para-1/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.5
+      },
+      "bm25": {
+        "top10": [],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "SG-IMDA-GENAI-2024/sec-s5/en",
+          "EU-DIR-2022-2555/art-23/para-10/en",
+          "EU-DIR-2022-2555/art-16/para-5/en",
+          "EU-REG-2024-1689/art-73/para-10/en",
+          "EU-REG-2024-1689/art-73/para-1/en",
+          "EU-DIR-2022-2555/art-23/para-4/en",
+          "EU-DIR-2022-2555/art-16/para-2/en",
+          "EU-DIR-2022-2555/art-6/para-7/en",
+          "EU-REG-2024-1689/art-73/para-2/en",
+          "EU-DIR-2022-2555/art-23/para-1/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.5
+      }
+    },
+    {
+      "qid": "Q19",
+      "lang": "en",
+      "topic": "telecom_cyber",
+      "gold": [
+        "EU-DIR-2022-2555/art-21/para-2/en"
+      ],
+      "dense": {
+        "top10": [
+          "EU-DIR-2022-2555/art-21/para-1/en",
+          "EU-DIR-2022-2555/art-12/para-2/en",
+          "EU-DIR-2022-2555/sec-annex-I-7/en",
+          "EU-DIR-2022-2555/art-24/para-1/en",
+          "EU-REG-2016-679/art-32/para-1/en",
+          "EU-DIR-2022-2555/art-21/para-3/en",
+          "EU-DIR-2022-2555/art-7/para-2/en",
+          "EU-DIR-2022-2555/art-16/para-5/en",
+          "AE-NSAI-2031/sec-s50/en",
+          "EU-DIR-2022-2555/art-16/para-3/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      },
+      "bm25": {
+        "top10": [
+          "EU-DIR-2022-2555/art-21/para-3/en",
+          "EU-DIR-2022-2555/sec-annex-I-6/en",
+          "WHO-AI-LMM-2024/sec-s20-part2/en",
+          "EU-DIR-2022-2555/art-29/para-2/en",
+          "EU-DIR-2022-2555/art-21/para-2/en",
+          "SG-IMDA-AGENTIC-2026/sec-s30-part2/en",
+          "EU-REG-2024-1689/art-111/para-2/en",
+          "US-NIST-AI-100-1/sec-5.2-part2/en",
+          "EU-DIR-2022-2555/sec-annex-I-2/en",
+          "US-NIST-AI-100-1/sec-GOVERN-4/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 0.2,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      },
+      "hybrid": {
+        "top10": [
+          "EU-DIR-2022-2555/art-21/para-3/en",
+          "EU-DIR-2022-2555/sec-annex-I-6/en",
+          "EU-DIR-2022-2555/sec-annex-I-2/en",
+          "EU-DIR-2022-2555/art-21/para-2/en",
+          "SG-IMDA-GENAI-2024/sec-3-part1/en",
+          "EU-DIR-2022-2555/art-29/para-2/en",
+          "AE-DOH-RAI-2025/sec-3.1.4.4.2/en",
+          "EU-DIR-2022-2555/art-22/para-1/en",
+          "EU-DIR-2022-2555/sec-annex-I-4/en",
+          "EU-DIR-2022-2555/sec-annex-I-5/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 0.25,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      }
+    },
+    {
+      "qid": "Q20",
+      "lang": "en",
+      "topic": "telecom_cyber",
+      "gold": [
+        "EU-REG-2024-1689/art-73/para-2/en"
+      ],
+      "dense": {
+        "top10": [
+          "SG-IMDA-GENAI-2024/sec-s5/en",
+          "EU-REG-2024-1689/art-111/para-2/en",
+          "EU-REG-2024-1689/art-60/para-7/en",
+          "EU-REG-2024-1689/art-73/para-1/en",
+          "EU-REG-2024-1689/art-20/para-1/en",
+          "EU-REG-2024-1689/art-73/para-4/en",
+          "EU-REG-2024-1689/art-16/en",
+          "EU-REG-2024-1689/art-25/para-1/en",
+          "EU-REG-2024-1689/art-79/para-5/en",
+          "EU-REG-2024-1689/art-79/para-2/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.25
+      },
+      "bm25": {
+        "top10": [
+          "SG-IMDA-GENAI-2024/sec-s5/en",
+          "EU-REG-2024-1689/art-17/para-1/en",
+          "EU-REG-2024-1689/art-73/para-9/en",
+          "EU-REG-2024-1689/art-73/para-10/en",
+          "EU-REG-2024-1689/art-13/para-3/en",
+          "WHO-AI-LMM-2024/sec-5.2-part2/en",
+          "EU-REG-2024-1689/art-26/para-5/en",
+          "EU-REG-2024-1689/art-27/para-1/en",
+          "EU-REG-2024-1689/art-14/para-4/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part1/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.3333333333333333
+      },
+      "hybrid": {
+        "top10": [
+          "SG-IMDA-GENAI-2024/sec-s5/en",
+          "EU-REG-2024-1689/art-73/para-10/en",
+          "EU-REG-2024-1689/art-73/para-1/en",
+          "EU-REG-2024-1689/art-26/para-5/en",
+          "EU-REG-2024-1689/art-73/para-9/en",
+          "EU-REG-2024-1689/art-16/en",
+          "EU-REG-2024-1689/art-25/para-1/en",
+          "EU-REG-2024-1689/art-17/para-1/en",
+          "EU-REG-2024-1689/art-60/para-7/en",
+          "EU-REG-2024-1689/art-75/para-3/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.5
+      }
+    },
+    {
+      "qid": "Q21",
+      "lang": "ar",
+      "topic": "telecom_cyber",
+      "gold": [
+        "EU-REG-2024-1689/art-73/para-4/en"
+      ],
+      "dense": {
+        "top10": [
+          "SG-IMDA-GENAI-2024/sec-s5/en",
+          "EU-REG-2024-1689/art-73/para-4/en",
+          "EU-REG-2024-1689/art-26/para-10/en",
+          "EU-REG-2024-1689/art-73/para-10/en",
+          "EU-REG-2024-1689/art-73/para-1/en",
+          "EU-REG-2024-1689/art-26/para-11/en",
+          "EU-REG-2024-1689/art-47/para-1/en",
+          "EU-REG-2024-1689/art-6/para-5/en",
+          "EU-REG-2024-1689/art-26/para-8/en",
+          "EU-REG-2024-1689/art-16/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 0.5,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.5
+      },
+      "bm25": {
+        "top10": [],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "SG-IMDA-GENAI-2024/sec-s5/en",
+          "EU-REG-2024-1689/art-73/para-4/en",
+          "EU-REG-2024-1689/art-26/para-10/en",
+          "EU-REG-2024-1689/art-73/para-10/en",
+          "EU-REG-2024-1689/art-73/para-1/en",
+          "EU-REG-2024-1689/art-26/para-11/en",
+          "EU-REG-2024-1689/art-47/para-1/en",
+          "EU-REG-2024-1689/art-6/para-5/en",
+          "EU-REG-2024-1689/art-26/para-8/en",
+          "EU-REG-2024-1689/art-16/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 0.5,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.5
+      }
+    },
+    {
+      "qid": "Q22",
+      "lang": "en",
+      "topic": "ai_governance",
+      "gold": [
+        "EU-REG-2024-1689/art-14/para-4/en"
+      ],
+      "dense": {
+        "top10": [
+          "EU-REG-2024-1689/art-14/para-4/en",
+          "EU-REG-2024-1689/art-14/para-1/en",
+          "EU-REG-2024-1689/art-15/para-5/en",
+          "US-NIST-AI-100-1/sec-s6-part1/en",
+          "EU-REG-2024-1689/art-15/para-4/en",
+          "US-NIST-AI-100-1/sec-1.2.3-part1/en",
+          "US-NIST-AI-100-1/sec-3.2/en",
+          "EU-REG-2024-1689/art-16/en",
+          "EU-REG-2024-1689/art-15/para-1/en",
+          "WHO-AI-HEALTH-2021/sec-5.2/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      },
+      "bm25": {
+        "top10": [
+          "WHO-AI-LMM-2024/sec-73/en",
+          "WHO-AI-HEALTH-2021/sec-5.5-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s38-part3/en",
+          "WHO-AI-HEALTH-2021/sec-6.4-part5/en",
+          "SG-IMDA-AGENTIC-2026/sec-s31-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s38-part5/en",
+          "WHO-AI-LMM-2024/sec-8-part3/en",
+          "WHO-AI-HEALTH-2021/sec-9.1-part2/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part1/en",
+          "SG-IMDA-AGENTIC-2026/sec-s20-part4/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "EU-REG-2024-1689/art-14/para-4/en",
+          "EU-REG-2024-1689/art-6/para-3/en",
+          "EU-REG-2024-1689/art-17/para-1/en",
+          "EU-REG-2024-1689/art-9/para-2/en",
+          "WHO-AI-LMM-2024/sec-73/en",
+          "WHO-AI-HEALTH-2021/sec-5.5-part1/en",
+          "EU-REG-2024-1689/art-14/para-1/en",
+          "WHO-AI-HEALTH-2021/sec-s38-part3/en",
+          "EU-REG-2024-1689/art-15/para-5/en",
+          "WHO-AI-HEALTH-2021/sec-6.4-part5/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      }
+    },
+    {
+      "qid": "Q23",
+      "lang": "ar",
+      "topic": "ai_governance",
+      "gold": [
+        "EU-REG-2024-1689/art-50/para-1/en"
+      ],
+      "dense": {
+        "top10": [
+          "WHO-AI-HEALTH-2021/sec-s15-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part2/en",
+          "WHO-AI-HEALTH-2021/sec-6.5-part4/en",
+          "WHO-AI-HEALTH-2021/sec-s5-part1/en",
+          "EU-REG-2024-1689/art-50/para-1/en",
+          "WHO-AI-HEALTH-2021/sec-6.5-part2/en",
+          "WHO-AI-HEALTH-2021/sec-s5-part3/en",
+          "WHO-AI-HEALTH-2021/sec-8.1-part1/en",
+          "WHO-AI-LMM-2024/sec-99-part4/en",
+          "WHO-AI-HEALTH-2021/sec-5.2/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 0.2,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.2
+      },
+      "bm25": {
+        "top10": [],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "WHO-AI-HEALTH-2021/sec-s15-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part2/en",
+          "WHO-AI-HEALTH-2021/sec-6.5-part4/en",
+          "WHO-AI-HEALTH-2021/sec-s5-part1/en",
+          "EU-REG-2024-1689/art-50/para-1/en",
+          "WHO-AI-HEALTH-2021/sec-6.5-part2/en",
+          "WHO-AI-HEALTH-2021/sec-s5-part3/en",
+          "WHO-AI-HEALTH-2021/sec-8.1-part1/en",
+          "WHO-AI-LMM-2024/sec-99-part4/en",
+          "WHO-AI-HEALTH-2021/sec-5.2/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 0.2,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.2
+      }
+    },
+    {
+      "qid": "Q24",
+      "lang": "en",
+      "topic": "ai_governance",
+      "gold": [
+        "SG-IMDA-AGENTIC-2026/sec-s21/en"
+      ],
+      "dense": {
+        "top10": [
+          "SG-IMDA-AGENTIC-2026/sec-s30-part1/en",
+          "SG-IMDA-AGENTIC-2026/sec-s9-part2/en",
+          "SG-IMDA-AGENTIC-2026/sec-s20-part2/en",
+          "SG-IMDA-AGENTIC-2026/sec-s34-part3/en",
+          "SG-IMDA-AGENTIC-2026/sec-s35-part1/en",
+          "SG-IMDA-AGENTIC-2026/sec-s23/en",
+          "SG-IMDA-AGENTIC-2026/sec-s39-part3/en",
+          "SG-IMDA-AGENTIC-2026/sec-s30-part2/en",
+          "SG-IMDA-AGENTIC-2026/sec-3/en",
+          "SG-IMDA-AGENTIC-2026/sec-s38/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "bm25": {
+        "top10": [
+          "SG-IMDA-AGENTIC-2026/sec-s39-part3/en",
+          "SG-IMDA-AGENTIC-2026/sec-s20-part4/en",
+          "SG-IMDA-AGENTIC-2026/sec-s38/en",
+          "SG-IMDA-AGENTIC-2026/sec-s39-part2/en",
+          "WHO-AI-HEALTH-2021/sec-s27-part1/en",
+          "SG-IMDA-AGENTIC-2026/sec-s31-part2/en",
+          "SG-IMDA-AGENTIC-2026/sec-s20-part1/en",
+          "SG-IMDA-AGENTIC-2026/sec-s20-part3/en",
+          "SG-IMDA-AGENTIC-2026/sec-s31-part1/en",
+          "WHO-AI-HEALTH-2021/sec-9.3-part1/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "SG-IMDA-AGENTIC-2026/sec-s39-part3/en",
+          "SG-IMDA-AGENTIC-2026/sec-s38/en",
+          "SG-IMDA-AGENTIC-2026/sec-s20-part4/en",
+          "SG-IMDA-AGENTIC-2026/sec-s34-part3/en",
+          "SG-IMDA-AGENTIC-2026/sec-s20-part1/en",
+          "SG-IMDA-AGENTIC-2026/sec-3/en",
+          "SG-IMDA-AGENTIC-2026/sec-s30-part1/en",
+          "SG-IMDA-AGENTIC-2026/sec-s35-part1/en",
+          "SG-IMDA-AGENTIC-2026/sec-s9-part2/en",
+          "SG-IMDA-AGENTIC-2026/sec-s20-part3/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      }
+    },
+    {
+      "qid": "Q25",
+      "lang": "en",
+      "topic": "ai_governance",
+      "gold": [
+        "ITU-T-Y3172/sec-3.2.6/en"
+      ],
+      "dense": {
+        "top10": [
+          "ITU-T-Y3181/sec-s7-part3/en",
+          "ITU-T-Y3181/sec-3.1.5/en",
+          "ITU-T-Y3172/sec-3.2.6/en",
+          "ITU-T-Y3172/sec-s4-part2/en",
+          "ITU-AIRF-2-2026/sec-s25-part2/en",
+          "ITU-T-Y3172/sec-6-part1/en",
+          "ITU-T-Y3172/sec-s8/en",
+          "ITU-T-Y3172/sec-s4-part1/en",
+          "ITU-T-Y3181/sec-3.1.6/en",
+          "ITU-T-Y3172/sec-7.3-part1/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 0.3333333333333333,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.3333333333333333
+      },
+      "bm25": {
+        "top10": [
+          "ITU-T-Y3172/sec-3.2.6/en",
+          "ITU-T-Y3181/sec-s7-part3/en",
+          "ITU-T-Y3181/sec-2/en",
+          "ITU-T-Y3172/sec-7.5-part1/en",
+          "ITU-T-Y3172/sec-8.1-part1/en",
+          "ITU-T-Y3172/sec-7.3-part1/en",
+          "ITU-T-Y3173/sec-3/en",
+          "ITU-T-Y3173/sec-s8-part3/en",
+          "ITU-T-Y3172/sec-3.2.5/en",
+          "ITU-T-Y3181/sec-3.1.5/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      },
+      "hybrid": {
+        "top10": [
+          "ITU-T-Y3181/sec-s7-part3/en",
+          "ITU-T-Y3172/sec-3.2.6/en",
+          "ITU-T-Y3181/sec-3.1.5/en",
+          "ITU-T-Y3172/sec-7.3-part1/en",
+          "ITU-T-Y3181/sec-2/en",
+          "ITU-T-Y3181/sec-3.1.6/en",
+          "ITU-T-Y3172/sec-s8/en",
+          "ITU-T-Y3173/sec-s8-part3/en",
+          "ITU-T-Y3181/sec-s8-part6/en",
+          "ITU-T-Y3181/sec-s3/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 0.5,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.5
+      }
+    },
+    {
+      "qid": "Q26",
+      "lang": "en",
+      "topic": "ai_governance",
+      "gold": [
+        "ITU-T-Y3173/sec-s8-part1/en",
+        "ITU-T-Y3173/sec-s8-part2/en"
+      ],
+      "dense": {
+        "top10": [
+          "ITU-T-Y3173/sec-s10-part4/en",
+          "ITU-T-Y3173/sec-s10-part3/en",
+          "ITU-T-Y3173/sec-s21-part1/en",
+          "ITU-T-Y3173/sec-s5/en",
+          "ITU-T-Y3173/sec-s10-part2/en",
+          "ITU-T-Y3173/sec-appendix-I/en",
+          "ITU-T-Y3172/sec-s8/en",
+          "ITU-T-Y3181/sec-s5/en",
+          "ITU-T-Y3172/sec-s4-part1/en",
+          "ITU-T-Y3173/sec-s3/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "bm25": {
+        "top10": [
+          "US-NIST-AI-100-1/sec-1/en",
+          "ITU-T-Y3173/sec-s10-part4/en",
+          "ITU-T-Y3173/sec-s10-part3/en",
+          "SG-IMDA-AGENTIC-2026/sec-s19-part3/en",
+          "ITU-T-Y3173/sec-s21-part1/en",
+          "ITU-T-Y3181/sec-3.1.5/en",
+          "ITU-T-Y3173/sec-s7-part5/en",
+          "WHO-AI-HEALTH-2021/sec-6.5-part4/en",
+          "WHO-AI-LMM-2024/sec-3.3-part6/en",
+          "ITU-T-Y3173/sec-s8-part2/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.1,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.1
+      },
+      "hybrid": {
+        "top10": [
+          "ITU-T-Y3173/sec-s10-part4/en",
+          "ITU-T-Y3173/sec-s10-part3/en",
+          "ITU-T-Y3173/sec-s21-part1/en",
+          "SG-IMDA-AGENTIC-2026/sec-s19-part3/en",
+          "US-NIST-AI-100-1/sec-1/en",
+          "ITU-T-Y3173/sec-s3/en",
+          "ITU-T-Y3173/sec-s17/en",
+          "ITU-T-Y3181/sec-s3/en",
+          "ITU-T-Y3173/sec-s8-part2/en",
+          "ITU-T-Y3173/sec-s7-part5/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.1111111111111111,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.1111111111111111
+      }
+    },
+    {
+      "qid": "Q27",
+      "lang": "en",
+      "topic": "global",
+      "gold": [
+        "EU-REG-2016-679/art-49/para-1/en"
+      ],
+      "dense": {
+        "top10": [
+          "EU-REG-2016-679/art-45/para-1/en",
+          "EU-REG-2016-679/art-49/para-1/en",
+          "EU-REG-2016-679/art-49/para-5/en",
+          "EU-REG-2016-679/art-46/para-1/en",
+          "EU-REG-2016-679/art-45/para-2/en",
+          "EU-REG-2016-679/art-48/en",
+          "EU-REG-2016-679/art-45/para-7/en",
+          "EU-REG-2016-679/art-14/para-5/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part4/en",
+          "EU-REG-2016-679/art-46/para-2/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 0.5,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.5
+      },
+      "bm25": {
+        "top10": [
+          "WHO-AI-HEALTH-2021/sec-5.1-part1/en",
+          "WHO-AI-HEALTH-2021/sec-9.1-part2/en",
+          "WHO-AI-LMM-2024/sec-3.2-part1/en",
+          "EU-REG-2016-679/art-45/para-7/en",
+          "SG-IMDA-GENAI-2024/sec-2-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part4/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part5/en",
+          "EU-REG-2016-679/art-13/para-1/en",
+          "EU-REG-2016-679/art-45/para-2/en",
+          "EU-REG-2016-679/art-49/para-1/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.1,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.1
+      },
+      "hybrid": {
+        "top10": [
+          "EU-REG-2016-679/art-45/para-7/en",
+          "EU-REG-2016-679/art-49/para-1/en",
+          "EU-REG-2016-679/art-45/para-2/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part4/en",
+          "EU-REG-2016-679/art-45/para-1/en",
+          "EU-REG-2016-679/art-49/para-5/en",
+          "EU-REG-2016-679/art-48/en",
+          "WHO-AI-LMM-2024/sec-3.2-part1/en",
+          "EU-REG-2016-679/art-14/para-1/en",
+          "WHO-AI-HEALTH-2021/sec-9.1-part2/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 0.5,
+        "recall@5_article": 1.0,
+        "mrr_article": 0.5
+      }
+    },
+    {
+      "qid": "Q28",
+      "lang": "en",
+      "topic": "global",
+      "gold": [
+        "US-FDA-PCCP-2025/sec-s16/en",
+        "US-FDA-PCCP-2025/sec-s19-part3/en"
+      ],
+      "dense": {
+        "top10": [
+          "US-FDA-PCCP-2025/sec-s9-part4/en",
+          "WHO-AI-LMM-2024/sec-s9-part1/en",
+          "WHO-AI-LMM-2024/sec-99-part4/en",
+          "US-FDA-PCCP-2025/sec-s8-part2/en",
+          "US-FDA-PCCP-2025/sec-s8-part1/en",
+          "WHO-AI-HEALTH-2021/sec-8.3/en",
+          "US-FDA-PCCP-2025/sec-s10-part2/en",
+          "US-FDA-PCCP-2025/sec-s9-part3/en",
+          "US-FDA-PCCP-2025/sec-s9-part1/en",
+          "WHO-AI-LMM-2024/sec-10/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "bm25": {
+        "top10": [
+          "US-FDA-PCCP-2025/sec-appendix-A-part8/en",
+          "US-FDA-PCCP-2025/sec-s10-part2/en",
+          "US-FDA-PCCP-2025/sec-s28-part6/en",
+          "WHO-AI-HEALTH-2021/sec-8.2-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s27-part3/en",
+          "US-FDA-PCCP-2025/sec-s9-part3/en",
+          "WHO-AI-HEALTH-2021/sec-9.3-part9/en",
+          "SG-IMDA-AGENTIC-2026/sec-s31-part3/en",
+          "WHO-AI-LMM-2024/sec-5.2-part7/en",
+          "SG-IMDA-AGENTIC-2026/sec-s19-part3/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "US-FDA-PCCP-2025/sec-s10-part2/en",
+          "US-FDA-PCCP-2025/sec-s9-part4/en",
+          "US-FDA-PCCP-2025/sec-s9-part3/en",
+          "WHO-AI-HEALTH-2021/sec-8.2-part1/en",
+          "US-FDA-PCCP-2025/sec-s8-part1/en",
+          "US-FDA-PCCP-2025/sec-appendix-A-part8/en",
+          "US-FDA-PCCP-2025/sec-s28-part6/en",
+          "WHO-AI-HEALTH-2021/sec-8.4/en",
+          "WHO-AI-LMM-2024/sec-5.2-part7/en",
+          "WHO-AI-HEALTH-2021/sec-9.5-part2/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      }
+    },
+    {
+      "qid": "Q29",
+      "lang": "en",
+      "topic": "global",
+      "gold": [
+        "EU-REG-2016-679/art-33/para-1/en"
+      ],
+      "dense": {
+        "top10": [
+          "EU-REG-2016-679/art-33/para-1/en",
+          "EU-REG-2016-679/art-34/para-1/en",
+          "EU-DIR-2022-2555/art-35/para-1/en",
+          "SG-IMDA-GENAI-2024/sec-s5/en",
+          "EU-REG-2016-679/art-33/para-2/en",
+          "EU-REG-2016-679/art-12/para-3/en",
+          "EU-REG-2016-679/art-19/en",
+          "EU-REG-2016-679/art-14/para-3/en",
+          "EU-DIR-2022-2555/art-9/para-5/en",
+          "EU-DIR-2022-2555/art-23/para-4/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      },
+      "bm25": {
+        "top10": [
+          "EU-REG-2016-679/art-44/en",
+          "EU-REG-2016-679/art-30/para-5/en",
+          "EU-REG-2016-679/art-30/para-1/en",
+          "EU-REG-2016-679/art-30/para-2/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s13-part4/en",
+          "EU-REG-2024-1689/art-10/para-5/en",
+          "WHO-AI-LMM-2024/sec-2.1-part1/en",
+          "WHO-AI-HEALTH-2021/sec-s37-part4/en",
+          "WHO-AI-HEALTH-2021/sec-s15-part1/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "EU-REG-2016-679/art-33/para-1/en",
+          "EU-REG-2016-679/art-33/para-3/en",
+          "WHO-AI-LMM-2024/sec-3.2-part2/en",
+          "EU-REG-2016-679/art-44/en",
+          "EU-REG-2016-679/art-30/para-5/en",
+          "EU-REG-2016-679/art-34/para-1/en",
+          "EU-REG-2016-679/art-30/para-1/en",
+          "EU-DIR-2022-2555/art-35/para-1/en",
+          "EU-REG-2016-679/art-30/para-2/en",
+          "SG-IMDA-GENAI-2024/sec-s5/en"
+        ],
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "recall@5_article": 1.0,
+        "mrr_article": 1.0
+      }
+    },
+    {
+      "qid": "Q30",
+      "lang": "en",
+      "topic": "global",
+      "gold": [
+        "US-NIST-AI-100-1/sec-GOVERN-1.3/en"
+      ],
+      "dense": {
+        "top10": [
+          "US-NIST-AI-100-1/sec-1.2.2/en",
+          "US-NIST-AI-100-1/sec-1.2.3-part1/en",
+          "US-NIST-AI-100-1/sec-s6-part2/en",
+          "EU-REG-2024-1689/art-25/para-4/en",
+          "US-NIST-AI-100-1/sec-s6-part3/en",
+          "EU-REG-2024-1689/art-9/para-2/en",
+          "US-NIST-AI-100-1/sec-1.2.4/en",
+          "EU-REG-2024-1689/art-9/para-5/en",
+          "US-NIST-AI-100-1/sec-3-part2/en",
+          "AE-DOH-RAI-2025/sec-3.3/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "bm25": {
+        "top10": [
+          "US-NIST-AI-100-1/sec-6/en",
+          "SG-IMDA-AGENTIC-2026/sec-s19-part2/en",
+          "US-NIST-AI-100-1/sec-3-part2/en",
+          "US-NIST-AI-100-1/sec-1.2.4/en",
+          "WHO-AI-LMM-2024/sec-3.3-part5/en",
+          "US-NIST-AI-100-1/sec-s6-part3/en",
+          "SG-IMDA-AGENTIC-2026/sec-s23/en",
+          "US-NIST-AI-100-1/sec-appendix-B-part2/en",
+          "US-NIST-AI-100-1/sec-1.2.1-part1/en",
+          "SG-IMDA-AGENTIC-2026/sec-s30-part1/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      },
+      "hybrid": {
+        "top10": [
+          "US-NIST-AI-100-1/sec-1.2.4/en",
+          "US-NIST-AI-100-1/sec-s6-part3/en",
+          "US-NIST-AI-100-1/sec-3-part2/en",
+          "US-NIST-AI-100-1/sec-1.2.3-part1/en",
+          "EU-REG-2024-1689/art-25/para-4/en",
+          "EU-REG-2024-1689/art-9/para-5/en",
+          "US-NIST-AI-100-1/sec-appendix-B-part2/en",
+          "SG-IMDA-AGENTIC-2026/sec-s16-part1/en",
+          "US-NIST-AI-100-1/sec-s6-part2/en",
+          "US-NIST-AI-100-1/sec-5.1/en"
+        ],
+        "recall@5": 0.0,
+        "mrr": 0.0,
+        "recall@5_article": 0.0,
+        "mrr_article": 0.0
+      }
+    }
+  ],
+  "kb_version": "2763452dc70d0696c86d73ade19ea0eacd25f138052801a56261802db12d41b9",
+  "dense_available": true
+}

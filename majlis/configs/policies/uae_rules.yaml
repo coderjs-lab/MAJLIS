@@ -1,0 +1,166 @@
+# MAJLIS policy pack: UAE (policy-as-code for the policy gate, ITU-T Y.3172 "P" node).
+#
+# Each rule is tied to a clause stored verbatim in kb/clauses/clauses.jsonl. `quote` is the exact
+# excerpt the gate shows; the gate re-checks it against the stored clause on every decision and treats
+# the rule as draft if it no longer matches. `status: verified` means the build checked that the clause
+# text says what the rule relies on; `review` records whether the team's legal reviewer has signed off.
+# The gate is a policy application component, not a legal authority. Fictional exercise.
+#
+# Legal Applicability (LA, our proposed extension around the P node) is recorded per rule under
+# `applicability`: why the instrument applies to the actor in this scenario.
+
+high_impact_actions: [continue_triage, deploy_model_update, share_logs]
+
+rules:
+  - rule_id: AE-HEALTH-DATA-LOCALISATION
+    status: verified
+    review: pending_team_review   # clause text read by the build on 2026-11-09 (English = unofficial translation)
+    description: >-
+      Health information and data from health services provided in the UAE may be processed outside the
+      State only in cases prescribed by a Health Authority decision. No such decision is recorded in the
+      exercise state, so continuing to serve triage from a region outside the UAE is denied.
+    applies_when:
+      action_type: [continue_triage]
+      state: {data_category: health_personal, processing_location: outside_AE}
+    unless_state: {localisation_exception_approved: true}
+    decision: DENY
+    clause_ids: [AE-FL-2-2019/art-13/en]
+    quote: >-
+      The health information and data related to the health services provided in the State may only be
+      stored, processed, generated or transferred outside the State in the cases prescribed by virtue of a
+      decision issued by the Health Authority in coordination with the Ministry.
+    applicability:
+      note: "Federal law; the triage service is a health service provided in the State."
+      clause_ids: [AE-FL-2-2019/art-2/en]
+    message_en: >-
+      Processing patient data outside the UAE requires a Health Authority decision prescribing the case.
+      None is recorded for this incident.
+    message_ar: >-
+      لا تجوز معالجة بيانات المرضى خارج الدولة إلا في الحالات التي يحددها قرار صادر عن الجهة الصحية، ولا يوجد
+      قرار مسجل لهذه الحادثة.
+
+  - rule_id: AE-HEALTH-DATA-TRANSFER-LOGS
+    status: verified
+    review: pending_team_review
+    description: >-
+      Sending raw triage logs (which contain patient health data) to a party abroad is a transfer outside
+      the State; denied unless a Health Authority decision covers it.
+    applies_when:
+      action_type: [share_logs]
+      state: {data_category: health_personal, logs_requested_abroad: true}
+    unless_state: {localisation_exception_approved: true}
+    decision: DENY
+    clause_ids: [AE-FL-2-2019/art-13/en]
+    quote: >-
+      The health information and data related to the health services provided in the State may only be
+      stored, processed, generated or transferred outside the State in the cases prescribed by virtue of a
+      decision issued by the Health Authority in coordination with the Ministry.
+    applicability:
+      note: "Federal law; logs of a health service provided in the State."
+      clause_ids: [AE-FL-2-2019/art-2/en]
+    message_en: "Transferring patient data abroad requires a Health Authority decision prescribing the case."
+    message_ar: "لا يجوز نقل بيانات المرضى إلى الخارج إلا في الحالات التي يحددها قرار صادر عن الجهة الصحية."
+
+  - rule_id: AE-AZ-DOH-RAI-ESCALATION
+    status: verified
+    review: pending_team_review
+    description: >-
+      While a patient-safety signal is open, continuing AI triage is a risk decision that the DoH
+      Responsible AI Standard routes through an escalation protocol to human oversight.
+    applies_when:
+      action_type: [continue_triage]
+      state: {patient_safety_signal: true}
+    decision: ESCALATE
+    clause_ids: [AE-DOH-RAI-2025/sec-3/en]
+    quote: >-
+      Clear escalation protocols shall be established within AI systems, outlining specific actions and
+      decision points based on varying risk levels to involve human oversight effectively.
+    applicability:
+      note: "Applies to licensed healthcare entities in Abu Dhabi deploying AI systems (the fictional provider is one)."
+      clause_ids: [AE-DOH-RAI-2025/sec-1.2/en]
+    message_en: "A patient-safety signal is open: a clinician must decide whether AI triage continues."
+    message_ar: "توجد إشارة تتعلق بسلامة المرضى: يجب أن يقرر طبيب ما إذا كان الفرز بالذكاء الاصطناعي سيستمر."
+
+  - rule_id: AE-AZ-DOH-RAI-VALIDATION
+    status: verified
+    review: pending_team_review
+    description: >-
+      A model update is a deployment; the DoH standard requires validation against performance benchmarks
+      before deployment, so an emergency update goes to a human with the validation evidence.
+    applies_when:
+      action_type: [deploy_model_update]
+      state: {}
+    decision: ESCALATE
+    clause_ids: [AE-DOH-RAI-2025/sec-3/en]
+    quote: >-
+      AI models shall undergo rigorous validation against established performance benchmarks before
+      deployment to ensure compliance with relevant standards and reliability criteria.
+    applicability:
+      note: "Applies to licensed healthcare entities in Abu Dhabi deploying AI systems."
+      clause_ids: [AE-DOH-RAI-2025/sec-1.2/en]
+    message_en: "An emergency model update needs validation evidence and human approval before deployment."
+    message_ar: "يتطلب التحديث الطارئ للنموذج أدلة تحقق وموافقة بشرية قبل النشر."
+
+  - rule_id: AE-AZ-DOH-RAI-FALLBACK
+    status: verified
+    review: pending_team_review
+    description: >-
+      Falling back to human clinicians is the fallback procedure the DoH standard requires for continuity
+      of care when a system partly fails.
+    applies_when:
+      action_type: [fallback_to_human]
+      state: {}
+    decision: REQUIRE
+    clause_ids: [AE-DOH-RAI-2025/sec-3/en]
+    quote: >-
+      Systems must include graceful degradation mechanisms and fallback procedures to ensure continuity of
+      care in the event of partial failure.
+    applicability:
+      note: "Applies to licensed healthcare entities in Abu Dhabi deploying AI systems."
+      clause_ids: [AE-DOH-RAI-2025/sec-1.2/en]
+    message_en: "Human fallback is the required continuity-of-care procedure."
+    message_ar: "الانتقال إلى الكادر البشري هو إجراء استمرارية الرعاية المطلوب."
+
+  - rule_id: AE-AZ-DOH-RAI-CONTINUITY-AI
+    status: verified
+    review: pending_team_review   # INTERPRETATION by the team; flagged for legal review
+    description: >-
+      Team interpretation: when human fallback capacity is reduced, keeping the AI triage service running
+      becomes the available fallback procedure for continuity of care. If processing is abroad at the same
+      time, this collides with the localisation rule; the gate escalates and records a conflict.
+    applies_when:
+      action_type: [continue_triage]
+      state: {human_capacity_reduced: true}
+    decision: REQUIRE
+    clause_ids: [AE-DOH-RAI-2025/sec-3/en]
+    quote: >-
+      Systems must include graceful degradation mechanisms and fallback procedures to ensure continuity of
+      care in the event of partial failure.
+    applicability:
+      note: "Applies to licensed healthcare entities in Abu Dhabi deploying AI systems."
+      clause_ids: [AE-DOH-RAI-2025/sec-1.2/en]
+    message_en: "Continuity of care weighs for keeping the service running while human capacity is reduced."
+    message_ar: "تقتضي استمرارية الرعاية إبقاء الخدمة قائمة في ظل نقص الكادر البشري."
+
+  - rule_id: AE-AZ-DOH-RAI-OVERRIDE
+    status: verified
+    review: pending_team_review
+    description: "Suspending the AI is a human override, which the DoH standard requires systems to support."
+    applies_when:
+      action_type: [suspend_ai_triage]
+      state: {}
+    decision: ALLOW
+    clause_ids: [AE-DOH-RAI-2025/sec-3.1.7/en]
+    quote: "Override mechanisms and audit trails must be embedded in AI systems to ensure traceability and human intervention."
+    applicability:
+      note: "Applies to licensed healthcare entities in Abu Dhabi deploying AI systems."
+      clause_ids: [AE-DOH-RAI-2025/sec-1.2/en]
+    message_en: "Suspension is a supported human override."
+    message_ar: "التعليق إجراء تجاوز بشري مدعوم."
+
+# Deliberately NOT encoded (no clause in the KB supports a rule; the exercise should surface these):
+# - a duty to inform patients affected by an AI error (DoH RAI §3.1.6.1.1 covers disclosure that AI is
+#   used, not notification of AI errors) -> expected G1 / insufficient-evidence finding
+# - an emergency exception route for processing health data abroad (the Health Authority decision that
+#   Art. 13 refers to is not in the KB) -> expected G1 + technical gap TG1
+# - re-validating a model before it resumes after an incident -> expected G5 (N4)

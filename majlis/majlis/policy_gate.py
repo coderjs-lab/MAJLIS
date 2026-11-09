@@ -25,6 +25,7 @@ from typing import Any, Protocol
 
 import yaml
 
+from majlis.citation_check import normalise_quote
 from majlis.schemas import Clause, GateDecision, ProposedAction, Rule
 
 STATUS_CODE = {"ALLOW": 200, "DENY": 403, "ESCALATE": 202}
@@ -96,8 +97,15 @@ class PolicyGate:
         """A rule can be cited only if all its clause_ids exist in the KB."""
         return bool(rule.clause_ids) and all(self.kb.get(c) is not None for c in rule.clause_ids)
 
+    def _quote_ok(self, rule: Rule) -> bool:
+        """A rule's own excerpt must appear verbatim in its first clause."""
+        if not rule.quote:
+            return True
+        clause = self._clause(rule)
+        return clause is not None and normalise_quote(rule.quote) in normalise_quote(clause.text)
+
     def _is_verified(self, rule: Rule) -> bool:
-        return rule.status == "verified" and self._grounded(rule)
+        return rule.status == "verified" and self._grounded(rule) and self._quote_ok(rule)
 
     def matching_rules(self, action_type: str, state: dict[str, Any]) -> list[Rule]:
         out = []
@@ -146,7 +154,14 @@ class PolicyGate:
                 clause = self._clause(cite)
                 if clause is not None:
                     d.clause_id = clause.clause_id
-                    d.quote = quote_prefix(clause.text)
+                    # Prefer the rule's own excerpt (the sentence that matters), but
+                    # only if it is verbatim in the clause; else the clause's opening.
+                    if cite.quote and self._quote_ok(cite):
+                        d.quote = cite.quote
+                    else:
+                        d.quote = quote_prefix(clause.text)
+                        if cite.quote:
+                            d.events = d.events + ["rule_quote_mismatch"]
                     d.issuer = clause.issuer
                     d.url = clause.url
             return d

@@ -1,0 +1,441 @@
+{
+  "built_at": "2026-11-09",
+  "kb_version_sha256": "2763452dc70d0696c86d73ade19ea0eacd25f138052801a56261802db12d41b9",
+  "manifest_rows": 36,
+  "documents_total": 31,
+  "documents_with_clauses": 20,
+  "files_by_status": {
+    "manual_pending": 13,
+    "ok": 23
+  },
+  "clauses_total": 2282,
+  "clauses_per_doc": {
+    "AE-AI-CHARTER-2024[en]": 4,
+    "AE-CR-40-2019[en]": 27,
+    "AE-DOH-DGS-2025[en]": 21,
+    "AE-DOH-RAI-2025[en]": 21,
+    "AE-FL-2-2019[en]": 32,
+    "AE-NSAI-2031[en]": 51,
+    "EU-DIR-2022-2555[en]": 252,
+    "EU-REG-2016-679[en]": 419,
+    "EU-REG-2024-1689[en]": 638,
+    "ITU-AIRF-2-2026[en]": 73,
+    "ITU-T-Y3172[en]": 43,
+    "ITU-T-Y3173[en]": 37,
+    "ITU-T-Y3181[en]": 40,
+    "SA-NSDAI[en]": 27,
+    "SG-IMDA-AGENTIC-2026[en]": 72,
+    "SG-IMDA-GENAI-2024[en]": 27,
+    "US-FDA-PCCP-2025[en]": 80,
+    "US-NIST-AI-100-1[en]": 65,
+    "WHO-AI-HEALTH-2021[en]": 236,
+    "WHO-AI-LMM-2024[en]": 117
+  },
+  "languages": {
+    "en": 2282
+  },
+  "jurisdictions": {
+    "AE": 114,
+    "AE-AZ": 42,
+    "EU": 1309,
+    "US": 145,
+    "SG": 99,
+    "INTL": 546,
+    "SA": 27
+  },
+  "tiers": {
+    "A": 59,
+    "B": 55,
+    "C": 42,
+    "D": 1906,
+    "E": 193,
+    "F": 27
+  },
+  "binding": {
+    "binding": 1410,
+    "non_binding": 872
+  },
+  "avg_words": 152.0,
+  "clauses_over_400_words": 15,
+  "clauses_under_50_words": 627,
+  "extraction_failures_total": 55,
+  "extraction_failures_by_doc": {
+    "AE-FL-2-2019[ar]": {
+      "n": 1,
+      "reasons": {
+        "no_arabic_text": 1
+      }
+    },
+    "AE-CR-32-2020[en]": {
+      "n": 1,
+      "reasons": {
+        "no_units:no text layer (0 words on 5 pages; scanned image)": 1
+      }
+    },
+    "AE-NSAI-2031[ar]": {
+      "n": 52,
+      "reasons": {
+        "broken_lam_alef": 52
+      }
+    },
+    "SG-IMDA-AGENTIC-2026[en]": {
+      "n": 1,
+      "reasons": {
+        "unmapped_glyphs": 1
+      }
+    }
+  },
+  "parallel_pairs": 0,
+  "unpaired_bilingual_clauses": 0,
+  "unpaired_sample": [],
+  "per_document": {
+    "AE-FDL-45-2021[en]": {
+      "status": "manual_pending",
+      "clauses": 0
+    },
+    "AE-FDL-45-2021[ar]": {
+      "status": "manual_pending",
+      "clauses": 0
+    },
+    "AE-FDL-44-2021[en]": {
+      "status": "manual_pending",
+      "clauses": 0
+    },
+    "AE-FDL-44-2021[ar]": {
+      "status": "manual_pending",
+      "clauses": 0
+    },
+    "AE-FL-2-2019[en]": {
+      "status": "ok",
+      "mode": "law_html",
+      "clauses": 32,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 89.0,
+      "min_words": 22,
+      "max_words": 419,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "AE-FL-2-2019[ar]": {
+      "status": "ok",
+      "mode": "law_html",
+      "clauses": 0,
+      "extraction_failed": 1,
+      "failure_reasons": {
+        "no_arabic_text": 1
+      },
+      "avg_words": 0,
+      "min_words": 0,
+      "max_words": 0,
+      "glyph_repairs": {},
+      "notes": [
+        "no article markers found"
+      ]
+    },
+    "AE-CR-32-2020[en]": {
+      "status": "ok",
+      "mode": "pdf_no_text",
+      "clauses": 0,
+      "extraction_failed": 1,
+      "failure_reasons": {
+        "no_units:no text layer (0 words on 5 pages; scanned image)": 1
+      },
+      "avg_words": 0,
+      "min_words": 0,
+      "max_words": 0,
+      "glyph_repairs": {},
+      "notes": [
+        "no text layer (0 words on 5 pages; scanned image)"
+      ]
+    },
+    "AE-MOHAP-DATALOC-2021[en]": {
+      "status": "manual_pending",
+      "clauses": 0
+    },
+    "AE-CR-40-2019[en]": {
+      "status": "ok",
+      "mode": "law_html",
+      "clauses": 27,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 169.9,
+      "min_words": 16,
+      "max_words": 362,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "AE-FDL-4-2016[en]": {
+      "status": "manual_pending",
+      "clauses": 0
+    },
+    "AE-TDRA-TELECOM-LAW[en]": {
+      "status": "manual_pending",
+      "clauses": 0
+    },
+    "AE-NSAI-2031[en]": {
+      "status": "ok",
+      "mode": "pdf_sections",
+      "clauses": 51,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 189.6,
+      "min_words": 23,
+      "max_words": 398,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "AE-NSAI-2031[ar]": {
+      "status": "ok",
+      "mode": "pdf_sections",
+      "clauses": 0,
+      "extraction_failed": 52,
+      "failure_reasons": {
+        "broken_lam_alef": 52
+      },
+      "avg_words": 0,
+      "min_words": 0,
+      "max_words": 0,
+      "glyph_repairs": {
+        "'ﬁ'->'fi'": 3
+      },
+      "notes": []
+    },
+    "AE-AI-CHARTER-2024[en]": {
+      "status": "ok",
+      "mode": "pdf_sections",
+      "clauses": 4,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 147.2,
+      "min_words": 58,
+      "max_words": 192,
+      "glyph_repairs": {
+        "'Ї'->'Th'": 13,
+        "'ﬁ'->'fi'": 8,
+        "'ﬂ'->'fl'": 2
+      },
+      "notes": []
+    },
+    "AE-AI-CHARTER-2024[ar]": {
+      "status": "manual_pending",
+      "clauses": 0
+    },
+    "AE-CSC-NCS-2025[en]": {
+      "status": "manual_pending",
+      "clauses": 0
+    },
+    "AE-DOH-RAI-2025[en]": {
+      "status": "ok",
+      "mode": "pdf_sections",
+      "clauses": 21,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 211.2,
+      "min_words": 54,
+      "max_words": 398,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "AE-DOH-DGS-2025[en]": {
+      "status": "ok",
+      "mode": "pdf_sections",
+      "clauses": 21,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 180.8,
+      "min_words": 30,
+      "max_words": 398,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "AE-DOH-ADHICS[en]": {
+      "status": "manual_pending",
+      "clauses": 0
+    },
+    "AE-DHA-AI-POLICY[en]": {
+      "status": "manual_pending",
+      "clauses": 0
+    },
+    "EU-REG-2024-1689[en]": {
+      "status": "ok",
+      "mode": "eu_xhtml",
+      "clauses": 638,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 86.4,
+      "min_words": 11,
+      "max_words": 444,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "EU-REG-2016-679[en]": {
+      "status": "ok",
+      "mode": "eu_xhtml",
+      "clauses": 419,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 71.0,
+      "min_words": 8,
+      "max_words": 445,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "EU-DIR-2022-2555[en]": {
+      "status": "ok",
+      "mode": "eu_xhtml",
+      "clauses": 252,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 89.1,
+      "min_words": 8,
+      "max_words": 749,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "US-NIST-AI-100-1[en]": {
+      "status": "ok",
+      "mode": "pdf_sections",
+      "clauses": 65,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 235.6,
+      "min_words": 25,
+      "max_words": 429,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "US-FDA-PCCP-2025[en]": {
+      "status": "ok",
+      "mode": "pdf_sections",
+      "clauses": 80,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 258.4,
+      "min_words": 16,
+      "max_words": 397,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "SG-IMDA-AGENTIC-2026[en]": {
+      "status": "ok",
+      "mode": "pdf_sections",
+      "clauses": 72,
+      "extraction_failed": 1,
+      "failure_reasons": {
+        "unmapped_glyphs": 1
+      },
+      "avg_words": 240.2,
+      "min_words": 18,
+      "max_words": 400,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "SG-IMDA-GENAI-2024[en]": {
+      "status": "ok",
+      "mode": "pdf_sections",
+      "clauses": 27,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 272.4,
+      "min_words": 69,
+      "max_words": 399,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "WHO-AI-HEALTH-2021[en]": {
+      "status": "ok",
+      "mode": "pdf_sections",
+      "clauses": 236,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 285.8,
+      "min_words": 53,
+      "max_words": 400,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "WHO-AI-LMM-2024[en]": {
+      "status": "ok",
+      "mode": "pdf_sections",
+      "clauses": 117,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 289.1,
+      "min_words": 66,
+      "max_words": 415,
+      "glyph_repairs": {
+        "'ﬀ'->'ff'": 4
+      },
+      "notes": []
+    },
+    "ITU-T-Y3172[en]": {
+      "status": "ok",
+      "mode": "pdf_sections",
+      "clauses": 43,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 233.7,
+      "min_words": 52,
+      "max_words": 396,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "ITU-T-Y3173[en]": {
+      "status": "ok",
+      "mode": "pdf_sections",
+      "clauses": 37,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 240.0,
+      "min_words": 57,
+      "max_words": 419,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "ITU-T-Y3181[en]": {
+      "status": "ok",
+      "mode": "pdf_sections",
+      "clauses": 40,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 250.4,
+      "min_words": 15,
+      "max_words": 426,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "ITU-AIRF-2-2026[en]": {
+      "status": "ok",
+      "mode": "pdf_sections",
+      "clauses": 73,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 231.2,
+      "min_words": 24,
+      "max_words": 400,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "SA-NSDAI[en]": {
+      "status": "ok",
+      "mode": "pdf_sections",
+      "clauses": 27,
+      "extraction_failed": 0,
+      "failure_reasons": {},
+      "avg_words": 214.4,
+      "min_words": 50,
+      "max_words": 399,
+      "glyph_repairs": {},
+      "notes": []
+    },
+    "SA-SDAIA-AI-ETHICS[en]": {
+      "status": "manual_pending",
+      "clauses": 0
+    },
+    "SA-PDPL[en]": {
+      "status": "manual_pending",
+      "clauses": 0
+    }
+  }
+}

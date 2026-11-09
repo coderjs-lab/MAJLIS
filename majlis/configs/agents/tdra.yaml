@@ -13,6 +13,7 @@ retrieval_filters:
   jurisdiction: [AE]
   sectors: [telecom, cyber, ai]
 retrieval_k: 8
+retrieval_focus: "network outage incident reporting cyber security incident essential services telecommunications digital infrastructure"   # standing search interests (search terms, not legal claims)
 can_message: [doh, data_office, legal_adviser]
 action_vocabulary: [request_outage_report, coordinate_operator, issue_advisory]
 output_language: en

@@ -95,11 +95,32 @@ class Agent:
             return []
         return list(self.kb.search(query, filters, k=k))
 
+    def multi_retrieve(self, passes: list[tuple[str, RetrievalFilters, int]], cap: int) -> list[EvidenceItem]:
+        """Run several (query, filters, k) passes and interleave them, de-duplicated, up to `cap`.
+        Interleaving keeps the best hit of every pass in the evidence (e.g. binding law is never
+        crowded out by long strategy documents)."""
+        lists = [self.retrieve(q, f, k) for q, f, k in passes if q.strip()]
+        out: dict[str, EvidenceItem] = {}
+        for i in range(max((len(l) for l in lists), default=0)):
+            for l in lists:
+                if i < len(l):
+                    out.setdefault(l[i].clause_id, l[i])
+        return list(out.values())[:cap]
+
+    def turn_passes(self, situational: str) -> list[tuple[str, RetrievalFilters, int]]:
+        f = self.cfg.retrieval_filters
+        binding = f.model_copy(update={"binding": ["binding"]})
+        k = self.cfg.retrieval_k
+        passes = [(situational, f, k), (situational, binding, max(3, k // 2))]
+        if self.cfg.retrieval_focus:
+            passes.append((_trim(f"{self.cfg.retrieval_focus} {situational}"), binding, 3))
+        return passes
+
     def take_turn(self, *, stage_id: str, sim_time: str, round_no: int, what_you_know: list[str],
                   inject_texts: list[str], messages: list[str]) -> TurnOutcome:
         query = self.build_query(inject_texts, messages)
         filters = self.cfg.retrieval_filters
-        evidence = self.retrieve(query, filters, self.cfg.retrieval_k)
+        evidence = self.multi_retrieve(self.turn_passes(query), cap=self.cfg.retrieval_k + 2)
         task = prompts.turn_task(self.cfg, stage_id=stage_id, sim_time=sim_time, round_no=round_no,
                                  duties=self.duties)
         user = prompts.build_user_prompt(evidence=evidence, what_you_know=what_you_know, task=task)
@@ -138,10 +159,19 @@ class LegalAdviser(Agent):
     def _filters(self) -> RetrievalFilters:
         return RetrievalFilters()
 
+    GLOBAL_JURISDICTIONS = ["EU", "US", "SG", "INTL", "SA"]
+
+    def adviser_passes(self, query: str) -> list[tuple[str, RetrievalFilters, int]]:
+        """Overall best, binding law, and non-UAE practice (so global examples are always available)."""
+        k = self.cfg.retrieval_k
+        return [(query, RetrievalFilters(), k),
+                (query, RetrievalFilters(binding=["binding"]), 4),
+                (query, RetrievalFilters(jurisdiction=self.GLOBAL_JURISDICTIONS), 4)]
+
     def answer(self, question: str, asker: str, stage: str) -> AdviceOutcome:
         query = _trim(question)
         filters = self._filters()
-        evidence = self.retrieve(query, filters, self.cfg.retrieval_k)
+        evidence = self.multi_retrieve(self.adviser_passes(query), cap=self.cfg.retrieval_k + 4)
         user = prompts.build_user_prompt(evidence=evidence, what_you_know=[f"{asker} asks you a question."],
                                          task=prompts.advice_task(question, asker, stage))
         ctx = {"agent_id": self.id, "kind": "adviser", "stage": stage, "evidence": evidence, "question": question,
@@ -153,7 +183,7 @@ class LegalAdviser(Agent):
     def narrate_gap(self, gap: dict, evidence: list[EvidenceItem] | None = None) -> NarrationOutcome:
         query = _trim(f"{gap.get('title', '')} {gap.get('description', '')}")
         filters = self._filters()
-        found = self.retrieve(query, filters, self.cfg.retrieval_k)
+        found = self.multi_retrieve(self.adviser_passes(query), cap=self.cfg.retrieval_k + 4)
         merged: dict[str, EvidenceItem] = {}
         for e in [*(evidence or []), *found]:
             merged.setdefault(e.clause_id, e)

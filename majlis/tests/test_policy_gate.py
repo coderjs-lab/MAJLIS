@@ -107,3 +107,20 @@ def test_state_matches():
 def test_loaders():
     assert [r.rule_id for r in load_rules(RULES_FILE)] == [r.rule_id for r in RULES]
     assert "share_logs" in HIGH_IMPACT and "restart_pod" not in HIGH_IMPACT
+
+
+def test_rule_quote_used_when_verbatim_and_rejected_when_not():
+    from majlis.policy_gate import PolicyGate
+    from majlis.schemas import ProposedAction, Rule, RuleCondition
+    from tests.trust_helpers import load_fake_kb
+    kb = load_fake_kb()
+    good = Rule(rule_id="Q-OK", status="verified", description="d", decision="DENY",
+                applies_when=RuleCondition(action_type=["continue_triage"]),
+                clause_ids=["TEST-DOC-B/sec-3/en"],
+                quote="shall suspend use of a system where patient safety may be compromised")
+    bad = good.model_copy(update={"rule_id": "Q-BAD", "quote": "shall never suspend anything"})
+    act = ProposedAction(action_id="a1", action_type="continue_triage", description="x")
+    d = PolicyGate([good], kb, set(), {"triage": ["continue_triage"]}).decide(act, "triage", {})
+    assert d.decision == "DENY" and d.quote.startswith("shall suspend use")
+    d2 = PolicyGate([bad], kb, set(), {"triage": ["continue_triage"]}).decide(act, "triage", {})
+    assert d2.decision == "ESCALATE"  # a rule whose excerpt is not verbatim is treated as draft
