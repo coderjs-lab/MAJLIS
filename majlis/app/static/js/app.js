@@ -177,7 +177,7 @@ function App() {
           <div class="nav-foot">
             ${run && run.fixture ? html`<div class="nav-note">Viewing a fixture run: synthetic data for UI development.</div>` : null}
             <div class="nav-note mono">${model.runStart ? `${model.runStart.backend} · ${model.runStart.model}` : ""}</div>
-            <div class="nav-note">ITU AI for Good Lab Hackathon · UAE 2026<br />Abhra Dubey (lead) · Harmanjot Singh · Aya Elsayed</div>
+            <div class="nav-note">ITU AI for Good Lab Hackathon · UAE 2026<br />Aya Elsayed (lead) · Abhra Dubey · Harmanjot Singh</div>
           </div>
         </nav>
         <main class="main" id="main">

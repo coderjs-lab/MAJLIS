@@ -1,7 +1,7 @@
 # MAJLIS — Multi-Agent Joint Legal & Institutional Simulation
 
 **ITU AI for Good Lab Hackathon: United Arab Emirates (2026).**
-**Team:** Abhra Dubey (team leader) · Harmanjot Singh · Aya Elsayed
+**Team:** Aya Elsayed (team leader) · Abhra Dubey · Harmanjot Singh
 
 > **Fictional exercise.** The incident, the provider "OasisCare" and all telemetry are invented. The institutional agents simulate roles for training; nothing here is an official position of any UAE body or legal advice. Legal text comes only from official sources, quoted verbatim with a link.
 

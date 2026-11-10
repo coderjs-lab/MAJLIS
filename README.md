@@ -1,6 +1,6 @@
 # MAJLIS — Multi-Agent Joint Legal & Institutional Simulation
 
-**ITU AI for Good Lab Hackathon: United Arab Emirates (2026)** · Team: Abhra Dubey (team leader) · Harmanjot Singh · Aya Elsayed
+**ITU AI for Good Lab Hackathon: United Arab Emirates (2026)** · Team: Aya Elsayed (team leader) · Abhra Dubey · Harmanjot Singh
 
 A reusable engine for rehearsing AI incidents across institutions: a fictional AI triage service fails in stages, simulated UAE regulators coordinate over verbatim law, a code-enforced policy gate returns ALLOW / DENY 403 / ESCALATE, and policy and standards gaps are mined from where the procedure breaks. Every step is a hash-chained, replayable ledger mapped to ITU-T Y.3172.
 
