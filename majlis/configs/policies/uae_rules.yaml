@@ -14,7 +14,7 @@ high_impact_actions: [continue_triage, deploy_model_update, share_logs]
 rules:
   - rule_id: AE-HEALTH-DATA-LOCALISATION
     status: verified
-    review: pending_team_review   # clause text read by the build on 2026-11-09 (English = unofficial translation)
+    review: "Abhra Dubey, 2026-11-10"
     description: >-
       Health information and data from health services provided in the UAE may be processed outside the
       State only in cases prescribed by a Health Authority decision, and the DoH Responsible AI Standard
@@ -49,7 +49,7 @@ rules:
 
   - rule_id: AE-HEALTH-DATA-TRANSFER-LOGS
     status: verified
-    review: pending_team_review
+    review: "Abhra Dubey, 2026-11-10"
     description: >-
       Sending raw triage logs (which contain patient health data) to a party abroad is a transfer outside
       the State; denied unless a Health Authority decision covers it.
@@ -71,7 +71,7 @@ rules:
 
   - rule_id: AE-AZ-DOH-RAI-ESCALATION
     status: verified
-    review: pending_team_review
+    review: "Abhra Dubey, 2026-11-10"
     description: >-
       While a patient-safety signal is open, continuing AI triage is a risk decision that the DoH
       Responsible AI Standard routes through an escalation protocol to human oversight.
@@ -91,7 +91,7 @@ rules:
 
   - rule_id: AE-AZ-DOH-RAI-VALIDATION
     status: verified
-    review: pending_team_review
+    review: "Abhra Dubey, 2026-11-10"
     description: >-
       A model update is a deployment; the DoH standard requires validation against performance benchmarks
       before deployment, so an emergency update goes to a human with the validation evidence.
@@ -111,7 +111,7 @@ rules:
 
   - rule_id: AE-AZ-DOH-RAI-FALLBACK
     status: verified
-    review: pending_team_review
+    review: "Abhra Dubey, 2026-11-10"
     description: >-
       Falling back to human clinicians is the fallback procedure the DoH standard requires for continuity
       of care when a system partly fails.
@@ -131,7 +131,7 @@ rules:
 
   - rule_id: AE-AZ-DOH-RAI-CONTINUITY-AI
     status: verified
-    review: pending_team_review   # INTERPRETATION by the team; flagged for legal review
+    review: "Abhra Dubey, 2026-11-10: accepted as a team interpretation, not a reading of the clause; dormant while processing is abroad"
     description: >-
       Team interpretation: when human fallback capacity is reduced, keeping the AI triage service running
       in the UAE becomes the available fallback procedure for continuity of care. It does not apply while
@@ -155,7 +155,7 @@ rules:
 
   - rule_id: AE-AZ-DOH-RAI-OVERRIDE
     status: verified
-    review: pending_team_review
+    review: "Abhra Dubey, 2026-11-10: self-suspension treated as a safe-state action supported by the override clause"
     description: "Suspending the AI is a human override, which the DoH standard requires systems to support."
     applies_when:
       action_type: [suspend_ai_triage]

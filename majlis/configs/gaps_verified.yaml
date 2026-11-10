@@ -14,8 +14,8 @@
 # missing deadline is folded into TV2), TV2, TV5, TV7 and TV8 narrowed to what the texts support.
 # These are domain-level observations from a simulated exercise: not legal advice, not a verdict on
 # any UAE institution.
-checked_by: "build lead (Claude), from primary text, 2026-11-09"
-team_signoff: pending   # Abhra: change to the reviewer's name per row when signed off
+checked_by: "build lead (Claude), from primary text, 2026-11-09; re-checked 2026-11-10 incl. DHA sentinel-event standard"
+team_signoff: "Abhra Dubey, 2026-11-10 (all nine rows reviewed against the quoted clauses)"
 
 gaps:
   - id: TV1
@@ -51,17 +51,26 @@ gaps:
     candidate: CG2
     type: policy
     pattern: G4_CLOCK
-    title: "No deadline and no definition for reporting a serious clinical-AI incident"
+    title: "No reporting clock for an AI performance drift before harm is confirmed"
     status: verified
-    scope_note: "Within our KB (29 documents). The PDPL's Executive Regulations, which would set its breach clock, are not in the KB."
+    scope_note: "Serious harm already has a clock: DHA's sentinel-event standard (outside our KB, checked by hand) requires notice within 48 hours and a preliminary report within 72 hours, and excludes near misses. The gap is the drift before harm. The PDPL's Executive Regulations are not in the KB."
     statement: >-
-      Abu Dhabi and Dubai already require incidents to reach the health regulator: ADHICS requires significant
-      or severe incidents to be reported to the health sector regulator of Abu Dhabi, and the DHA AI policy
-      requires end users to report AI incidents to DHA. None of the texts sets a deadline (ADHICS says
-      "promptly"; the DoH Responsible AI Standard assigns adverse-outcome reporting to governance bodies without a
-      clock), and the severity scheme ADHICS asks for classifies information-security incidents, not clinical
-      harm from an AI output. The PDPL defers its breach period to Executive Regulations. No instrument in our KB
-      defines a serious clinical-AI incident or sets a reporting deadline in hours or days.
+      Once a patient is seriously harmed, health-facility sentinel-event rules apply: in Dubai, notice to DHA
+      within 48 hours and a preliminary report within 72 hours (DHA/HRS/CACD/ST-01 v1.1, 5.5), with near misses
+      excluded (8.2.1). The T1 event in S1 is different: a measured AI drift (under-triage of Arabic-language
+      chest-pain cases rising from 2% to 9%) before any harm is confirmed. For that, the AI-specific duties send
+      incidents to the regulator but set no deadline: ADHICS requires significant or severe incidents to reach
+      the health sector regulator of Abu Dhabi and asks only that serious incidents be communicated "promptly",
+      the DHA AI policy requires end users to report AI incidents to DHA, and the DoH Responsible AI Standard
+      assigns adverse-outcome reporting to governance bodies without a clock. Even the EU AI Act's clocks start
+      only when an incident "leads to" serious harm (Art. 3(49)). No instrument we checked sets a reporting
+      trigger and deadline for AI performance drift before harm.
+    external_evidence:
+      - source: "DHA Standards for Sentinel Events Notification and Management in Health Facilities, DHA/HRS/CACD/ST-01, v1.1, effective 06/05/2025"
+        url: "https://www.dha.gov.ae/uploads/042025/Sentinel%20Events%20Notification%20And%20Management%20In%20Health%20Facilities-Final202541624.pdf"
+        section: "5.5.1, 5.5.3, 8.2.1"
+        quote: "Notify within 48 hours from the date of confirmation of SE"
+        checked: "by hand, 2026-11-10 (not in the KB, so not checked by scripts/check_gaps_verified.py)"
     uae_evidence:
       - clause_id: AE-DOH-ADHICS/sec-IM-2.2/en
         quote: "Ensure that significant/severe impact incidents are reported to the health sector regulator of Abu Dhabi"
@@ -78,13 +87,13 @@ gaps:
       instrument: "AI Act, Art. 73(2)"
       clause_id: EU-REG-2024-1689/art-73/para-2/en
       quote: "not later than 15 days after the provider or, where applicable, the deployer, becomes aware of the serious incident"
-      how_it_handles: "A defined serious incident and tiered clocks: 15 days by default, 2 days for widespread infringements (Art. 73(3)), 10 days in case of death (Art. 73(4))."
+      how_it_handles: "AI-specific clocks: 15 days by default, 2 days for widespread infringements (Art. 73(3)), 10 days in case of death (Art. 73(4)). They start only once an incident leads to serious harm (Art. 3(49)), so pre-harm drift is open in the EU too."
     readiness_dimensions: [10, 7]
     implication: >-
-      In the exercise each institution set its own timing. Once the gate fails closed and care falls back to
-      humans, any harm from the AI triage still has to be reported, and "promptly" gives the health regulator,
-      the Data Office and TDRA no shared clock.
-    next_step: "Define a serious clinical-AI incident and a tiered reporting clock in the DoH standard's risk protocol, for example by extending the ADHICS incident classification to clinical harm from AI outputs."
+      At T1 the drift was visible to the triage service and the health regulator, but no rule told anyone to
+      report it by a deadline, so each institution set its own timing. The early signal that could prevent a
+      sentinel event is the one with no clock.
+    next_step: "Define a reporting trigger and clock for AI performance drift before harm (for example a threshold on a monitored subgroup metric) in the DoH Responsible AI Standard's risk protocol, and propose the trigger as a standards item for ITU-T."
   - id: TV3
     candidate: CG5
     type: policy
@@ -109,15 +118,24 @@ gaps:
     candidate: CG-T4
     type: policy
     pattern: G1_POLICY_VOID
-    title: "No duty to inform patients affected by an AI triage error"
+    title: "No duty to tell patients about an AI triage error below the sentinel-event level"
     status: verified
-    scope_note: "Within our KB. The medical liability law binds physicians, not AI services or their providers."
+    scope_note: "Sentinel events are covered: DHA's sentinel-event standard (outside our KB, checked by hand) asks facilities to involve patients and families so the case is openly disclosed (5.12, 'should'). The gap is AI errors below that level."
     statement: >-
-      The DoH standard requires telling patients when AI contributes to decisions (disclosure), not informing
-      patients harmed by an AI error. The medical liability law requires a physician to keep the patient
-      informed of their condition, which does not reach an AI triage error made before any physician saw the
-      patient. Security-incident communication plans (ADHICS IM 2.1) and data-breach notices (PDPL Art. 9) do
-      not cover a clinical error. No instrument in our KB requires informing patients affected by an AI error.
+      For sentinel events, Dubai asks facilities to "strongly involve patients and their families" so the case
+      is "openly disclosed" (DHA/HRS/CACD/ST-01 v1.1, 5.12, a "should"). Below that level, the DoH standard
+      requires telling patients when AI contributes to decisions (disclosure of use), not informing patients
+      affected by an AI error. The medical liability law requires a physician to keep the patient informed of
+      their condition, which does not reach an AI triage error made before any physician saw the patient.
+      Security-incident communication plans (ADHICS IM 2.1) and data-breach notices (PDPL Art. 9) do not cover a
+      clinical error. No instrument we checked requires informing patients mis-triaged by an AI when the error
+      is caught before it becomes a sentinel event.
+    external_evidence:
+      - source: "DHA Standards for Sentinel Events Notification and Management in Health Facilities, DHA/HRS/CACD/ST-01, v1.1, effective 06/05/2025"
+        url: "https://www.dha.gov.ae/uploads/042025/Sentinel%20Events%20Notification%20And%20Management%20In%20Health%20Facilities-Final202541624.pdf"
+        section: "5.12"
+        quote: "Health facilities should strongly involve patients and their families in any sentinel event cases."
+        checked: "by hand, 2026-11-10 (not in the KB, so not checked by scripts/check_gaps_verified.py)"
     uae_evidence:
       - clause_id: AE-DOH-RAI-2025/sec-3.1.6.1.1/en
         quote: "All healthcare AI systems must include mechanisms to inform patients, clinicians, and relevant stakeholders when AI contributes to clinical or operational decisions"
@@ -133,7 +151,7 @@ gaps:
       how_it_handles: "Communication to affected individuals is mandatory for high-risk data breaches; the AI Act's Art. 86 adds a right to an explanation of AI-based decisions."
     readiness_dimensions: [6, 11]
     implication: "At T4 agents could not ground a decision to contact the misdiagnosed patient."
-    next_step: "Propose an AI-error notification duty (who informs the patient, by when) in the DoH Responsible AI Standard."
+    next_step: "Propose an AI-error notification duty below the sentinel level (who informs the patient, by when) in the DoH Responsible AI Standard."
   - id: TV5
     candidate: SG1
     type: standards
@@ -182,7 +200,7 @@ gaps:
     statement: >-
       The official UAE legislation portals refused or broke automated retrieval (HTTP 403 and TLS errors), so
       11 instruments, including the PDPL, had to be downloaded by hand in a browser: the texts are published for
-      people to read, but there is no official machine-access feed. None of the four Arabic texts (two federal
+      people to read, and we found no official machine-access feed. None of the four Arabic texts (two federal
       laws, two national strategies) could be extracted cleanly (broken lam-alef joins, presentation forms,
       scrambled order: 144 Arabic units failed QA). Cabinet Resolution 32/2020's MOHAP copy is a scanned image,
       and the English Ministerial Resolution 51/2021 stores its text out of reading order (we re-read it in

@@ -257,8 +257,8 @@ Any other high impact action with no rule & \textcolor{escc}{ESCALATE} & Fail cl
 \toprule
 \textbf{Gap} & \textbf{Type} & \textbf{Evidence in the primary text} & \textbf{Global example} & \textbf{Status}\\
 \midrule
-No deadline or definition for reporting a serious clinical AI incident & Policy, clock & ADHICS IM 2.2 and DHA AI policy 4.8.1 send incidents to the regulator, with no deadline beyond ADHICS's ``promptly''. Nothing defines a serious clinical AI incident & EU AI Act Art.~73, 15 days, 10 days after a death, 2 days if widespread & Verified\\
-No duty to tell patients about an AI error & Policy & DoH RAI Standard 3.1.6.1.1 covers disclosing that AI is used. Incident plans and breach notices do not cover a clinical error & GDPR Art.~34 and EU AI Act Art.~86 & Verified\\
+No reporting clock for an AI drift before harm is confirmed & Policy, clock & Sentinel-event rules start a 48-hour clock only after serious harm and exclude near misses (DHA). ADHICS IM 2.2 and DHA AI policy 4.8.1 send AI incidents to the regulator with no deadline & EU AI Act Art.~73 clocks start only once an incident leads to harm (Art.~3(49)) & Verified\\
+No duty to tell patients about an AI error below sentinel level & Policy & DoH RAI Standard 3.1.6.1.1 covers disclosing that AI is used. Open disclosure covers sentinel events only (DHA 5.12) & GDPR Art.~34 and EU AI Act Art.~86 & Verified\\
 Y.3172 policy node silent on law, approval and evidence & Standards & Policies come from the network operator (clause 7.2). Nothing on law, approval or evidence & Our extension, LA, HA, AE, GM & Verified\\
 Y.3173 levels ignore where decision rules come from & Standards & Y.3173 Table 7\mbox{-}1 rates who defines rules, not their legal force & None found & Verified\\
 No machine readable official UAE legal corpus & Technical & Official portals refused automated download, and none of the four Arabic texts extracted cleanly & EU Publications Office machine access & Verified\\
@@ -269,7 +269,7 @@ Lead authority for a breach of health data & Policy, owner & ADHICS IM 2.2 names
 Monitoring by patient language group & Policy & DoH RAI Standard 3.1.5.1.3 and 3.1.2.1.4 require bias detection and continuous monitoring & None needed & Rejected\\
 \bottomrule
 \end{tabularx}
-\caption{Gap hypotheses checked against the primary texts, verified ones first. Every quote behind this table is stored in the repository and checked by a script.}
+\caption{Gap hypotheses checked against the primary texts, verified ones first. Every quote behind this table is stored in the repository and checked by a script, except the DHA sentinel-event standard, checked by hand.}
 \label{tab:gaps}
 \end{table*}
 
@@ -319,9 +319,9 @@ We ran the full scenario with glm\mbox{-}5.3 four times on the final knowledge b
 
 \textbf{A rejected gap is a result too.} Our first draft named failover abroad as the headline gap. Yet DoH Responsible AI Standard 3.1.4.5.1 says that compute and storage for both active and disaster recovery sites must be inside the UAE, and our own agents quoted it word for word \GovDRCites\ times in the governed run. The rule exists, so we rejected the gap and added the clause to the gate's localisation rule. Continuity must come from an in-country recovery site or from people.
 
-\textbf{The gap that matters most.} When the gate fails closed and care falls back to nurses, a patient may already have been harmed by the AI's triage. Abu Dhabi requires serious incidents to reach the Department of Health (ADHICS IM 2.2), and Dubai requires AI incidents to reach DHA. Neither says by when, and neither defines a serious clinical AI incident, since ADHICS classifies information security incidents. The EU AI Act sets 15 days, 10 after a death and 2 for a widespread infringement. A definition and a clock in the DoH risk protocol, built on the ADHICS classification, would close it at low cost.
+\textbf{The gap that matters most.} Serious harm already has a clock: Dubai's sentinel-event standard requires notice within 48 hours. The T1 signal comes earlier. Under-triage of Arabic speaking chest-pain patients rose from 2 to 9 percent before anyone was confirmed harmed, and near misses are excluded from sentinel reporting. The AI duties, ADHICS IM 2.2 and DHA AI policy 4.8.1, send such incidents to the regulator with no deadline, and even the EU AI Act's clocks start only once an incident leads to harm. The early warning that could prevent a sentinel event is the one with no clock. A drift trigger in the DoH risk protocol would close it at low cost.
 
-\textbf{Next steps.} We plan four things. First, an ITU\mbox{-}T SG13 contribution proposing the LA, HA, AE and GM extension around the Y.3172 policy node, with MAJLIS as the reference implementation. Second, a short policy brief proposing a definition of a serious clinical AI incident with a reporting clock, and a duty to tell patients affected by an AI error. Third, an ITU Kaleidoscope paper on finding policy gaps from exercise logs. Fourth, the knowledge base and agent cards for the ITU AI for Good Lab, and new country packs for the 2027 multi country error exercise.
+\textbf{Next steps.} We plan four things. First, an ITU\mbox{-}T SG13 contribution proposing the LA, HA, AE and GM extension around the Y.3172 policy node, with MAJLIS as the reference implementation. Second, a short policy brief proposing a reporting trigger and clock for AI drift before harm, and a duty to tell patients affected by an AI error below the sentinel level. Third, an ITU Kaleidoscope paper on finding policy gaps from exercise logs. Fourth, the knowledge base and agent cards for the ITU AI for Good Lab, and new country packs for the 2027 multi country error exercise.
 
 \textbf{Limitations.} The scenario and institutions are simulated. Model output varies, so all numbers come from the logs we committed. The rules and verified gaps were encoded by our team and still need formal legal review. No Arabic legal text could be extracted cleanly from the official PDFs, so Arabic works through translation of the assessments and cross lingual search, not through Arabic clauses.
 
