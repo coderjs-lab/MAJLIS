@@ -65,7 +65,7 @@
 \end{center}
 \vspace{2pt}
 \noindent\colorbox{codec}{\parbox{\dimexpr\textwidth-2\fboxsep}{\small
-\textbf{In one paragraph.} When an AI system fails inside a public service, three questions decide the damage. Which rule applies, who must act, and by when. MAJLIS rehearses that moment before it happens. A fictional AI triage service in an Abu Dhabi telehealth platform fails in stages, and simulated regulators work through the incident using the actual legal texts. Language models write the assessments, but plain code checks every quote against the law and decides every action through a policy gate. Across our final runs the agents quoted the law word for word in \VerifMin\ to \VerifMax\ percent of checked citations. With the gate on, no escalation was bypassed and a human approval could not override a legal block. With the gate off, the same AI bypassed \UngovBypassed\ escalations, and in an earlier run it processed patient data outside the UAE. We then tried to refute every gap the exercise raised against the full legal texts. \NGapsVerified\ policy, standards and technical gaps survived, and \NGapsRejected\ were rejected because a UAE text already covers them.\\[3pt]
+\textbf{In one paragraph.} When an AI system fails inside a public service, three questions decide the damage. Which rule applies, who must act, and by when. MAJLIS rehearses that moment before it happens. A fictional AI triage service in an Abu Dhabi telehealth platform fails in stages, and simulated regulators work through the incident using the actual legal texts. Language models write the assessments, but plain code checks every quote against the law and decides every action through a policy gate. Across our final runs the agents quoted the law word for word in \VerifMin\ to \VerifMax\ percent of checked citations. With the gate on, no escalation was bypassed and a human approval could not override a legal block. With the gate only advising, the same AI bypassed \UngovBypassed\ escalations, and in an earlier run it processed patient data outside the UAE. We then tried to refute every gap the exercise raised against the full legal texts. \NGapsVerified\ policy, standards and technical gaps survived, and \NGapsRejected\ were rejected because a UAE text already covers them.\\[3pt]
 \textit{This is a fictional training exercise. The agents simulate institutions and do not represent any official position. Nothing here is legal advice.}}}
 \vspace{10pt}
 }]
@@ -166,7 +166,7 @@ MAJLIS turns this into a rehearsal. A \emph{majlis} is the traditional Gulf coun
 \begin{figure*}[t]
 \centering
 \input{generated/fig_timeline.tex}
-\caption{The exercise stage by stage. Top, which agents receive each event, so information really is uneven. Bottom, the strongest gate decision on the AI triage service at each stage, from the final runs. Solid red means the action was blocked with a 403 and the clause. Amber means a human decided. Dashed boxes mean the gate was off, so the decision was only logged and the AI went ahead.}
+\caption{The exercise stage by stage. Top, which agents receive each event, so information really is uneven. Bottom, the strongest gate decision on the AI triage service at each stage, from the final runs. Solid red means the action was blocked with a 403 and the clause. Amber means a human decided. Dashed boxes mean the gate only advised and the AI went ahead.}
 \label{fig:timeline}
 \end{figure*}
 
@@ -202,7 +202,7 @@ AE & Every step is reviewable and tamper evident & Each event is chained with SH
 \textbf{Y.3172 node} & \textbf{In MAJLIS} & \textbf{AI Readiness Framework 2.0} & \textbf{Legal and standards sources in the knowledge base}\\
 \midrule
 SRC & Synthetic triage telemetry, staged events and the official legal texts & D13 Digital Infrastructure, the outage itself & DoH Responsible AI Standard 3.1.2.1.4 on monitoring deployed systems\\
-C & The engine delivers each event to chosen agents only & D7 Strategy Alignment, who learns what and when & Federal Law 2 of 2019 Art.~10 on coordination between health authorities\\
+C & The engine delivers each event to chosen agents only & D7 Strategy Alignment, who learns what and when & Federal Law 2 of 2019 Art.~10 on Ministry and health authority coordination\\
 PP & Clause splitting, metadata and reranked hybrid search & D1 Data and Model Marketplace, D4 Regional Impact & DoH Responsible AI Standard 3.2.3 on dataset quality\\
 M & Language model agents for the AI service, three regulators and an adviser & D5 AI in Workflows, D8 Collaboration with AI & DoH Responsible AI Standard 3.1.3.1.1 on validation before deployment\\
 P & Policy gate and citation checker & D10 AI and Policies, D6 Human Interface & Federal Law 2 of 2019 Art.~13, DoH Responsible AI Standard 3.1.4.5.1, Ministerial Resolution 51 of 2021 Art.~2\\
@@ -257,7 +257,7 @@ Any other high impact action with no rule & \textcolor{escc}{ESCALATE} & Fail cl
 \toprule
 \textbf{Gap} & \textbf{Type} & \textbf{Evidence in the primary text} & \textbf{Global example} & \textbf{Status}\\
 \midrule
-No deadline or definition for reporting a serious clinical AI incident & Policy, clock & ADHICS IM 2.2 and DHA AI policy 4.8.1 send incidents to the regulator, but only promptly. Nothing defines a serious clinical AI incident or sets a deadline & EU AI Act Art.~73, 15 days, 10 days after a death, 2 days if widespread & Verified\\
+No deadline or definition for reporting a serious clinical AI incident & Policy, clock & ADHICS IM 2.2 and DHA AI policy 4.8.1 send incidents to the regulator, with no deadline beyond ADHICS's ``promptly''. Nothing defines a serious clinical AI incident & EU AI Act Art.~73, 15 days, 10 days after a death, 2 days if widespread & Verified\\
 No duty to tell patients about an AI error & Policy & DoH RAI Standard 3.1.6.1.1 covers disclosing that AI is used. Incident plans and breach notices do not cover a clinical error & GDPR Art.~34 and EU AI Act Art.~86 & Verified\\
 Y.3172 policy node silent on law, approval and evidence & Standards & Policies come from the network operator (clause 7.2). Nothing on law, approval or evidence & Our extension, LA, HA, AE, GM & Verified\\
 Y.3173 levels ignore where decision rules come from & Standards & Y.3173 Table 7\mbox{-}1 rates who defines rules, not their legal force & None found & Verified\\
@@ -279,7 +279,7 @@ Monitoring by patient language group & Policy & DoH RAI Standard 3.1.5.1.3 and 3
 
 We ran the full scenario with glm\mbox{-}5.3 four times on the final knowledge base. The runs were governed with a human who rejects escalations, ungoverned, governed in Arabic, and governed with a human who approves escalations plus two judge challenge cards. Every run finished with zero model errors, and every log verifies end to end.
 
-\textbf{What changed when the gate was on.} Figure~\ref{fig:outcomes} counts what happened to the AI's actions. With the gate on, escalations went to a person and legal blocks held. With the gate off, the AI kept triaging through a patient safety signal and kept sharing logs with no rule covering it, \UngovBypassed\ bypassed escalations in all. In an earlier ungoverned run it also processed patient data outside the UAE, a breach of Art.~13 that the gate would have blocked. In the final ungoverned run the AI read the localisation rules and suspended itself. Model behaviour varies from run to run. That is the point of the gate. It gives the same answer every time.
+\textbf{What changed when the gate was on.} Figure~\ref{fig:outcomes} counts what happened to the AI's actions. With the gate on, escalations went to a person and legal blocks held. Ungoverned, the gate only advises. The AI kept triaging through a patient safety signal and kept sharing logs with no rule covering it, \UngovBypassed\ bypassed escalations in all. In an earlier ungoverned run it also processed patient data outside the UAE, which Art.~13 does not allow. In the final ungoverned run it suspended itself in two steps, after the gate's advice at T1 and citing DoH RAI Standard 3.1.4.5.1 at T2. Model behaviour varies from run to run. That is the point of the gate. It gives the same answer every time.
 
 \par\medskip\noindent\begin{minipage}{\columnwidth}\centering
 \input{generated/fig_outcomes.tex}
@@ -290,7 +290,7 @@ We ran the full scenario with glm\mbox{-}5.3 four times on the final knowledge b
 
 \textbf{Expected against actual.} At T1 the result matched what we wrote down before the run. The AI asked to keep triaging, the gate escalated under the DoH escalation clause and the DoH agent required a fallback to nurses. At T2 we expected a 403 for processing data abroad. It appeared when the human had approved continuing at T1. When the human had rejected it, the AI was already on human fallback, so the breach never arose. Governance prevented the problem instead of blocking it late.
 
-\textbf{Judge challenge cards.} Raw logs requested by a vendor abroad got DENY 403 under Art.~13. When half the nurses were off sick, the AI asked again to keep triaging from abroad and got a 403 again, although the human approved every escalation. We first encoded continuity of care as pulling against localisation, which sent this case to a person. DoH Responsible AI Standard 3.1.4.5.1 settles it, since recovery sites must be in the UAE, so our continuity rule now applies only in the country.
+\textbf{Judge challenge cards.} With half the nurses off sick (card C5) the AI stayed suspended. When a vendor abroad then asked for raw logs (card C3), the gate returned DENY 403 under Art.~13 for the logs and for the AI's request to keep triaging from abroad, although the human approved every escalation. An earlier run encoded continuity of care as pulling against localisation and sent the nurses card to a person. DoH RAI Standard 3.1.4.5.1 settles it, since recovery sites must be in the UAE, so our continuity rule now applies only in the country.
 
 \textbf{Citation integrity.} Figure~\ref{fig:cites} shows how the agents' citations held up. Between \VerifMin\ and \VerifMax\ percent of checked citations were exact quotes. The rest were near matches, failed quotes or malformed clause ids, and none of them could be used to justify an action. The Arabic run reached \ArVerif\ percent while writing every assessment in Arabic and quoting the English clauses exactly.
 
@@ -309,7 +309,7 @@ We ran the full scenario with glm\mbox{-}5.3 four times on the final knowledge b
 \label{tab:kb}
 \end{minipage}\par\medskip
 
-\textbf{Errors and edge cases.} If a model returns invalid JSON it gets one retry with the error message, and a second failure is logged without stopping the exercise. Clause ids the model invents are flagged and never used. An early pilot showed that with a neutral objective the AI suspended itself at once and never tested the gate, which is why the system under test now has a stated availability first objective. The pilot log is kept.
+\textbf{Errors and edge cases.} If a model returns invalid JSON it gets one retry with the error message, and a second failure is logged without stopping the exercise. Clause ids the model invents are flagged and never used. An early pilot showed that with a neutral objective the AI suspended itself at once and never tested the gate, which is why the system under test now has a stated availability first objective.
 
 \section{Policy and standards gaps}
 
@@ -317,14 +317,14 @@ We ran the full scenario with glm\mbox{-}5.3 four times on the final knowledge b
 
 \textbf{Team verified gaps.} We checked each candidate against the primary text, then ran an adversarial pass that searched the whole knowledge base for any provision that contradicts each gap. Of nine hypotheses, \NGapsVerified\ survived and \NGapsRejected\ were rejected because a UAE text already covers them. Table~\ref{tab:gaps} lists all nine.
 
-\textbf{A rejected gap is a result too.} Our first draft named failover abroad as the headline gap. Yet DoH Responsible AI Standard 3.1.4.5.1 says that compute and storage for both active and disaster recovery sites must be inside the UAE, and our own agents quoted it word for word \GovDRCites\ times in the governed run. The rule exists, so we rejected the gap and added the clause to the gate's localisation rule. Failover abroad is prohibited, so continuity has to come from an in-country recovery site or from people.
+\textbf{A rejected gap is a result too.} Our first draft named failover abroad as the headline gap. Yet DoH Responsible AI Standard 3.1.4.5.1 says that compute and storage for both active and disaster recovery sites must be inside the UAE, and our own agents quoted it word for word \GovDRCites\ times in the governed run. The rule exists, so we rejected the gap and added the clause to the gate's localisation rule. Continuity must come from an in-country recovery site or from people.
 
-\textbf{The gap that matters most.} When the gate fails closed and care falls back to nurses, a patient may already have been harmed by the AI's triage. Abu Dhabi requires serious incidents to reach the Department of Health (ADHICS IM 2.2), and Dubai requires AI incidents to reach DHA. Neither says by when, and neither defines a serious clinical AI incident, since ADHICS classifies information security incidents. The EU AI Act sets 15 days, 10 after a death and 2 for widespread harm. A definition and a clock in the DoH risk protocol, built on the ADHICS classification, would close it at low cost.
+\textbf{The gap that matters most.} When the gate fails closed and care falls back to nurses, a patient may already have been harmed by the AI's triage. Abu Dhabi requires serious incidents to reach the Department of Health (ADHICS IM 2.2), and Dubai requires AI incidents to reach DHA. Neither says by when, and neither defines a serious clinical AI incident, since ADHICS classifies information security incidents. The EU AI Act sets 15 days, 10 after a death and 2 for a widespread infringement. A definition and a clock in the DoH risk protocol, built on the ADHICS classification, would close it at low cost.
 
 \textbf{Next steps.} We plan four things. First, an ITU\mbox{-}T SG13 contribution proposing the LA, HA, AE and GM extension around the Y.3172 policy node, with MAJLIS as the reference implementation. Second, a short policy brief proposing a definition of a serious clinical AI incident with a reporting clock, and a duty to tell patients affected by an AI error. Third, an ITU Kaleidoscope paper on finding policy gaps from exercise logs. Fourth, the knowledge base and agent cards for the ITU AI for Good Lab, and new country packs for the 2027 multi country error exercise.
 
 \textbf{Limitations.} The scenario and institutions are simulated. Model output varies, so all numbers come from the logs we committed. The rules and verified gaps were encoded by our team and still need formal legal review. No Arabic legal text could be extracted cleanly from the official PDFs, so Arabic works through translation of the assessments and cross lingual search, not through Arabic clauses.
 
-\textbf{Reproducing our results.} Every run is in the \texttt{runs} folder and replays without an API key, \texttt{verify\_ledger.py} checks each hash chain, and \texttt{report/make\_data.py} generates every figure and number from those logs, so nothing was typed in by hand.
+\textbf{Reproducing our results.} Every run in the \texttt{runs} folder replays without an API key, \texttt{verify\_ledger.py} checks each hash chain, and \texttt{report/make\_data.py} generates every figure and number from those logs.
 
 \end{document}
