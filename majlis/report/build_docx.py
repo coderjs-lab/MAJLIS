@@ -33,7 +33,7 @@ OUT_HTML = HERE / "figures" / "docx_preview.html"
 
 TITLE = "AI for Good Sandbox Hackathon – Team MAJLIS – MAJLIS: Rehearsing AI Incidents Across Institutions with Verifiable Law"
 META = [("Team leader", "Abhra Dubey"), ("Team members", "Abhra Dubey, Harmanjot Singh, Aya Elsayed"),
-        ("Contact details", "abhra.dubey@mbzuai.ac.ae"), ("Github link", "https://github.com/coderjs-lab/itu")]
+        ("Contact details", "abhra.dubey@mbzuai.ac.ae"), ("Github link", "https://github.com/coderjs-lab/MAJLIS")]
 COLORS = {"okc": "1F7A4D", "denyc": "B42318", "escc": "A86A00", "brand": "0E4F4C"}
 FIGS = {"fig:arch": ("fig1_architecture.png", 6.1), "fig:timeline": ("fig2_timeline.png", 4.8),
         "fig:outcomes": ("fig3_outcomes.png", 2.8), "fig:cites": ("fig4_citations.png", 2.8)}

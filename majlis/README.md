@@ -14,7 +14,7 @@ A *majlis* is the traditional Gulf council where parties consult before a decisi
 ## 1. Quick look (no API key, ~3 minutes)
 
 ```bash
-git clone https://github.com/coderjs-lab/itu.git && cd itu/majlis
+git clone https://github.com/coderjs-lab/MAJLIS.git && cd MAJLIS/majlis
 python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m uvicorn app.server:app --port 8765
 # open http://127.0.0.1:8765 and pick a run from the run picker (replay mode)

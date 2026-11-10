@@ -15,7 +15,7 @@ The runs behind the numbers are listed in [`generated/runs.txt`](generated/runs.
 
 ## Rebuild
 
-From `itu/majlis` (the `majlis` folder of this repository), with the Python environment from the main README and [tectonic](https://tectonic-typesetting.github.io/) installed:
+From `MAJLIS/majlis` (the `majlis` folder of this repository), with the Python environment from the main README and [tectonic](https://tectonic-typesetting.github.io/) installed:
 
 ```bash
 .venv/bin/python report/make_data.py \
